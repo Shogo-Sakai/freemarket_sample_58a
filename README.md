@@ -1,24 +1,248 @@
-# README
+# freemarket_sample_58a
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Database design
+---------------
 
-Things you may want to cover:
+## Usersテーブル
 
-* Ruby version
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false,unique: true|
+|password|string|null: false|
 
-* System dependencies
+### Association
+has_one :profile
+has_one :creditcard
+has_many :products
+has_many :favorites
+has_many :infomations
+has_many :comments
+has_many :tradings
+has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id"
+has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id"
 
-* Configuration
+## Profilesテーブル
 
-* Database creation
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|foreign_key: true|
+|avatar|string||
+|birthday|string|null: false|
+|family_name|string|null: false|
+|prersonal_name|string|null: false|
+|family_name_kana|string|null: false|
+|personal_name_kana|string|null: false|
+|postal_code|integer|null: false|
+|city|string|null: false|
+|adress|string|null: false|
+|building|string||
+|tel|integer||
+|prefecture_id|references|foreign_key: true|
 
-* Database initialization
+### Association
+belongs_to :user
+belongs_to :pref
 
-* How to run the test suite
+## Creditcardsテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|foreign_key: true|
+|card_token|string|null: false|
 
-* Deployment instructions
+### Association
+belongs_to :user
 
-* ...
+## Prefecturesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+has_many :profile
+has_many :products
+
+## Infomationsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+|user_id|references|foreingn_key: true|
+
+### Association
+belongs_to :user
+
+## Productsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|body|text|null: false|
+|user_id|references|foreign_key: true|
+|state_id|references|foreign_key: true|
+|prefecture_id|references|foreign_key: true|
+|brand_id|references|foreign_key: true|
+|size_id|references|foreign_key: true|
+|category_id|references|foreign_key: true|
+
+### Association
+has_many :comments
+has_many :favorites
+has_many :tradings
+has_many :images
+has_one :product_option
+belongs_to :prefecture
+belongs_to :user
+belongs_to :state
+belongs_to :category
+belongs_to :size
+belongs_to :brand
+
+## Imagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|product_id|references|foreign_key: true|
+
+### Association
+belongs_to :product
+
+## Statesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+
+### Association
+has_many :products
+
+## Sizeテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+|category_id|references|foreign_key: true|
+
+### Association
+has_many :products
+belongs_to :category
+
+## Categoriesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|parent_id|references||
+|grandparent_id|references||
+
+### Association
+has_many :children ,class_name: "Category",foreign_key: "parent_id"
+belongs_to :parent ,class_name: "Category",optional: true
+has_many :parents ,class_name: "Category" ,foreign_key: "grandparent_id"
+belongs_to :grandparent ,class_name: "Category",optional: true
+has_many :size
+has_many :products
+
+## Brandテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|brand_group_id|references|foreign_key: true|
+
+### Association
+has_many :products
+belongs_to :brand_group
+
+## Brand_groupテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+has_many :brands
+
+## Product_optionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|product_id|references|foreign_key: true|
+|condition_id|references|foreign_key: true|
+|delivery_day_id|references|foreign_key: true|
+|delivery_method_id|references|foreign_key: true|
+|delivery_fee_id|references|foreign_key: true|
+
+
+### Association
+belongs_to :product
+belongs_to :condition
+belongs_to :delivery_day
+belongs_to :delivery_method
+belongs_to :delivery_fee
+
+## Conditionsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+
+### Association
+has_many :product_options
+
+## Delivery_daysテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+
+### Association
+has_many :product_options
+
+## Delivery_methodsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+
+### Association
+has_many :product_options
+
+## Delivery_feesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|body|string|null: false|
+
+### Association
+has_many :product_options
+
+## Tradesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|buyer_id|references|foreign_key: { to_table: :users }, null: false|
+|seller_id|references|foreign_key: { to_table: :users }, null: false|
+|product_id|references|foreign_key: true|
+
+### Association
+belongs_to :buyer, class_name: "User", foreign_key: "buyer_id"
+belongs_to :seller, class_name: "User", foreign_key: "seller_id"
+belongs_to :product
+has_many :ratings
+
+## Ratingsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|rate|integer|null: false|
+|body|text|null: false|
+|trade_id|references|foreign_key: true|
+
+### Association
+belongs_to :trade
+
+
