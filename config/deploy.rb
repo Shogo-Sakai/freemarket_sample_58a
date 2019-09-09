@@ -1,12 +1,12 @@
 # config valid for current version and patch releases of Capistrano
 # capistranoのバージョンを固定してバージョン変更によるトラブルを防ぐ。
-lock "3.11.0"
+lock '3.11.0'
 
 # Capistranoのログの表示に利用する。
 set :application, "freemarket_sample_58a"
 
 # どのリポジトリからアプリをpullするのかを指定する。
-set :repo_url, "https://github.com/Shogo-Sakai/freemarket_sample_58a.git"
+set :repo_url, "git@github.com:Shogo-Sakai/freemarket_sample_58a.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
