@@ -7,7 +7,6 @@ Database design
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
 |email|string|null: false,unique: true|
 |password|string|null: false|
 
@@ -21,11 +20,15 @@ has_many :comments
 has_many :tradings
 has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id"
 has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id"
+has_many :sender_ratings,class_name: "Rating", foreign_key: "sender_id"
+has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id"
+
 
 ## Profilesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
+|nickname|string|null: false|
 |user_id|references|foreign_key: true|
 |avatar|string||
 |birthday|string|null: false|
@@ -232,7 +235,6 @@ has_many :product_options
 belongs_to :buyer, class_name: "User", foreign_key: "buyer_id"
 belongs_to :seller, class_name: "User", foreign_key: "seller_id"
 belongs_to :product
-has_many :ratings
 
 ## Ratingsテーブル
 
@@ -240,9 +242,9 @@ has_many :ratings
 |------|----|-------|
 |rate|integer|null: false|
 |body|text|null: false|
-|trade_id|references|foreign_key: true|
+|sender_id|references|foreign_key: { to_table: :users }, null: false|
+|receiver_id|references|foreign_key: { to_table: :users }, null: false|
 
 ### Association
-belongs_to :trade
-
-
+belongs_to :sender, class_name: "User", foreign_key: "sender_id"
+belongs_to :receiver, class_name: "User", foreign_key: "receiver_id"
