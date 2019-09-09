@@ -12,17 +12,16 @@ Database design
 
 ### Association
 
-- has_one :profile
-- has_one :creditcard
-- has_many :products
-- has_many :favorites
-- has_many :infomations
-- has_many :comments
-- has_many :tradings
-- has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id"
-- has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id"
-- has_many :sender_ratings,class_name: "Rating", foreign_key: "sender_id"
-- has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id"
+- has_one :profile, dependent: :destroy
+- has_one :creditcard, dependent: :destroy
+- has_many :products, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :infomations, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id", dependent: :destroy
+- has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id", dependent: :destroy
+- has_many :sender_ratings,class_name: "Rating", foreign_key: "sender_id", dependent: :destroy
+- has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id", dependent: :destroy
 
 
 ## Profilesテーブル
@@ -97,11 +96,11 @@ Database design
 
 ### Association
 
-- has_many :comments
-- has_many :favorites
-- has_many :tradings
-- has_many :images
-- has_one :product_option
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :tradings, dependent: :destroy
+- has_many :images, dependent: :destroy
+- has_one :product_option, dependent: :destroy
 - belongs_to :prefecture
 - belongs_to :user
 - belongs_to :state
