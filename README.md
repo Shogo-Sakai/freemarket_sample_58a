@@ -11,17 +11,18 @@ Database design
 |password|string|null: false|
 
 ### Association
-has_one :profile
-has_one :creditcard
-has_many :products
-has_many :favorites
-has_many :infomations
-has_many :comments
-has_many :tradings
-has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id"
-has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id"
-has_many :sender_ratings,class_name: "Rating", foreign_key: "sender_id"
-has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id"
+
+- has_one :profile
+- has_one :creditcard
+- has_many :products
+- has_many :favorites
+- has_many :infomations
+- has_many :comments
+- has_many :tradings
+- has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id"
+- has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id"
+- has_many :sender_ratings,class_name: "Rating", foreign_key: "sender_id"
+- has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id"
 
 
 ## Profilesテーブル
@@ -44,8 +45,9 @@ has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id"
 |prefecture_id|references|foreign_key: true|
 
 ### Association
-belongs_to :user
-belongs_to :pref
+
+- belongs_to :user
+- belongs_to :pref
 
 ## Creditcardsテーブル
 
@@ -55,7 +57,8 @@ belongs_to :pref
 |card_token|string|null: false|
 
 ### Association
-belongs_to :user
+
+- belongs_to :user
 
 ## Prefecturesテーブル
 
@@ -64,8 +67,9 @@ belongs_to :user
 |name|string|null: false|
 
 ### Association
-has_many :profile
-has_many :products
+
+- has_many :profile
+- has_many :products
 
 ## Infomationsテーブル
 
@@ -75,7 +79,8 @@ has_many :products
 |user_id|references|foreingn_key: true|
 
 ### Association
-belongs_to :user
+
+- belongs_to :user
 
 ## Productsテーブル
 
@@ -91,17 +96,18 @@ belongs_to :user
 |category_id|references|foreign_key: true|
 
 ### Association
-has_many :comments
-has_many :favorites
-has_many :tradings
-has_many :images
-has_one :product_option
-belongs_to :prefecture
-belongs_to :user
-belongs_to :state
-belongs_to :category
-belongs_to :size
-belongs_to :brand
+
+- has_many :comments
+- has_many :favorites
+- has_many :tradings
+- has_many :images
+- has_one :product_option
+- belongs_to :prefecture
+- belongs_to :user
+- belongs_to :state
+- belongs_to :category
+- belongs_to :size
+- belongs_to :brand
 
 ## Imagesテーブル
 
@@ -111,7 +117,8 @@ belongs_to :brand
 |product_id|references|foreign_key: true|
 
 ### Association
-belongs_to :product
+
+- belongs_to :product
 
 ## Statesテーブル
 
@@ -120,7 +127,8 @@ belongs_to :product
 |body|string|null: false|
 
 ### Association
-has_many :products
+
+- has_many :products
 
 ## Sizeテーブル
 
@@ -130,8 +138,9 @@ has_many :products
 |category_id|references|foreign_key: true|
 
 ### Association
-has_many :products
-belongs_to :category
+
+- has_many :products
+- belongs_to :category
 
 ## Categoriesテーブル
 
@@ -142,12 +151,13 @@ belongs_to :category
 |grandparent_id|references||
 
 ### Association
-has_many :children ,class_name: "Category",foreign_key: "parent_id"
-belongs_to :parent ,class_name: "Category",optional: true
-has_many :parents ,class_name: "Category" ,foreign_key: "grandparent_id"
-belongs_to :grandparent ,class_name: "Category",optional: true
-has_many :size
-has_many :products
+
+- has_many :children ,class_name: "Category",foreign_key: "parent_id"
+- belongs_to :parent ,class_name: "Category",optional: true
+- has_many :parents ,class_name: "Category" ,foreign_key: "grandparent_id"
+- belongs_to :grandparent ,class_name: "Category",optional: true
+- has_many :size
+- has_many :products
 
 ## Brandテーブル
 
@@ -157,8 +167,9 @@ has_many :products
 |brand_group_id|references|foreign_key: true|
 
 ### Association
-has_many :products
-belongs_to :brand_group
+
+- has_many :products
+- belongs_to :brand_group
 
 ## Brand_groupテーブル
 
@@ -167,7 +178,8 @@ belongs_to :brand_group
 |name|string|null: false|
 
 ### Association
-has_many :brands
+
+- has_many :brands
 
 ## Product_optionsテーブル
 
@@ -181,11 +193,12 @@ has_many :brands
 
 
 ### Association
-belongs_to :product
-belongs_to :condition
-belongs_to :delivery_day
-belongs_to :delivery_method
-belongs_to :delivery_fee
+
+- belongs_to :product
+- belongs_to :condition
+- belongs_to :delivery_day
+- belongs_to :delivery_method
+- belongs_to :delivery_fee
 
 ## Conditionsテーブル
 
@@ -194,7 +207,8 @@ belongs_to :delivery_fee
 |body|string|null: false|
 
 ### Association
-has_many :product_options
+
+- has_many :product_options
 
 ## Delivery_daysテーブル
 
@@ -203,7 +217,8 @@ has_many :product_options
 |body|string|null: false|
 
 ### Association
-has_many :product_options
+
+- has_many :product_options
 
 ## Delivery_methodsテーブル
 
@@ -212,7 +227,8 @@ has_many :product_options
 |body|string|null: false|
 
 ### Association
-has_many :product_options
+
+- has_many :product_options
 
 ## Delivery_feesテーブル
 
@@ -221,7 +237,8 @@ has_many :product_options
 |body|string|null: false|
 
 ### Association
-has_many :product_options
+
+- has_many :product_options
 
 ## Tradesテーブル
 
@@ -232,9 +249,10 @@ has_many :product_options
 |product_id|references|foreign_key: true|
 
 ### Association
-belongs_to :buyer, class_name: "User", foreign_key: "buyer_id"
-belongs_to :seller, class_name: "User", foreign_key: "seller_id"
-belongs_to :product
+
+- belongs_to :buyer, class_name: "User", foreign_key: "buyer_id"
+- belongs_to :seller, class_name: "User", foreign_key: "seller_id"
+- belongs_to :product
 
 ## Ratingsテーブル
 
@@ -246,5 +264,6 @@ belongs_to :product
 |receiver_id|references|foreign_key: { to_table: :users }, null: false|
 
 ### Association
-belongs_to :sender, class_name: "User", foreign_key: "sender_id"
-belongs_to :receiver, class_name: "User", foreign_key: "receiver_id"
+
+- belongs_to :sender, class_name: "User", foreign_key: "sender_id"
+- belongs_to :receiver, class_name: "User", foreign_key: "receiver_id"
