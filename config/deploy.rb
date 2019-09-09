@@ -6,7 +6,7 @@ lock '3.11.0'
 set :application, "freemarket_sample_58a"
 
 # どのリポジトリからアプリをpullするのかを指定する。
-set :repo_url, "git@github.com:Shogo-Sakai/freemarket_sample_58a.git"
+set :repo_url, 'git@github.com:Shogo-Sakai/freemarket_sample_58a.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
