@@ -28,4 +28,4 @@
 
 /config/secrets.yml
 
-/public/up
+/public/uploads/*
