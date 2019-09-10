@@ -31,7 +31,7 @@
               .tab_content_description__content__body__message
                 message1
               .tab_content_description__content__body__time
-                clockimage
+                = fa_icon "clock"
                 0日前(秒前、分前、時間前)
             .tab_content_description__content__arrow
               = fa_icon 'chevron-right'
@@ -40,58 +40,100 @@
               %p 一覧を見る
         #programming_content.tab_content
           .tab_content_description__task
-            %p.c-txtsp 現在やることリストはありません。
-      -# %input#notice.user-mypage-wrapper__main__contents__notice{checked: "checked", name: "tab_item", type: "radio" }/
-      -# %label.tab_item{for:"notice"}お知らせ
-      -# %input#task.user-mypage-wrapper__main__contents__task{name: "tab_item", type: "radio" }/
-      -# %label.tab_item{for:"task"}やることリスト
-      -# #notice_content.tab_content
-      -#   .tab_content_description
-      -#     %p.c-txtsp image 1
-      -#     -# %p.c-txtsp message 1
-      -#     -# %p.c-txtsp clock image
-      -#     -# %p.c-txtsp 0日前(秒前、分前、時間前)
-      -#     -# %p.c-txtsp arrow
-      -#   -# .user-mypage-wrapper__main__contents__index
-      -#   -#   一覧を見る
-      -# .tab_content#task_content.user-mypage-wrapper__main__tasklist
-      -#   .tab_content_description.user-mypage-wrapper__main__tasklist__content
-      -#   （なかったら）
-      -#   image
-      -#   現在、やることリストはありません
+            image
+            現在やることリストはありません。
   .user-mypage-wrapper__products
-    購入した商品
-    取引中
-    （商品がなかったら）
-    image
-    取引中の商品はありません
-    過去の取引
-    （商品がなかったら）
-    image
-    過去に取引した商品がありません
-  .user-mypage-wrapper__menu
-    マイページ
-    お知らせ
-    やることリスト
-    いいね！一覧
-    出品する
-    出品した商品-出品中
-    出品した商品-取引中
-    出品した商品-売却済み
-    購入した商品-取引中
-    購入した商品-過去の取引
-    ニュース一覧
-    評価一覧
-    ガイド
-    お問い合わせ
-  .user-mypage-wrapper__merpay
-    売上・振込申請
-    ポイント
-  .user-mypage-wrapper__config
-    プロフィール
-    発送元・お届け先住所変更
-    支払い方法
-    メール/パスワード
-    本人情報
-    電話番号の確認
-    ログアウト
+    .user-mypage-wrapper__products__title
+      %h2 購入した商品
+    .tabs2
+      %input#all2{:checked => "checked", :name => "tab_item2", :type => "radio"}/
+      %label.tab_item2{:for => "all2"} 取引中
+      %input#programming2{:name => "tab_item2", :type => "radio"}/
+      %label.tab_item2{:for => "programming2"} 過去の取引
+      #all2_content.tab_content
+        .tab_content_description
+          %p image
+          %p 現在取引している商品がありません。
+      #programming2_content.tab_content
+        .tab_content_description
+          %p image
+          %p 過去に取引した商品はがありません。
+  .user-mypage-wrapper__navi
+    .user-mypage-wrapper__navi__menu
+      %ul
+        %li.head
+          マイページ
+          %span
+            = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          お知らせ          
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          やることリスト
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          いいね！一覧
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          出品する
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          出品した商品-出品中
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          出品した商品-取引中
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          出品した商品-売却済み
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          購入した商品-取引中
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          購入した商品-過去の取引
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          ニュース一覧
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          評価一覧
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          ガイド
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          お問い合わせ
+          = fa_icon "chevron-right", class:"menu-icon"
+    .user-mypage-wrapper__navi__merpay
+      %h3 メルペイ
+      %ul
+        %li
+          売上・振込申請
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          ポイント
+          = fa_icon "chevron-right", class:"menu-icon"
+    .user-mypage-wrapper__navi__config
+      %h3 設定
+      %ul 
+        %li
+          プロフィール
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          発送元・お届け先住所変更
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          支払い方法
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          メール/パスワード
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          本人情報
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          電話番号の確認
+          = fa_icon "chevron-right", class:"menu-icon"
+        %li
+          ログアウト          
+          = fa_icon "chevron-right", class:"menu-icon"
