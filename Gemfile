@@ -79,3 +79,6 @@ gem 'fog-aws'
 
 # haml
 gem 'haml-rails'
+
+# font awesome
+gem 'font-awesome-rails'

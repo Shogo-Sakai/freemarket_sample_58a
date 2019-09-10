@@ -1,0 +1,221 @@
+// Place all the styles related to the sakais controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html{
+  color:#000;background:#FFF
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
+  margin:0;
+  padding:0;
+}
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+fieldset,img{
+  border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var{
+  font-style:normal;
+  font-weight:normal;
+}
+ol,ul{
+  list-style:none;
+}
+caption,th{
+  text-align:left;
+}
+h1,h2,h3,h4,h5,h6{
+  font-size:100%;
+  font-weight:normal;
+}
+q:before,q:after{
+  content:'';
+}
+abbr,acronym{
+  border:0;
+  font-variant:normal;
+}
+sup{
+  vertical-align:text-top;
+}
+sub{
+  vertical-align:text-bottom;
+}
+input,textarea,select{
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  *font-size:100%;
+}
+legend{
+  color:#000;
+}
+#yui3-css-stamp.cssreset{
+  display:none;
+};
+
+
+.user-mypage-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100vw;
+  margin:24px auto 0 ;
+  &__main{
+    &__profile{
+      box-sizing: border-box;      
+      width:700px;
+      height:200px;
+      background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+      &__container{
+        height:100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        &__image{
+          width:60px;
+          height:60px;
+        }
+        &__status{
+          display: flex;
+          &__content{
+            display: flex;
+            &__number{
+              margin-left: 8px;
+            }
+            &__name{
+              &__products{
+                margin-left: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+      /*タブ切り替え全体のスタイル*/
+      .tabs {
+        margin-top: 50px;
+        // padding-bottom: 40px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 700px;
+        margin: 0 auto;}
+      /*タブのスタイル*/
+      .tab_item {
+        width: calc(100%/2);
+        height: 72px;
+        border-top: 3px solid red;
+        background-color: #eee;
+        line-height: 72px;
+        font-size: 16px;
+        text-align: center;
+        color: #565656;
+        display: block;
+        float: left;
+        text-align: center;
+        font-weight: bold;
+        transition: all 0.2s ease;
+      }
+      .tab_item:hover {
+        opacity: 0.75;
+      }
+      /*ラジオボタンを全て消す*/
+      input[name="tab_item"] {
+        display: none;
+      }
+      /*タブ切り替えの中身のスタイル*/
+      .tab_content {
+        box-sizing: border-box;
+        display: none;
+        // padding: 16px;
+        clear: both;
+        // overflow: hidden;
+        // max-height: 236px;
+        align-content: space-between;
+        .tab_content_description{
+          &__content{
+            height:80px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding:16px;
+            &__image{
+              height: 100%;
+              width: 60px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            &__body{
+              width:100%;
+              margin:0 40px 0 8px;
+            }
+            &__back{
+              box-sizing: border-box;
+              width: 100%;
+              height: 88px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 16px;
+              border-top: rgba(238, 238, 238, 0.379) solid 1px;
+              &__message{
+                background-color: #eee;  
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                }
+            }
+            &__back:hover{
+              opacity:0.75;
+              background-color: white;
+            }
+          }
+          &__task{
+            height: 230px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(174, 174, 174);
+          }
+        }
+        .tab_content_description__content:hover {
+          // opacity: 0.75;
+          background-color: rgba(238, 238, 238, 0.598);
+        }
+    }
+      /*選択されているタブのコンテンツのみを表示*/
+      #all:checked ~ #all_content,
+      #programming:checked ~ #programming_content,
+      #design:checked ~ #design_content {
+        display: block;
+      }
+      /*選択されているタブのスタイルを変える*/
+      .tabs input:checked + .tab_item {
+        background-color: white;
+        // color: #fff;
+      }
+    &__contents{
+      width: 100%;
+      display: flex;
+    }
+
+  }
+  &__products{
+
+  }
+  &__menu{
+
+  }
+  &__merpay{
+
+  }
+  &__config{
+
+  }
+}
