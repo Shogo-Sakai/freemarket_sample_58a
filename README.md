@@ -41,12 +41,11 @@ Database design
 |adress|string|null: false|
 |building|string||
 |tel|integer||
-|prefecture_id|references|foreign_key: true|
+|prefecture|string|null: false|
 
 ### Association
 
 - belongs_to :user
-- belongs_to :pref
 
 ## Creditcardsテーブル
 
@@ -58,17 +57,6 @@ Database design
 ### Association
 
 - belongs_to :user
-
-## Prefecturesテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
-### Association
-
-- has_many :profile
-- has_many :products
 
 ## Infomationsテーブル
 
@@ -89,7 +77,7 @@ Database design
 |body|text|null: false|
 |user_id|references|foreign_key: true|
 |state_id|references|foreign_key: true|
-|prefecture_id|references|foreign_key: true|
+|prefecture|string|null: false|
 |brand_id|references|foreign_key: true|
 |size_id|references|foreign_key: true|
 |category_id|references|foreign_key: true|
@@ -101,7 +89,6 @@ Database design
 - has_many :tradings, dependent: :destroy
 - has_many :images, dependent: :destroy
 - has_one :product_option, dependent: :destroy
-- belongs_to :prefecture
 - belongs_to :user
 - belongs_to :state
 - belongs_to :category
