@@ -1,0 +1,6 @@
+%h1 Products#index
+%p Find me in app/views/products/index.html.erb
+= form_with url: products_path, local:true do |form|
+  = form.file_field :image , id: :image
+  = form.submit
+test comment 190909
