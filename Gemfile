@@ -72,10 +72,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'unicorn', '5.4.1'
 end
-
-# S3、画像関係
-gem 'carrierwave'
-gem 'fog-aws'
-
-# haml
-gem 'haml-rails'
