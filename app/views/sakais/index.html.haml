@@ -1,0 +1,97 @@
+.user-mypage-wrapper
+  .user-mypage-wrapper__main
+    .user-mypage-wrapper__main__profile
+      .user-mypage-wrapper__main__profile__container
+        .user-mypage-wrapper__main__profile__container__image
+          image
+        .user-mypage-wrapper__main__profile__container__content.bold
+          user name
+        .user-mypage-wrapper__main__profile__container__status
+          .user-mypage-wrapper__main__profile__container__status__content
+            .user-mypage-wrapper__main__profile__container__status__content__name
+              reliable
+            .user-mypage-wrapper__main__profile__container__status__content__number.bold
+              100
+          .user-mypage-wrapper__main__profile__container__status__content
+            .user-mypage-wrapper__main__profile__container__status__content__name__products
+              products
+            .user-mypage-wrapper__main__profile__container__status__content__number.bold
+              100
+    .user-mypage-wrapper__main__contents.tabs
+      .tabs
+        %input#all.user-mypage-wrapper__main__contents__notice{:checked => "checked", :name => "tab_item", :type => "radio"}/
+        %label.tab_item{:for => "all"} お知らせ
+        %input#programming{:name => "tab_item", :type => "radio"}/
+        %label.tab_item.user-mypage-wrapper__main__contents__task{:for => "programming"} やることリスト
+        #all_content.tab_content
+          .tab_content_description__content
+            .tab_content_description__content__image
+              %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
+            .tab_content_description__content__body
+              .tab_content_description__content__body__message
+                message1
+              .tab_content_description__content__body__time
+                clockimage
+                0日前(秒前、分前、時間前)
+            .tab_content_description__content__arrow
+              = fa_icon 'chevron-right'
+          .tab_content_description__content__back
+            .tab_content_description__content__back__message
+              %p 一覧を見る
+        #programming_content.tab_content
+          .tab_content_description__task
+            %p.c-txtsp 現在やることリストはありません。
+      -# %input#notice.user-mypage-wrapper__main__contents__notice{checked: "checked", name: "tab_item", type: "radio" }/
+      -# %label.tab_item{for:"notice"}お知らせ
+      -# %input#task.user-mypage-wrapper__main__contents__task{name: "tab_item", type: "radio" }/
+      -# %label.tab_item{for:"task"}やることリスト
+      -# #notice_content.tab_content
+      -#   .tab_content_description
+      -#     %p.c-txtsp image 1
+      -#     -# %p.c-txtsp message 1
+      -#     -# %p.c-txtsp clock image
+      -#     -# %p.c-txtsp 0日前(秒前、分前、時間前)
+      -#     -# %p.c-txtsp arrow
+      -#   -# .user-mypage-wrapper__main__contents__index
+      -#   -#   一覧を見る
+      -# .tab_content#task_content.user-mypage-wrapper__main__tasklist
+      -#   .tab_content_description.user-mypage-wrapper__main__tasklist__content
+      -#   （なかったら）
+      -#   image
+      -#   現在、やることリストはありません
+  .user-mypage-wrapper__products
+    購入した商品
+    取引中
+    （商品がなかったら）
+    image
+    取引中の商品はありません
+    過去の取引
+    （商品がなかったら）
+    image
+    過去に取引した商品がありません
+  .user-mypage-wrapper__menu
+    マイページ
+    お知らせ
+    やることリスト
+    いいね！一覧
+    出品する
+    出品した商品-出品中
+    出品した商品-取引中
+    出品した商品-売却済み
+    購入した商品-取引中
+    購入した商品-過去の取引
+    ニュース一覧
+    評価一覧
+    ガイド
+    お問い合わせ
+  .user-mypage-wrapper__merpay
+    売上・振込申請
+    ポイント
+  .user-mypage-wrapper__config
+    プロフィール
+    発送元・お届け先住所変更
+    支払い方法
+    メール/パスワード
+    本人情報
+    電話番号の確認
+    ログアウト
