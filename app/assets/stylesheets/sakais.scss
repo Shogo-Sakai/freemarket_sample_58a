@@ -68,6 +68,8 @@ legend{
 
 // mypage main contents
 .user-mypage-wrapper{
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
@@ -162,7 +164,7 @@ legend{
           .tab_content_description{
             &__content{
               box-sizing: border-box;
-              height:80px;
+              min-height:80px;
               display: flex;
               justify-content: flex-start;
               align-items: center;
@@ -177,6 +179,9 @@ legend{
               &__body{
                 width:100%;
                 margin:0 40px 0 8px;
+                &__time{
+                  color: #888;
+                }
               }
               &__back{
                 box-sizing: border-box;
@@ -224,7 +229,7 @@ legend{
         /*選択されているタブのスタイルを変える*/
         .tabs input:checked + .tab_item {
           background-color: white;
-          border-top: 3px solid red;
+          border-top: 2px solid red;
           box-sizing: border-box;
         }
       }
@@ -241,6 +246,9 @@ legend{
         height: 72px;
         display: flex;
         align-items: center;
+        h2{
+          font-weight: bold;
+        }
       }
       .tabs2 {
         margin-top: 50px;
@@ -300,7 +308,7 @@ legend{
       /*選択されているタブのスタイルを変える*/
       .tabs2 input:checked + .tab_item2 {
         background-color: white;
-        border-top: 3px solid red;
+        border-top: 2px solid red;
         box-sizing: border-box;
       }
     }
@@ -327,7 +335,7 @@ legend{
       display: flex;
       justify-content: space-between;
       .menu-icon{
-        color: #eee;
+        color: #ccc;
       }
     }
     li:hover{
@@ -351,7 +359,7 @@ legend{
       @keyframes moveRight{
         0%{
           // opacity:0.5;
-          color: #eee;
+          color: #ccc;
           transform: translate3d(0px, 0px, 0px);
         }
         // 25%{
@@ -407,6 +415,9 @@ legend{
       margin: 40px 0 0 ;
       &__menu{
         width: 100vw;
+      }
+      h3{
+        margin:40px 4% 0;
       }
       &__merpay{
         widows: 100vw;
