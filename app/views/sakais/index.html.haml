@@ -3,61 +3,102 @@
     .user-mypage-wrapper__main__profile
       .user-mypage-wrapper__main__profile__container
         .user-mypage-wrapper__main__profile__container__image
-          image
+          %img(src="https://static.mercdn.net/images/member_photo_noimage_thumb.png" alt width="60" height="60")/
         .user-mypage-wrapper__main__profile__container__content.bold
-          user name
+          %h2 手区 江来酢羽斗
         .user-mypage-wrapper__main__profile__container__status
           .user-mypage-wrapper__main__profile__container__status__content
             .user-mypage-wrapper__main__profile__container__status__content__name
-              reliable
+              評価
             .user-mypage-wrapper__main__profile__container__status__content__number.bold
               100
           .user-mypage-wrapper__main__profile__container__status__content
             .user-mypage-wrapper__main__profile__container__status__content__name__products
-              products
+              出品数
             .user-mypage-wrapper__main__profile__container__status__content__number.bold
               100
-    .user-mypage-wrapper__main__contents.tabs
-      .tabs
-        %input#all.user-mypage-wrapper__main__contents__notice{:checked => "checked", :name => "tab_item", :type => "radio"}/
-        %label.tab_item{:for => "all"} お知らせ
-        %input#programming{:name => "tab_item", :type => "radio"}/
-        %label.tab_item.user-mypage-wrapper__main__contents__task{:for => "programming"} やることリスト
-        #all_content.tab_content
-          .tab_content_description__content
-            .tab_content_description__content__image
-              %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
-            .tab_content_description__content__body
-              .tab_content_description__content__body__message
-                message1
-              .tab_content_description__content__body__time
-                = fa_icon "clock"
-                0日前(秒前、分前、時間前)
-            .tab_content_description__content__arrow
-              = fa_icon 'chevron-right'
-          .tab_content_description__content__back
-            .tab_content_description__content__back__message
-              %p 一覧を見る
-        #programming_content.tab_content
-          .tab_content_description__task
-            image
-            現在やることリストはありません。
-  .user-mypage-wrapper__products
-    .user-mypage-wrapper__products__title
-      %h2 購入した商品
-    .tabs2
-      %input#all2{:checked => "checked", :name => "tab_item2", :type => "radio"}/
-      %label.tab_item2{:for => "all2"} 取引中
-      %input#programming2{:name => "tab_item2", :type => "radio"}/
-      %label.tab_item2{:for => "programming2"} 過去の取引
-      #all2_content.tab_content
-        .tab_content_description
-          %p image
-          %p 現在取引している商品がありません。
-      #programming2_content.tab_content
-        .tab_content_description
-          %p image
-          %p 過去に取引した商品はがありません。
+      .user-mypage-wrapper__main__profile__contents.tabs
+        .tabs
+          %input#notice.user-mypage-wrapper__main__profile__contents__notice{:checked => "checked", :name => "tab_item", :type => "radio"}/
+          %label.tab_item{:for => "notice"} お知らせ
+          %input#task{:name => "tab_item", :type => "radio"}/
+          %label.tab_item.user-mypage-wrapper__main__profile__contents__task{:for => "task"} やることリスト
+          #notice_content.tab_content
+            .tab_content_description__content
+              .tab_content_description__content__image
+                %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
+              .tab_content_description__content__body
+                .tab_content_description__content__body__message
+                  message1
+                .tab_content_description__content__body__time
+                  = fa_icon "clock"
+                  0日前(秒前、分前、時間前)
+              .tab_content_description__content__arrow
+                = fa_icon 'chevron-right'
+            .tab_content_description__content
+              .tab_content_description__content__image
+                %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
+              .tab_content_description__content__body
+                .tab_content_description__content__body__message
+                  message1
+                .tab_content_description__content__body__time
+                  = fa_icon "clock"
+                  0日前(秒前、分前、時間前)
+              .tab_content_description__content__arrow
+                = fa_icon 'chevron-right'
+            .tab_content_description__content
+              .tab_content_description__content__image
+                %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
+              .tab_content_description__content__body
+                .tab_content_description__content__body__message
+                  message1
+                .tab_content_description__content__body__time
+                  = fa_icon "clock"
+                  0日前(秒前、分前、時間前)
+              .tab_content_description__content__arrow
+                = fa_icon 'chevron-right'
+            .tab_content_description__content
+              .tab_content_description__content__image
+                %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
+              .tab_content_description__content__body
+                .tab_content_description__content__body__message
+                  message1
+                .tab_content_description__content__body__time
+                  = fa_icon "clock"
+                  0日前(秒前、分前、時間前)
+              .tab_content_description__content__arrow
+                = fa_icon 'chevron-right'
+            .tab_content_description__content
+              .tab_content_description__content__image
+                %img(data-src="//static.mercdn.net/images/mercari_profile.png" alt="" src="//static.mercdn.net/images/mercari_profile.png" height="60")/
+              .tab_content_description__content__body
+                .tab_content_description__content__body__message
+                  message1
+                .tab_content_description__content__body__time
+                  = fa_icon "clock"
+                  0日前(秒前、分前、時間前)
+              .tab_content_description__content__arrow
+                = fa_icon 'chevron-right'
+            .tab_content_description__content__back
+              .tab_content_description__content__back__message
+                %p 一覧を見る
+          #task_content.tab_content
+            .tab_content_description__task.nothing_image
+              現在やることリストはありません。
+    .user-mypage-wrapper__main__products
+      .user-mypage-wrapper__main__products__title
+        %h2 購入した商品
+      .tabs2
+        %input#trading{:checked => "checked", :name => "tab_item2", :type => "radio"}/
+        %label.tab_item2{:for => "trading"} 取引中
+        %input#traded{:name => "tab_item2", :type => "radio"}/
+        %label.tab_item2{:for => "traded"} 過去の取引
+        #trading_content.tab_content
+          .tab_content_description.nothing_image
+            %p 現在取引している商品がありません。
+        #traded_content.tab_content
+          .tab_content_description.nothing_image
+            %p 過去に取引した商品がありません。
   .user-mypage-wrapper__navi
     .user-mypage-wrapper__navi__menu
       %ul
