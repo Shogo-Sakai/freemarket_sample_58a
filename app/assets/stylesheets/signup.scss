@@ -5,7 +5,19 @@
 @import "./reset.scss";
 @import "font-awesome";
 
+// 共通フォント
+%global-font{
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+}
 
+// 色
+$global-back-color:#f5f5f5;
+$normal-white:#fff;
+$normal-gray:#eee;
+$hover-gray:#fafafa;
+$normal-red: #ea352d;
+$link-text-blue: #0099e8;
+$default-font-black: #333333;
 
 //デフォルトのinputフォーム
 .default-input{
@@ -13,13 +25,13 @@
   padding: 10px 16px 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
-  background: #fff;
+  background: $normal-white;
   line-height: 1.5;
   font-size: 16px;
   outline: 0;
   box-sizing: border-box;
   display: inline-block;
-  color: #333333;
+  color: $default-font-black;
   &__half{
     width: calc(50% - 6px);
     display: inline;
@@ -29,10 +41,10 @@
   }
 }
 .default-input:focus{
-  border: 1px solid #0099e8;
+  border: 1px solid $link-text-blue;
 }
 .default-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #fff inset;
+  box-shadow: 0 0 0 1000px $normal-white inset;
 }
 
 //デフォルトのselectフォーム
@@ -50,7 +62,7 @@
   outline: 0;
   box-sizing: border-box;
   display: inline-block;
-  color: #333333;
+  color: $default-font-black;
   cursor: pointer;
   width: 100%;
   &__full{
@@ -71,7 +83,7 @@
 }
 
 .default-select:focus{
-  border: 1px solid #0099e8;
+  border: 1px solid $link-text-blue;
 }
 
 .select-arrow{
@@ -86,7 +98,7 @@
 
 //出品、ログイン、登録フォームのヘッダー・フッター
 .simple-form{
-  background-color: #f5f5f5;
+  background-color: $global-back-color;
   box-sizing: border-box;
   padding-bottom: 230px;
   position: relative;
@@ -173,7 +185,7 @@
       font-size: 12px;
       &--link{
         text-decoration: none;
-        color: #333333;
+        color: $default-font-black;
       }
     }
   }
@@ -184,23 +196,23 @@
   }
   &__text{
     font-size: 13px; 
-    color: #333333;
+    color: $default-font-black;
   }
 }
 
 //新規登録ページ進捗バーの設定
 .current{
   font-weight: 600;
-  color: #ea352d; 
+  color: $normal-red; 
 }
 .done{
   color: #888888; 
 }
 .current .simple-header__navigation__list--status,.current .simple-header__navigation__list--status:before{
-  background-color: #ea352d;
+  background-color: $normal-red;
 }
 .done .simple-header__navigation__list--status,.done .simple-header__navigation__list--status:before,.done .simple-header__navigation__list--status:after{
-  background-color: #ea352d;
+  background-color: $normal-red;
 }
 
 
@@ -208,14 +220,14 @@
 .signup-container{
   width: 700px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: $normal-white;
   min-height: 100px;
 }
 
 .signup-header{
   text-align: center;
-  border-bottom: solid 0.5px #f5f5f5;
-  color: #333333;
+  border-bottom: solid 0.5px $global-back-color;
+  color: $default-font-black;
   font-size: 22px;
   font-weight: bold;
   line-height: 100px;
@@ -246,8 +258,8 @@
         }
       }
       &__email{
-        background-color: #ea352d;
-        color: #ffffff;
+        background-color: $normal-red;
+        color: $normal-white;
         -webkit-transition: all 0.3s ease;
         -moz-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
@@ -259,12 +271,12 @@
       &__facebook{
         margin-top: 20px;
         background-color: #385185;
-        color: #ffffff;
+        color: $normal-white;
       }
       &__google{
         margin-top: 20px;
         border: solid 1px #979797;
-        color: #333333;
+        color: $default-font-black;
       }
     }
   }
@@ -284,7 +296,7 @@
 .signin-container{
   width: 450px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: $normal-white;
   min-height: 100px;
 }
 
@@ -292,14 +304,14 @@
   width: 450px;
   &__signup{
     text-align: center;
-    border-bottom: solid 0.5px #f5f5f5;
+    border-bottom: solid 0.5px $normal-white;
     padding: 40px 0;
     width: 330px;
     margin: 0 auto;
     &--btn{
       margin-top: 10px;
-      color: #ffffff; 
-      background-color: #0099e8;
+      color: $normal-white; 
+      background-color: $link-text-blue;
     }
   }
   &__form{
@@ -314,10 +326,10 @@
       &__google{
         margin-top: 20px;
         border: solid 1px #979797;
-        color: #333333;
+        color: $default-font-black;
       }
       &__facebook{
-        color: #ffffff;
+        color: $normal-white;
         background-color: #385185;
       }
     }
@@ -370,7 +382,7 @@
     border-radius: 2px;
     font-size: 12px; 
     vertical-align: top;
-    color: #fff;
+    color: $normal-white;
     margin-top: -4px;
   }
   &__name{
@@ -397,7 +409,7 @@
   }
   &__message{
     font-size: 14px;
-    color: #333333; 
+    color: $default-font-black; 
   }
   &__link-text{
     text-align: right;
@@ -410,7 +422,7 @@
   &--text{
     margin-top: 8px;
     font-size: 14px;
-    color: #333333;
+    color: $default-font-black;
   }
   &__card-images{
     display: flex;
@@ -428,12 +440,12 @@
 .signup-label{
   font-weight: 600;
   font-size: 14px;
-  color: #333333;
+  color: $default-font-black;
   display: inline;
 }
 //必須・任意ボタン
 .span-need{
-  background-color: #ea352d;
+  background-color: $normal-red;
 }
 .span-optional{
   background-color: #cccccc;
@@ -456,7 +468,7 @@
 .default-link-text{
   display: inline-block;
   text-decoration: none;
-  color: #0099e8;
+  color: $link-text-blue;
 }
 
 .default-link-text:hover{
@@ -467,8 +479,8 @@
 //ボタン設定
 .submit-btn-red{
   border: none;
-  color: #ffffff;
-  background-color: #ea352d;
+  color: $normal-white;
+  background-color: $normal-red;
   margin-top: 24px;
 }
 
@@ -503,11 +515,11 @@
       height: 100%; 
       text-align: center;
       &__description{
-        color: #f5f5f5;
-        text-shadow: 1px 1px 4px #333333;
+        color: $global-back-color;
+        text-shadow: 1px 1px 4px $default-font-black;
       }
       &__reminder{
-        color: #f5f5f5; 
+        color: $global-back-color; 
         font-size: 28px;
         font-weight: bolder;
         margin: 10px 0 10px 0; 
