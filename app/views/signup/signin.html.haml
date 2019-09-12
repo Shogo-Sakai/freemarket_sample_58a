@@ -8,10 +8,10 @@
     .signin-top__form
       .signin-top__form__sns
         = link_to '#',class: 'submit-btn signin-top__form__sns__facebook' do
-          = fa_icon 'facebook-square',class: 'signin-top__form--icon signin-top__form--facebook'
+          %i.fab.fa-facebook-square.signin-top__form--icon.signin-top__form--facebook
           = 'Facebookでログイン'
         = link_to '#',class: 'submit-btn signin-top__form__sns__google' do
-          = fa_icon 'google',class: 'signin-top__form--icon signin-top__form--google'
+          %i.fab.fa-google.signin-top__form--icon.signin-top__form--google
           = 'Googleでログイン'
       .signin-top__form__normal
         = email_field :signin,:email, placeholder: 'メールアドレス',class: 'signin-top__form__normal--email default-input'

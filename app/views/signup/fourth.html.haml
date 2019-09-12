@@ -1,5 +1,5 @@
 - content_for(:html_title) {'支払い方法'}
-= render partial: 'signup-header'
+= render partial: 'signup-header4'
 .signup-container
   %h2.signup-header 支払い方法
   .registration-form 
@@ -36,7 +36,7 @@
       = text_field :user, :cvc, placeholder: 'カード背面4桁もしくは3桁の番号', class: 'default-input'
     .registration-form__link-cvc
       %p.registration-form__link-text--text.default-link-text 
-        = fa_icon 'question-circle',class: 'link-space-reset'
+        %i.fas.fa-question-circle.link-space-reset
         %a.default-link-text カード背面の番号とは？
     %input.submit-btn.submit-btn-red{type: 'submit',value: '次へ進む'} 
 = render partial: 'simple-footer'
