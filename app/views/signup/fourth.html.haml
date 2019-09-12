@@ -23,11 +23,11 @@
       .signup-form-container__birthday
         .select-wrap.select-wrap__half
           = select :user, :card_limit_month, ['--'], {}, {class: 'default-select'}
-          = fa_icon 'chevron-down', class: 'select-arrow'
+          %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__card 月
         .select-wrap.select-wrap__half
           = select :user, :card_limit_year, ['--'], {}, {class: 'default-select'}
-          = fa_icon 'chevron-down', class: 'select-arrow'
+          %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__card 年
     .signup-form-container
       .signup-form-container__title

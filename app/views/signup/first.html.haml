@@ -47,15 +47,15 @@
       .signup-form-container__birthday
         .select-wrap
           = select :user,:birth_year,['--'],{},{class: 'default-select'}
-          = fa_icon 'chevron-down',class: 'select-arrow'
+          %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__birthday--span 年
         .select-wrap
           = select :user,:birth_year,['--'],{},{class: 'default-select'}
-          = fa_icon 'chevron-down',class: 'select-arrow'
+          %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__birthday--span 月
         .select-wrap
           = select :user,:birth_year,['--'],{},{class: 'default-select'}
-          = fa_icon 'chevron-down',class: 'select-arrow'
+          %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__birthday--span 日
     %p.form-infomation-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
     .signup-form-container
@@ -69,5 +69,5 @@
     .registration-form__link-text
       %p.registration-form__link-text--text.default-link-text
         %a.default-link-text 本人情報の登録について
-        = fa_icon 'chevron-right',class: 'link-space-reset'
+        %i.fas.fa-chevron-right.link-space-reset
 = render partial: 'simple-footer'
