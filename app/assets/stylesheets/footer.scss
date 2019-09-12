@@ -2,17 +2,14 @@
 @import "font-awesome";
 
 // footer
-
-.footer{
+footer{
   background-color: rgb(33,33,33);
-  color:white;
+  color: $normal-white;
   padding: 0 20px 10px;
   font-family:Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
   font-weight: 500;
-  display: flex;
+  @extend %centering;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   li{
     margin-top: 16px;
     &:hover{
@@ -27,7 +24,7 @@
     width:auto;
     display: block;
     text-decoration: none;
-    color: white;
+    color: $normal-white;
     opacity: 0.7;
     font-size: 12px;
   }
@@ -94,7 +91,6 @@
     }
     &__copyright{
       position: absolute;
-      // width: 100vw;
       text-align: center;
       line-height: auto;
       font-size: 12px;
@@ -104,14 +100,12 @@
 
 
 // レスポンシブ対応
-
 // 小画面（スマホ等）
 @media screen and (max-width:767px){
-  .footer{
+  footer{
     box-sizing: border-box;
     width: 100vw;
     .footer__top{
-      // box-sizing: border-box;
       width: 100%;
       display: flex;
       flex-wrap: wrap;
@@ -125,12 +119,10 @@
         width: 50%;
       }
       &__privacy-law{
-        // box-sizing: border-box;
         width: 100vw;
         height: auto;
         &__wrapper{
           &__privacy{
-            // box-sizing: border-box;
             width: 50%;
             padding-right: 40px;
           }
@@ -172,11 +164,10 @@
 
 // 中画面（タブレット等）
 @media screen and (min-width:768px) and (max-width:1067px){
-  .footer{
+  footer{
     box-sizing: border-box;
     width: 100vw;
     .footer__top{
-      // box-sizing: border-box;
       width: 700px;
       display: flex;
       flex-wrap: wrap;
@@ -206,7 +197,6 @@
         }
       }
       &__country{
-        // box-sizing: border-box;
         width: 720px;
         height: auto;
         margin-top: 35px;
@@ -220,7 +210,6 @@
       }
     }
     .footer__bottom{
-      // box-sizing: border-box;
       width: 700px;
       margin: 33px 0 0;
       display: flex;
@@ -228,7 +217,6 @@
       &__logo{
         position: static;
         margin-right: 10px;
-
       }
       &__copyright{
         position: static;
