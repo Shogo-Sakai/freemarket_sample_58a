@@ -1,7 +1,78 @@
 @import "application.scss";
 @import "font-awesome";
 
-// footer
+// footer-advertisement
+
+.advertisement{
+  height: 260px;
+  width: 100vw;
+  background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg");
+  background-position: center;
+  background-size: cover;
+  @extend %centering;
+  @extend %global-font;
+  &__box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 750px;
+    height: 100%;
+    &__left{      
+      // width:374px;
+      height: 166px;
+      &__description{
+        color: rgb(255, 255, 255);
+        font-size: 24px;
+        font-weight: 600;
+      }
+      &__reminder{
+        color: rgb(255, 255, 255);
+        font-size: 35px;
+      }
+      &__logos{        
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        &__mercari{          
+          img{
+            width: 68px;
+            height: 68px;
+            // margin-right: 20px;
+            // margin-block-start: 1em;
+            // margin-block-end: 1em;
+            // margin-inline-start: 40px;
+            // margin-inline-end: 40px;
+          }
+        }
+        &__appstore{
+          img{
+            width: 133px;
+            height: 40px;
+            margin-left: 24px;
+            // margin-right: 8px;
+          }
+        }
+        &__google{
+          img{
+            width: 133px;
+            height: 40px;
+            margin-left: 16px;
+            // height: 40px;
+            // width: 144px;
+          }
+        }
+      }
+    }
+    &__image{
+      img{
+        width: 300px;
+        height: 260px;
+      }
+    }
+  }
+}
+
+// footer-black
 footer{
   background-color: rgb(33,33,33);
   color: $normal-white;
@@ -102,6 +173,9 @@ footer{
 // レスポンシブ対応
 // 小画面（スマホ等）
 @media screen and (max-width:767px){
+  .advertisement{
+    display: none;
+  }
   footer{
     box-sizing: border-box;
     width: 100vw;
@@ -164,6 +238,24 @@ footer{
 
 // 中画面（タブレット等）
 @media screen and (min-width:768px) and (max-width:1067px){
+  .advertisement__box__left{
+    width: 374px;
+    height: 144px;
+    &__description{
+      font-size: 16px;
+      height: 22px;
+    }
+    &__reminder{
+      font-size: 24px;
+      margin-top: 10px;
+      height: 24px;
+      line-height: 24px;
+    }
+    &__logos{
+      margin-top: 20px;
+      width: 68px;
+    }
+  }
   footer{
     box-sizing: border-box;
     width: 100vw;
