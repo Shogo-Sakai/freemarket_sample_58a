@@ -368,3 +368,43 @@
     margin: 40px auto 0;
   }
 }
+
+
+// 画面下部のカメラ部
+.bottom-camera{
+  background-color: red;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  color: $normal-white;
+  z-index: 100;
+  text-align: center;
+  p{
+    margin-top: 32px;
+    font-size: 22px;
+  }
+  i{
+    display: inline-block;
+    font-size: 54px;
+    height: auto;
+  }
+}
+@media screen and (max-width:767px){
+  .bottom-camera{
+    width: 80px;
+    height: 80px;
+    right: -14px;
+    bottom:-14px;
+    text-align: center;
+    p{
+      font-size: 14px;
+      margin-top: 14px;
+    }
+    i{
+      font-size: 24px;
+    }
+  }
+}
