@@ -19,10 +19,10 @@
               100
       .user-mypage-wrapper__main__profile__contents.tabs
         .tabs
-          %input#notice.user-mypage-wrapper__main__profile__contents__notice{:checked => "checked", :name => "tab_item", :type => "radio"}/
-          %label.tab_item{:for => "notice"} お知らせ
-          %input#task{:name => "tab_item", :type => "radio"}/
-          %label.tab_item.user-mypage-wrapper__main__profile__contents__task{:for => "task"} やることリスト
+          %input#notice.user-mypage-wrapper__main__profile__contents__notice{checked: "checked", name: "tab_item", type: "radio"}/
+          %label.tab_item{for: "notice"} お知らせ
+          %input#task{name: "tab_item", type: "radio"}/
+          %label.tab_item.user-mypage-wrapper__main__profile__contents__task{for: "task"} やることリスト
           #notice_content.tab_content
             .tab_content_description__content
               .tab_content_description__content__image
@@ -89,10 +89,10 @@
       .user-mypage-wrapper__main__products__title
         %h2 購入した商品
       .tabs2
-        %input#trading{:checked => "checked", :name => "tab_item2", :type => "radio"}/
-        %label.tab_item2{:for => "trading"} 取引中
-        %input#traded{:name => "tab_item2", :type => "radio"}/
-        %label.tab_item2{:for => "traded"} 過去の取引
+        %input#trading{checked: "checked", name: "tab_item2", type: "radio"}/
+        %label.tab_item2{for: "trading"} 取引中
+        %input#traded{name: "tab_item2", type: "radio"}/
+        %label.tab_item2{for: "traded"} 過去の取引
         #trading_content.tab_content
           .tab_content_description.nothing_image
             %p 現在取引している商品がありません。
