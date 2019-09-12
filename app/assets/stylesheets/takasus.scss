@@ -1,0 +1,220 @@
+// Place all the styles related to the takasus controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+header{
+  height: 100px;
+  margin: 0 auto;
+
+  .box{
+    height: 100px;
+    width: 1020px;
+    // background-color: aquamarine;
+    margin: 0 auto;
+    padding: 8px 0px 0px;
+
+    &__top{
+
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+
+      &__title{
+        display: flex;
+        height: 36px;
+        width: 134px;
+        margin-right: 45px;
+      }
+
+      &__search{
+
+        width: calc(100% - 134px);
+
+        &__form{
+
+          width: 100%;
+          position: relative;
+          
+          &__input{
+            background-color: rgb(245, 245, 245);
+            border-radius: 4px;
+            height: 40px;
+            font-size: 16px;
+            line-height: 1.4em;
+            padding: 0px 50px 0px 10px;
+            width: calc(100% - 64px);
+
+          }
+        }
+      }
+    }
+
+    &__lower{
+
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      margin-top: 8px;
+      -webkit-box-pack: justify;
+
+
+      &__left{
+        
+        display: flex;
+        margin-left: -3px;
+        
+        &__category{
+          color: black;
+          padding: 0px 10px;
+          
+          
+          a{
+            text-decoration: none;
+          }
+        }
+
+        &__brand{
+          text-decoration: none;
+          padding: 0px 10px;
+
+          a{
+            text-decoration: none;
+          }
+        }
+      }
+        
+      &__right{
+
+        &__list{
+        
+          display: flex;
+
+          &__notice{
+            a{
+              text-decoration: none;
+            }
+
+          }
+
+          &__todo{
+            padding: 0px 14px;
+
+            a{
+              text-decoration: none;
+            }
+          }
+
+          &__mypage{
+            padding: 0px 14px;
+            
+            a{
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.announcement{
+  height: 390px;
+  width: 100%;
+  background-color:greenyellow;
+
+  .announcement__pictures{
+    width: 100%;
+  }
+}
+
+.index{
+  height: 500px;
+  width: 100%;
+  background-color: aqua;
+}
+
+.advertisement{
+  height: 260px;
+  width: 100%;
+  background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg");
+
+
+  &__box{
+
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 750px;
+    margin: 0px auto;
+
+    
+    &__left{
+      
+      display: flex;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      justify-content: center;
+
+      &__description{
+        color: rgb(255, 255, 255);
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      &__reminder{
+        color: rgb(255, 255, 255);
+        font-size: 35px;
+        margin-bottom: 20px;
+      }
+
+      &__logos{
+        
+        display: flex;
+
+        &__mercari{
+          
+          img{
+            height: 68px;
+            margin-right: 20px;
+            width: 68px;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 40px;
+            margin-inline-end: 40px;
+          }
+        }
+
+        &__appstore{
+
+          img{
+            height: 40px;
+            margin-right: 8px;
+            width: 144px;
+          }
+        }
+
+        &__google{
+
+          img{
+            height: 40px;
+            width: 144px;
+          }
+
+        }
+      }
+    }
+    &__image{
+      img{
+        width: 300px;
+        height: 260px;
+      }
+    }
+  }
+}
+
+footer{
+
+}
