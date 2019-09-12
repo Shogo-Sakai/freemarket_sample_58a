@@ -1,27 +1,4 @@
-// Place all the styles related to the sakais controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-// 変数、プレースホルダーセレクタ
-// センタリング
-%centering{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-// 共通フォント
-%global-font{
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-}
-
-// 色
-// 背景色
-$global-back-color:#f5f5f5;
-$normal-white:#fff;
-$normal-gray:#eee;
-$hover-gray:#fafafa;
-
-
+@import "application.scss";
 // 背景画像（グレーのmercariロゴ、中身がなにもない時に使用）
 .nothing_image{
   background: url(https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?45085161) 0 0 no-repeat; 
