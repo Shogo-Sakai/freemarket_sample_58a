@@ -1,3 +1,5 @@
+- content_for(:html_title) {'電話番号の確認'}
+= render partial: 'signup-header'
 .signup-container
   %h2.signup-header 電話番号の確認
   .registration-form
@@ -12,3 +14,4 @@
       %p.registration-form__link-text--text.default-link-text
         %a.default-link-text 電話番号の確認が必要な理由
         = fa_icon 'chevron-right',class: 'link-space-reset'
+= render partial: 'simple-footer'

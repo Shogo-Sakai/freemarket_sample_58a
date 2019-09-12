@@ -1,3 +1,5 @@
+- content_for(:html_title) {'新規会員登録'}
+= render partial: 'simple-header'
 .signup-container
   .signup-top
     %h2.signup-header 新規会員登録
@@ -12,3 +14,4 @@
         = link_to '#',class: 'signup-top__form__content__btn signup-top__form__content__google' do
           = fa_icon 'google',class: 'signup-top__form__content__btn--icon google-icon'
           = 'Googleで登録する'
+= render partial: 'simple-footer'

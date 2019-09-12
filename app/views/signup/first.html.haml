@@ -1,3 +1,5 @@
+- content_for(:html_title) {'会員情報入力'}
+= render partial: 'signup-header'
 .signup-container
   %h2.signup-header 会員情報入力
   .registration-form
@@ -68,3 +70,4 @@
       %p.registration-form__link-text--text.default-link-text
         %a.default-link-text 本人情報の登録について
         = fa_icon 'chevron-right',class: 'link-space-reset'
+= render partial: 'simple-footer'

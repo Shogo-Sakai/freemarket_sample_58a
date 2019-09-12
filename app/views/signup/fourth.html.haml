@@ -1,3 +1,5 @@
+- content_for(:html_title) {'支払い方法'}
+= render partial: 'signup-header'
 .signup-container
   %h2.signup-header 支払い方法
   .registration-form 
@@ -37,3 +39,4 @@
         = fa_icon 'question-circle',class: 'link-space-reset'
         %a.default-link-text カード背面の番号とは？
     %input.submit-btn.submit-btn-red{type: 'submit',value: '次へ進む'} 
+= render partial: 'simple-footer'

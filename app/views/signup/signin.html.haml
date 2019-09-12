@@ -1,3 +1,5 @@
+- content_for(:html_title) {'ログイン'}
+= render partial: 'simple-header'
 .signin-container
   .signin-top
     .signin-top__signup
@@ -17,3 +19,4 @@
         = text_field :signin,:recapture, placeholder: '私はロボットではありません',class: 'signin-top__form__normal--recapture default-input',disabled: 'disabled' 
         %input.submit-btn.submit-btn-red{type: 'submit',value: 'ログイン'} 
         = link_to 'パスワードをお忘れの方', '',class: 'signin-top__form__normal--link default-link-text'
+= render partial: 'simple-footer'
