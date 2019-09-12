@@ -1,9 +1,8 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
-    %link{href: "https://use.fontawesome.com/releases/v5.0.6/css/all.css", rel: "stylesheet"}/
-    %title ログイン/新規登録 -freemarket_sample_58a
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title 支払い方法 -FreemarketSample58a
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -13,6 +12,23 @@
       .simple-header__container
         = link_to '#' do
           = image_tag 'https://www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?2482339763',class: 'simple-header__logo'
+        .simple-header__navigation
+          %ol.simple-header__navigation__list
+            %li.simple-header__navigation__list--item.done
+              会員情報
+              %div.simple-header__navigation__list--status.simple-header__navigation__list--first
+            %li.simple-header__navigation__list--item.done
+              電話番号認証
+              %div.simple-header__navigation__list--status
+            %li.simple-header__navigation__list--item.done
+              お届け先住所入力
+              %div.simple-header__navigation__list--status
+            %li.simple-header__navigation__list--item.current
+              支払い方法
+              %div.simple-header__navigation__list--status
+            %li.simple-header__navigation__list--item.simple-header__navigation__last
+              完了
+              %div.simple-header__navigation__list--status.simple-header__navigation__list--last
     = yield
     %footer.simple-footer
       .simple-footer__container

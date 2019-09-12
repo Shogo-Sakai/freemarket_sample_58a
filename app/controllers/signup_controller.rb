@@ -5,23 +5,23 @@ class SignupController < ApplicationController
   end
 
   def first
-    render layout: 'signup_layout'
+    render layout: 'layout_1'
   end
 
   def second
-
+    render layout: 'layout_2'
   end
 
   def third
-
+    render layout: 'layout_3'
   end
 
-  def foruth
-
+  def fourth
+    render layout: 'layout_4'
   end
 
   def fifth
-
+    render layout: 'layout_5'
   end
 
   def signin

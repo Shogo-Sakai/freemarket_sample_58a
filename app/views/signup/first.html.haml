@@ -1,0 +1,70 @@
+.signup-container
+  %h2.signup-header 会員情報入力
+  .registration-form
+    .signup-form-container.registration-form__first-container
+      .signup-form-container__title
+        = label :nickname, 'ニックネーム', class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      = text_field :user, :nickname, placeholder: '例）メルカリ太郎', class: 'default-input'
+    .signup-form-container
+      .signup-form-container__title
+        = label :email, 'メールアドレス',class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      = email_field :user,:email, placeholder: 'PC・携帯どちらでも可', class: 'default-input'
+    .signup-form-container
+      .signup-form-container__title
+        = label :password, 'パスワード',class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      = password_field :user, :password, placeholder: '７文字以上', class: 'default-input'
+    .signup-form-container
+      .signup-form-container__title
+        = label :password, 'パスワード（確認）', class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      = password_field :user, :password_confirmation, placeholder: '7文字以上', class: 'default-input'
+    .signup-form-container
+      = label :announce, '本人確認', class: 'signup-label'
+      %p.registration-form__message 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+    .signup-form-container
+      .signup-form-container__title
+        = label :name, 'お名前(全角)', class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      .signup-form-container__name
+        = text_field :user, :family_name, placeholder: '例）山田', class: 'default-input default-input__half'
+        = text_field :user, :personal_name, placeholder: '例）彩', class: 'default-input default-input__half'
+    .signup-form-container
+      .signup-form-container__title
+        = label :name, 'お名前カナ(全角)', class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      .signup-form-container__name
+        = text_field :user, :family_name_kana, placeholder: '例）ヤマダ', class: 'default-input default-input__half'
+        = text_field :user, :personal_name_kana, placeholder: '例）アヤ', class: 'default-input default-input__half'
+    .signup-form-container
+      .signup-form-container__title
+        = label :name, '生年月日', class: 'signup-label'
+        %span.signup-form-container__span.span-need 必須
+      .signup-form-container__birthday
+        .select-wrap
+          = select :user,:birth_year,['--'],{},{class: 'default-select'}
+          = fa_icon 'chevron-down',class: 'select-arrow'
+        %span.signup-form-container__birthday--span 年
+        .select-wrap
+          = select :user,:birth_year,['--'],{},{class: 'default-select'}
+          = fa_icon 'chevron-down',class: 'select-arrow'
+        %span.signup-form-container__birthday--span 月
+        .select-wrap
+          = select :user,:birth_year,['--'],{},{class: 'default-select'}
+          = fa_icon 'chevron-down',class: 'select-arrow'
+        %span.signup-form-container__birthday--span 日
+    %p.form-infomation-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+    .signup-form-container
+      = text_field :signin,:recapture, placeholder: '私はロボットではありません',class: 'signup-form-recapture default-input',disabled: 'disabled' 
+    .signup-form-container
+      %p.signup-form-container__agreement-text
+        「次へ進む」のボタンを押すことにより、
+        %a.default-link-text.link-space-reset{href: ''}利用規約
+        に同意したものとみなします
+    %input.submit-btn.submit-btn-red{type: 'submit',value: '次へ進む'} 
+    .registration-form__link-text
+      %p.registration-form__link-text--text.default-link-text
+        %a.default-link-text 本人情報の登録について
+        = fa_icon 'chevron-right',class: 'link-space-reset'
