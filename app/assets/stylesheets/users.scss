@@ -1,4 +1,4 @@
-@import "application.scss";
+@import "variable.scss";
 // 背景画像（グレーのmercariロゴ、中身がなにもない時に使用）
 .nothing_image{
   background: url(https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?45085161) 0 0 no-repeat; 
@@ -368,6 +368,67 @@
     margin: 40px auto 0;
   }
 }
+
+
+// クレジットカード登録画面
+.user-mypage-wrapper__main__credit{
+  width: 100%;
+  @extend %centering;
+  flex-direction: column;
+  background-color: $normal-white;
+  &__title{
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 8px 24px;
+    font-size: 24px;
+    font-weight: bold;
+    @extend %centering;
+    border-bottom: 1px $normal-gray solid;
+  }
+  &__content{
+    width: 572px;
+    padding: 64px;
+    @extend %centering;
+    flex-direction: column;
+    border-bottom: 1px solid $normal-gray;
+    &__index{
+      width: 320px;
+      height: 16px;
+      display: flex;
+      justify-content: flex-start;
+    }
+    &__btn{
+      box-sizing: border-box;
+      width: 318px;
+      height: 50px;
+      border: 1px solid transparent;
+      margin-bottom: 40px;
+      i{
+        margin-right: 16px;
+      }
+    }
+    &__description{
+      width: 570px;
+      height: calc(179.1px - 16px - 107px);
+      text-align: right;
+      position: relative;
+      border-top: 1px solid $normal-gray;
+      a{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        text-decoration: none;
+        color: $link-text-blue;
+      }
+    }
+  }
+}
+
+
+
+
+
 
 
 // 画面下部のカメラ部
