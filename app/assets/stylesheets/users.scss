@@ -256,17 +256,21 @@
       background-color: $global-back-color;
     }
     li{
-      box-sizing: border-box;
-      width: 100%;
-      height:48px;
-      padding:16px;
-      border: $global-back-color solid 1px;
-      line-height: 16px;
-      background-color: white;
-      display: flex;
-      justify-content: space-between;
-      .menu-icon{
-        color: #ccc;
+      a{
+        box-sizing: border-box;
+        width: 100%;
+        height:48px;
+        padding:16px;
+        border: $global-back-color solid 1px;
+        line-height: 16px;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        color: #333;
+        i{
+          color: #ccc;
+        }
       }
       &:hover{
         background-color: $hover-gray;
@@ -308,9 +312,8 @@
           }
         }
       }
-  
     }
-    li.head{
+    .active{
       background-color: $normal-gray;
     }
     &__merpay{
