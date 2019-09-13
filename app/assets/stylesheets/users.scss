@@ -1,81 +1,4 @@
-// Place all the styles related to the sakais controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-html{
-  color:#000;background:#fff;
-}
-
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{
-  margin:0;
-  padding:0;
-}
-table{
-  border-collapse:collapse;
-  border-spacing:0;
-}
-fieldset,img{
-  border:0;
-}
-address,caption,cite,code,dfn,em,strong,th,var{
-  font-style:normal;
-  font-weight:normal;
-}
-ol,ul{
-  list-style:none;
-}
-caption,th{
-  text-align:left;
-}
-h1,h2,h3,h4,h5,h6{
-  font-size:100%;
-  font-weight:normal;
-}
-q:before,q:after{
-  content:'';
-}
-abbr,acronym{
-  border:0;
-  font-variant:normal;
-}
-sup{
-  vertical-align:text-top;
-}
-sub{
-  vertical-align:text-bottom;
-}
-input,textarea,select{
-  font-family:inherit;
-  font-size:inherit;
-  font-weight:inherit;
-  *font-size:100%;
-}
-legend{
-  color:#000;
-}
-#yui3-css-stamp.cssreset{
-  display:none;
-};
-
-// 変数、プレースホルダーセレクタ
-// センタリング
-%centering{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-// 共通フォント
-%global-font{
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-}
-
-// 色
-// 背景色
-$global-back-color:#f5f5f5;
-$normal-white:#fff;
-$normal-gray:#eee;
-$hover-gray:#fafafa;
-
-
+@import "application.scss";
 // 背景画像（グレーのmercariロゴ、中身がなにもない時に使用）
 .nothing_image{
   background: url(https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?45085161) 0 0 no-repeat; 
@@ -85,6 +8,7 @@ $hover-gray:#fafafa;
   padding:160px 0 60px; 
 }
 
+// user show, mypage 
 // mypage main contents
 .user-mypage-wrapper{
   @extend %global-font;
@@ -446,102 +370,45 @@ $hover-gray:#fafafa;
 }
 
 
-
-// footer
-
-footer{
-  // box-sizing: border-box;
-  // width: 100vw;
-  // height: auto;
-  background-color: rgb(33,33,33);
-  color:white;
-  padding: 0 20px 10px;
-  font-family:Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-  font-weight: 500;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  li{
-    margin-top: 16px;
-  }
-  h2{
-    font-size: 16px;
+// 画面下部のカメラ部
+.bottom-camera{
+  background-color: red;
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  color: $normal-white;
+  z-index: 100;
+  text-align: center;
+  p{
+    margin-top: 32px;
+    font-size: 22px;
   }
   a{
-    width:auto;
-    display: block;
-    text-decoration: none;
-    color: white;
-    opacity: 0.7;
-    font-size: 12px;
+    opacity: 1;
+    color: $normal-white;
   }
-  .footer-content{
-    height: 241px;
-    padding-right: 20px;
-    margin-top: 18px;
+  i{
+    display: inline-block;
+    font-size: 54px;
+    height: auto;
   }
-  .footer__top{
-    width:1020px;
-    height: 298px;
-    display: flex;
-    &__about{
-      .sns{
-        display: flex;
-        a{
-          width: 42px;
-          opacity: 1;
-          .fa-twitter{
-            font-size: 24px;
-          }
-          .fa-facebook{
-            font-size: 26px;
-            height: 26px;
-          }
-        }
-      }
+}
+@media screen and (max-width:767px){
+  .bottom-camera{
+    width: 80px;
+    height: 80px;
+    right: -14px;
+    bottom:-14px;
+    text-align: center;
+    p{
+      font-size: 14px;
+      margin-top: 14px;
     }
-    &__helpguide{
-      padding-right: 40px;
-    }
-    &__privacy-law{
-      padding-right: 40px;
-      width: 388.391px;
-      &__wrapper{
-        display: flex;
-        &__privacy{
-          width:calc(388.391px / 2);
-          padding-right: 20px;
-        }
-        &__law{
-          width:calc(388.391px / 2);
-        }
-        }
-    }
-  }
-  .footer__bottom{
-    width: 1020px;
-    height: 33px;
-    margin:30px auto 20px;
-    display: flex;
-    align-items: center;
-    @extend %centering;
-    position: relative;
-    &__logo{
-      position: absolute;
-      left: 0;
-      text-align: left;
-      img{
-        width: 124px;
-        height: 33px;;
-      }
-    }
-    &__copyright{
-      position: absolute;
-      width: 100vw;
-      text-align: center;
-      line-height: auto;
-      font-size: 12px;
+    i{
+      font-size: 24px;
     }
   }
 }

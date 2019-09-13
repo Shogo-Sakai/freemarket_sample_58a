@@ -1,7 +1,7 @@
 // Place all the styles related to the takasus controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "users.scss";
 
 
 header{
@@ -315,115 +315,40 @@ header{
   }
 
   &__categories{
+    @extend %global-font;
+    box-sizing: border-box;
     height: 171px;
     width: 100vw;
-    background-color: rgb(255, 255, 255);
+    background-color: $normal-white;
     padding: 56px 0px 30px;
-
+    @extend %centering;
+    flex-direction: column;
     &__title{
       margin-bottom: 16px;
-      text-align: center;
-      font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
       font-size: 28px;
-      font-weight: 600;
+      font-weight: bold;
     }
-    
-    &__products{
-
-      &__index{
-        
-        &__name{
-        }
+    &__tags{
+      display: flex;
+      a{
+        display: block;
+        box-sizing: border-box;
+        height: 30px;
+        line-height: 14px;
+        padding: 8px 16px;
+        font-size: 14px;
+        color: #333;
+        text-decoration: none;
+        background-color: #efefef;
+        border-radius: 30px;
+        margin: 0 0 0 10px;
+        font-weight: bold;
       }
-
+      
     }
   }
 
   &__items{
     
   }
-}
-
-.advertisement{
-  height: 260px;
-  width: 100%;
-  background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/download_app_bg-b57d6f1a32f2aebd89cf6f43bc2e4b39.jpg");
-
-
-  &__box{
-
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    width: 750px;
-    margin: 0px auto;
-
-    
-    &__left{
-      
-      display: flex;
-      flex-direction: column;
-      -webkit-box-pack: center;
-      justify-content: center;
-
-      &__description{
-        color: rgb(255, 255, 255);
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 15px;
-      }
-
-      &__reminder{
-        color: rgb(255, 255, 255);
-        font-size: 35px;
-        margin-bottom: 20px;
-      }
-
-      &__logos{
-        
-        display: flex;
-        align-items: center;
-
-        &__mercari{
-          
-          img{
-            height: 68px;
-            margin-right: 20px;
-            width: 68px;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 40px;
-            margin-inline-end: 40px;
-          }
-        }
-
-        &__appstore{
-
-          img{
-            height: 40px;
-            margin-right: 8px;
-            width: 144px;
-          }
-        }
-
-        &__google{
-
-          img{
-            height: 40px;
-            width: 144px;
-          }
-
-        }
-      }
-    }
-    &__image{
-      img{
-        width: 300px;
-        height: 260px;
-      }
-    }
-  }
-}
-
-footer{
 }

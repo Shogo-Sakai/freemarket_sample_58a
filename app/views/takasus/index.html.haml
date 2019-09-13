@@ -85,5 +85,54 @@
 
     .advertisement__box__image
     = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", size: "300x260"
+          アイウエオ
+    
+  .main__categories
+    %h2.main__categories__title
+      人気のカテゴリー
+    .main__categories__tags
+      %ul
+        %li
+          %a(href="")
+            プログラミング教本
+      %ul
+        %li
+          %a(href="")
+            盆栽
+      %ul
+        %li
+          %a(href="")
+            楽器
+  = render "/products/index"
 
-= render partial: "sakais/footer-black"
+  .main__categories
+    %h2.main__categories__title
+      人気のブランド
+    .main__categories__tags
+      %ul
+        %li
+          %a(href="")
+            テックエキスパート
+      %ul
+        %li
+          %a(href="")
+            テックマスター
+      %ul
+        %li
+          %a(href="")
+            テックアカデミー
+      %ul
+        %li
+          %a(href="")
+            テック○ースト
+      %ul
+        %li
+          %a(href="")
+            ウoブ活
+  = render "/products/index"
+
+%footer
+  =render "layouts/footer-advertisement"
+  %nav
+  = render "layouts/footer-black"
+  = render "layouts/bottom-camera"
