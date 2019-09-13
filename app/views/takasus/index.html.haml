@@ -46,7 +46,45 @@
   .main__categories
     %h2.main__categories__title
       人気のカテゴリー
+    .main__categories__tags
+      %ul
+        %li
+          %a(href="")
+            プログラミング教本
+      %ul
+        %li
+          %a(href="")
+            盆栽
+      %ul
+        %li
+          %a(href="")
+            楽器
+  = render "/products/index"
 
+  .main__categories
+    %h2.main__categories__title
+      人気のブランド
+    .main__categories__tags
+      %ul
+        %li
+          %a(href="")
+            テックエキスパート
+      %ul
+        %li
+          %a(href="")
+            テックマスター
+      %ul
+        %li
+          %a(href="")
+            テックアカデミー
+      %ul
+        %li
+          %a(href="")
+            テック○ースト
+      %ul
+        %li
+          %a(href="")
+            ウoブ活
   = render "/products/index"
 
 %footer
