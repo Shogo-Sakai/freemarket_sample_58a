@@ -11,7 +11,6 @@ header{
   .box{
     height: 100px;
     width: 1020px;
-    // background-color: aquamarine;
     margin: 0 auto;
     padding: 8px 0px 0px;
 
@@ -22,30 +21,63 @@ header{
       justify-content: space-between;
 
       &__title{
+        -webkit-box-align: center;
+        align-items: center;
         display: flex;
-        height: 36px;
-        width: 134px;
+        height: 40px;
         margin-right: 45px;
       }
 
       &__search{
 
-        width: calc(100% - 134px);
+        width: 100%;
 
         &__form{
 
-          width: 100%;
           position: relative;
           
           &__input{
-            background-color: rgb(245, 245, 245);
-            border-radius: 4px;
-            height: 40px;
-            font-size: 16px;
-            line-height: 1.4em;
-            padding: 0px 50px 0px 10px;
-            width: calc(100% - 64px);
+            // background-color: rgb(245, 245, 245);
+            // border-radius: 4px;
+            // height: 36px;
+            // font-size: 16px;
+            // line-height: 1.4em;
+            // padding: 0px 50px 0px 10px;
+            // width: calc(100% - 64px);
+            // position: relative;
 
+            background-color: rgb(245, 245, 245);
+            font-size: 16px;
+            height: 40px;
+            line-height: 1.4em;
+            position: relative;
+            width: calc(100% - 62px);
+            -webkit-appearance: none;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(204, 204, 204);
+            border-image: initial;
+            border-radius: 4px;
+            outline: none;
+            padding: 0px 50px 0px 10px;
+            transition: all 0.3s ease-out 0s;
+          }
+
+          button{
+            background-color: transparent;
+            cursor: pointer;
+            height: 40px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            width: 40px;
+            -webkit-appearance: none;
+            border-width: initial;
+            border-style: none;
+            border-color: initial;
+            border-image: initial;
+            border-radius: 0px 4px 4px 0px;
+            padding: 0px;
           }
         }
       }
@@ -54,11 +86,9 @@ header{
     &__lower{
 
       display: flex;
-      justify-content: space-between;
-      font-size: 16px;
-      margin-top: 8px;
       -webkit-box-pack: justify;
-
+      justify-content: space-between;
+      margin-top: 8px;
 
       &__left{
         
@@ -66,12 +96,24 @@ header{
         margin-left: -3px;
         
         &__category{
-          color: black;
-          padding: 0px 10px;
-          
-          
+          height: 44px;
+          padding: 0px 10px 0px 0px;
+
           a{
             text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 36px;
+            white-space: nowrap;
+            color: black;
+
+            svg{
+              color: rgb(234, 53, 45);
+            }
+          }
+
+          a:hover{
+            color: blue;
           }
         }
 
@@ -81,6 +123,15 @@ header{
 
           a{
             text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 36px;
+            white-space: nowrap;
+            color: black;
+
+            svg{
+              color: rgb(234, 53, 45);
+            }
           }
         }
       }
@@ -88,12 +139,32 @@ header{
       &__right{
 
         &__list{
-        
+          list-style: none;
           display: flex;
 
           &__notice{
+            padding: 0px 14px 0px 0px;
+            
             a{
+              -webkit-box-align: center;
+              align-items: center;
+              display: flex;
+              font-size: 14px;
+              height: 32px;
+              transform: scale(1);
+              transition: all 0.3s ease-out 0s;
               text-decoration: none;
+              color: #333;
+              
+
+              svg{
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+                color: rgb(204, 204, 204);
+                margin-right: 10px;
+                
+              }
             }
 
           }
@@ -103,14 +174,46 @@ header{
 
             a{
               text-decoration: none;
+              -webkit-box-align: center;
+              align-items: center;
+              display: flex;
+              font-size: 14px;
+              height: 32px;
+              transform: scale(1);
+              transition: all 0.3s ease-out 0s;
+              color: #333;
+
+              svg{
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+                color: rgb(204, 204, 204);
+                margin-right: 10px;
+              }
             }
           }
 
           &__mypage{
-            padding: 0px 14px;
-            
+            padding: 0px 0px 0px 14px;
+            height: 44px;
+
             a{
+              -webkit-box-align: center;
+              align-items: center;
+              display: flex;
+              font-size: 14px;
+              height: 32px;
+              transform: scale(1);
+              transition: all 0.3s ease-out 0s;
               text-decoration: none;
+              color: #333;
+
+              img{
+                margin-right: 10px;
+                width: 32px;
+                border-radius: 50%;
+                overflow: hidden;
+              }
             }
           }
         }
@@ -152,11 +255,60 @@ header{
       }
 
       &__picture3{
-        text-align: center;
         &__content{
           background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg");
           background-position: center;
           height: 390px;
+          
+          &__description{
+            -webkit-box-align: center;
+            align-items: center;
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+
+            & > img{
+              position: absolute;
+              top: 0px;
+              right: 0px;
+            }
+
+            &__about{
+              width: 100%;
+              padding: 20px 40px;
+
+              &__text1{
+                font-size: 60px;
+                font-weight: 600;
+                margin-bottom: 16px;
+              }
+
+              &__text2{
+                font-size: 18px;
+                margin-bottom: 24px;
+                line-height: 1.77777;
+
+              }
+
+              &__install{
+                text-align: left;
+                width: 100%;
+                height: 50px;
+                display: flex;
+
+                & img{
+                  height: 50px;
+                  width: 170px;
+                }
+
+                & a:last-child{
+                  margin-left: 8px;
+                }
+                  
+                
+              }
+            }
+          }
         }
       }
     }

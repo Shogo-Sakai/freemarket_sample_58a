@@ -6,8 +6,8 @@
       .box__top__search
         %form.box__top__search__form
           %input.box__top__search__form__input{:placeholder => "何かお探しですか？", :type => "text"}
-          -# = link_to class: "box__top__search__form__input__icon" do
-          -# %i fa.fa_icon '\f002', class: "fas fa-search", style: "color:rgb(34, 34, 34)"
+          %button
+            %i.fas.fa-search
 
     .box__lower
       .box__lower__left
@@ -16,19 +16,23 @@
             %i.fas.fa-list-ul
             カテゴリーから探す
         .box__lower__left__brand
-          = link_to "ブランドから探す"
+          = link_to class: "" do
+            %i.fas.fa-tag
+            ブランドから探す
       .box__lower__right
         %ul.box__lower__right__list
           %li.box__lower__right__list__notice
             = link_to class: "" do
-              = fa_icon '\f0f3', class: "far fa-bell", style: "color:rgb(204, 204, 204)"
+              %i.far.fa-bell
               お知らせ
           %li.box__lower__right__list__todo
             = link_to class: "" do
-              = fa_icon '\f00c', class: "fas fa-check", style: "color:rgb(204, 204, 204)"
+              %i.fas.fa-check
               やることリスト
           %li.box__lower__right__list__mypage
-            マイページ
+            = link_to class: "" do
+              = image_tag src="https://static.mercdn.net/thumb/members/217956187.jpg?1521954365", size: "134x36"
+              マイページ
 
 .main
   .main__announcement
@@ -41,19 +45,26 @@
 
       %li.main__announcement__pictures__picture3
         .main__announcement__pictures__picture3__content
-          アイウエオ
+          .main__announcement__pictures__picture3__content__description
+            = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png", size: "440x390"
+            .main__announcement__pictures__picture3__content__description__about
+              .main__announcement__pictures__picture3__content__description__about__text1
+                スマホで かんたん
+                %br
+                フリマアプリ
+              %p.main__announcement__pictures__picture3__content__description__about__text2
+                メルカリはスマホカメラからすぐに出品できる
+                %br
+                購入時も安心な独自システムのアプリです
+              .main__announcement__pictures__picture3__content__description__about__install
+                %a{href: "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"}
+                  = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"
+                %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
+                  = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg"
+
+
+
     
-  .main__categories
-    %h2.main__categories__title
-      人気のカテゴリー
-
-  .main__products
-    .main__products__index
-      .main__products__index__name
-      商品一覧
-      .main__products__index__items
-        .main__products__index__items__item
-
 
 .advertisement
   .advertisement__box
