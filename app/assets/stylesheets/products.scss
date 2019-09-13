@@ -4,7 +4,6 @@
 
 .main__products{
   width: 100vw;
-  // height: 5960px;
   padding:0 0 100px;
   @extend %centering;
   flex-direction: column;
@@ -55,7 +54,6 @@
       justify-content: space-between;
       align-content: space-between;
       flex-wrap: wrap;
-      // overflow: hidden;
       &__content{
         box-sizing: border-box;
         width: calc((100% / 5 ) - 2%);
@@ -70,7 +68,6 @@
         &__image{
           width: 100%;
           height: 188px;
-          background-color: aquamarine;
           position: relative;
           img{
             width: 100%;
@@ -79,7 +76,7 @@
           &__price{
             position: absolute;
             left:0%;
-            top: 80%;
+            top: 70%;
             height: 28px;
             line-height: 28px;
             max-width: 80%;
@@ -100,6 +97,27 @@
           box-sizing: border-box;
           width:100%;
           overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+// レスポンシブ対応
+// 中画面（タブレット等）
+@media screen and (min-width:768px) and (max-width:1067px){
+  .main__products__product{
+    width: 700px;
+    height: 445px;
+    &__contents{
+      height: 396px;
+      &__content{
+        height: 188px;
+        &__image{
+          height: 124px;
+          img{
+            height: 124px;
+          }
         }
       }
     }
