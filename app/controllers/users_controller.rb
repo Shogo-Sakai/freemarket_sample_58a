@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def new
   end
 
+  def credit_register
+  end
+
   def create
   end
 
