@@ -12,4 +12,8 @@ class Profile < ApplicationRecord
   validates :prefecture, presence: true
   validates :city, presence: true
   validates :adress, presence: true
+  validates :post_family_name,presence: true
+  validates :post_personal_name,presence: true
+  validates :post_family_name_kana,presence: true
+  validates  :post_personal_name_kana,presence: true
 end
