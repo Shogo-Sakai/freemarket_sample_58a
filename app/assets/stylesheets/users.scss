@@ -1,4 +1,4 @@
-@import "application.scss";
+@import "variable.scss";
 // 背景画像（グレーのmercariロゴ、中身がなにもない時に使用）
 .nothing_image{
   background: url(https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?45085161) 0 0 no-repeat; 
@@ -252,17 +252,21 @@
       background-color: $global-back-color;
     }
     li{
-      box-sizing: border-box;
-      width: 100%;
-      height:48px;
-      padding:16px;
-      border: $global-back-color solid 1px;
-      line-height: 16px;
-      background-color: white;
-      display: flex;
-      justify-content: space-between;
-      .menu-icon{
-        color: #ccc;
+      a{
+        box-sizing: border-box;
+        width: 100%;
+        height:48px;
+        padding:16px;
+        border: $global-back-color solid 1px;
+        line-height: 16px;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        text-decoration: none;
+        color: #333;
+        i{
+          color: #ccc;
+        }
       }
       &:hover{
         background-color: $hover-gray;
@@ -273,13 +277,6 @@
           animation-duration:150ms;
           // アニメーションの速度を指定
           animation-timing-function: ease;
-          // アニメーションの開始を遅らせる度合いを指定
-          // animation-delay:0s;
-          // アニメーションの繰り返し回数を指定。
-          // animation-iteration-count: infinite;
-          // アニメーションの方向を指定
-          // animation-direction: normal;
-          // アニメーションの開始前、終了後のスタイルを指定
           animation-fill-mode: forwards;
         }
         @keyframes moveRight{
@@ -287,24 +284,14 @@
             color: #ccc;
             transform: translate3d(0px, 0px, 0px);
           }
-          // 25%{
-          //   transform: translate3d(100px, 0px, 10px)
-          // }
-          // 50%{
-          //   transform: translate3d(5px, -100px, 10px)
-          // }
-          // 75%{
-          //   transform: translate3d(-100px, -0px, 10px)
-          // }
           100%{
             color: black;
             transform: translate3d(3px, 0px, 0px);
           }
         }
       }
-  
     }
-    li.head{
+    .active{
       background-color: $normal-gray;
     }
     &__merpay{
@@ -317,7 +304,6 @@
 }
 
 // レスポンシブ対応
-
 // 小画面（スマホ等）
 @media screen and (max-width:767px){
   .user-mypage-wrapper{
@@ -404,5 +390,44 @@
     i{
       font-size: 24px;
     }
+  }
+}
+
+
+// パンくず
+.breadcrumbs{
+  @extend %centering;
+  @extend %global-font;
+  height: 49px;
+  width: 100vw;
+  border-top: 1px solid #eee;
+  background-color: $normal-white;
+  font-size: 14px;
+  box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.16);
+  position: relative;
+  z-index: 100;
+  &__wrapper{
+    width: 1020px;
+    &__content{
+      display: flex;
+      a{
+        text-decoration: none;
+        color: #333333;
+        &:hover{
+          opacity: 0.4;
+          text-decoration: underline;
+        }
+      }
+      i{
+        margin:0 10px;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+.current_page{
+  &__now{
+    font-weight: bold;
   }
 }

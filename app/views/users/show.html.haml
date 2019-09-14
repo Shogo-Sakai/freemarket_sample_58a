@@ -1,3 +1,9 @@
+-# = render "layouts/main-header"
+-content_for :current_page do
+  %span.current_page
+    %span.current_page__now
+      マイページ
+= render "layouts/breadcrumbs"
 .user-mypage-wrapper
   .user-mypage-wrapper__main
     .user-mypage-wrapper__main__profile
