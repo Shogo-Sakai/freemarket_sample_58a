@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'signup/4' => 'signup#fourth'
   get 'signup/5' => 'signup#fifth'
   get 'users/credit_register' => 'users#credit_register'
+  get 'logout' => 'mercaris#logout'
 end
