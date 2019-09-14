@@ -87,9 +87,21 @@ gem 'haml-rails'
 
 # font-awesome
 gem 'font-awesome-rails'
+
+#jquery
 gem 'jquery-rails'
 
+#devise
 gem 'devise'
+
+#pry
 gem 'pry-rails'
+
+#初期データ用
 gem 'active_hash'
+
+#クレジット登録用
 gem 'payjp'
+
+#環境変数用
+gem 'dotenv-rails'
