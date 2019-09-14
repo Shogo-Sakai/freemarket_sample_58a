@@ -1,3 +1,125 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variable";
+@import "font-awesome";
+
+
+.main__products{
+  width: 100vw;
+  padding:0 0 100px;
+  @extend %centering;
+  flex-direction: column;
+  @extend %global-font;
+  &__product{
+    margin-top: 42px;
+    box-sizing: border-box;
+    width: 1020px;
+    height: 573px;
+    &__header{
+      box-sizing: border-box;
+      width: 100%;
+      height: 33px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: bold;
+      &__next{
+        font-size: 14px;
+        font-weight: 600;
+        padding:5px 0px 0px 5px;
+        align-self: flex-end;
+        a{
+          color: #0095EE;
+          text-decoration: none;
+          i{
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    // スクロールフェードイン
+    .effect-fade{
+      opacity: 0;
+      transform: translate(0, 0);
+      transition: all 750ms;
+    }
+    .effect-fade.effect-scroll{
+      opacity:1;
+      transform: translate(0,0);
+    }
+    &__contents{
+      box-sizing: border-box;
+      width: 100%;
+      height: 524px;
+      display: flex;
+      justify-content: space-between;
+      align-content: space-between;
+      flex-wrap: wrap;
+      &__content{
+        box-sizing: border-box;
+        width: calc((100% / 5 ) - 2%);
+        height: 252px;
+        box-shadow: 1px 3px 3px rgba(0,0,0,0.2);
+        border: 1px solid transparent;
+        &:hover{
+          box-sizing: border-box;
+          border: 1px solid #b3d4fc;
+          z-index: 2
+        }
+        &__image{
+          width: 100%;
+          height: 188px;
+          position: relative;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+          &__price{
+            position: absolute;
+            left:0%;
+            top: 70%;
+            height: 28px;
+            line-height: 28px;
+            max-width: 80%;
+            overflow: hidden;
+            font-size: 17px;
+            padding: 0 12px;
+            color: $normal-white;
+            background-color: rgba(0,0,0,0.4);
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+          }
+        }  
+        &__name{
+          background-color: $normal-white;
+          height: calc(252px - 188px);
+          text-overflow: fade(10px, 10);
+          padding: 12px;
+          box-sizing: border-box;
+          width:100%;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+// レスポンシブ対応
+// 中画面（タブレット等）
+@media screen and (min-width:768px) and (max-width:1067px){
+  .main__products__product{
+    width: 700px;
+    height: 445px;
+    &__contents{
+      height: 396px;
+      &__content{
+        height: 188px;
+        &__image{
+          height: 124px;
+          img{
+            height: 124px;
+          }
+        }
+      }
+    }
+  }
+}

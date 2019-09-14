@@ -2,22 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import "./reset.scss";
+@import "./reset";
 @import "font-awesome";
-
-// 共通フォント
-%global-font{
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-}
-
-// 色
-$global-back-color:#f5f5f5;
-$normal-white:#fff;
-$normal-gray:#eee;
-$hover-gray:#fafafa;
-$normal-red: #ea352d;
-$link-text-blue: #0099e8;
-$default-font-black: #333333;
+@import "variable";
 
 //デフォルトのinputフォーム
 .default-input{
