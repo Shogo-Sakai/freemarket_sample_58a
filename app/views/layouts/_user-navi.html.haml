@@ -1,79 +1,101 @@
 .user-mypage-wrapper__navi
   .user-mypage-wrapper__navi__menu
     %ul
-      %li.head
-        マイページ
-        %span
+      %li
+        %a.link{href: users_show_path}
+          マイページ
           %i.fas.fa-chevron-right.menu-icon
       %li
-        お知らせ          
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_notice"}
+          お知らせ
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        やることリスト
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_tasks"}
+          やることリスト
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        いいね！一覧
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_good_index"}
+          いいね！一覧
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        出品する
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_sell"}
+          出品する
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        出品した商品-出品中
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_sell_index"}
+          出品した商品-出品中
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        出品した商品-取引中
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_sell_trading"}
+          出品した商品-取引中
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        出品した商品-売却済み
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_sell_sold"}
+          出品した商品-売却済み
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        購入した商品-取引中
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_buy_trading"}
+          購入した商品-取引中
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        購入した商品-過去の取引
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_buy_past"}
+          購入した商品-過去の取引
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        ニュース一覧
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_news_index"}
+          ニュース一覧
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        評価一覧
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_reliable"}
+          評価一覧
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        ガイド
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_guide"}
+          ガイド
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        お問い合わせ
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"mypage_contact"}
+          お問い合わせ
+          %i.fas.fa-chevron-right.menu-icon
   .user-mypage-wrapper__navi__merpay
     %h3 メルペイ
     %ul
       %li
-        売上・振込申請
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"merpay_apply"}
+          売上・振込申請
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        ポイント
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"merpay_points"}
+          ポイント
+          %i.fas.fa-chevron-right.menu-icon
   .user-mypage-wrapper__navi__config
     %h3 設定
     %ul 
       %li
-        プロフィール
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"config_profile"}
+          プロフィール
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        発送元・お届け先住所変更
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"config_adress"}
+          発送元・お届け先住所変更
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        支払い方法
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href: users_credit_register_path}
+          支払い方法
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        メール/パスワード
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"config_mail"}
+          メール/パスワード
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        本人情報
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"config_information"}
+          本人情報
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        電話番号の確認
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"config_telephone"}
+          電話番号の確認
+          %i.fas.fa-chevron-right.menu-icon
       %li
-        ログアウト          
-        %i.fas.fa-chevron-right.menu-icon
+        %a.link{href:"config_logout"}
+          ログアウト          
+          %i.fas.fa-chevron-right.menu-icon

@@ -19,28 +19,3 @@
  @import "font-awesome";
  @import "slick-theme"; 
  @import "slick";
-
-
-//  共通部分
-
-
-// 変数、プレースホルダーセレクタ
-// センタリング
-%centering{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-// 共通フォント
-%global-font{
-  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-}
-
-// 色
-// 背景色
-$global-back-color:#f5f5f5;
-$normal-white:#fff;
-$normal-gray:#eee;
-$hover-gray:#fafafa;
-
- @import "carousel";
