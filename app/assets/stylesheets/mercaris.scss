@@ -1,8 +1,7 @@
-// Place all the styles related to the takasus controller here.
+// Place all the styles related to the mercaris controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "users.scss";
-
 
 header{
   height: 100px;
@@ -15,7 +14,6 @@ header{
     padding: 8px 0px 0px;
 
     &__top{
-
       display: flex;
       -webkit-box-pack: justify;
       justify-content: space-between;
@@ -29,23 +27,12 @@ header{
       }
 
       &__search{
-
         width: 100%;
 
         &__form{
-
           position: relative;
           
           &__input{
-            // background-color: rgb(245, 245, 245);
-            // border-radius: 4px;
-            // height: 36px;
-            // font-size: 16px;
-            // line-height: 1.4em;
-            // padding: 0px 50px 0px 10px;
-            // width: calc(100% - 64px);
-            // position: relative;
-
             background-color: rgb(245, 245, 245);
             font-size: 16px;
             height: 40px;
@@ -84,14 +71,12 @@ header{
     }
 
     &__lower{
-
       display: flex;
       -webkit-box-pack: justify;
       justify-content: space-between;
       margin-top: 8px;
 
       &__left{
-        
         display: flex;
         margin-left: -3px;
         
@@ -156,17 +141,14 @@ header{
               text-decoration: none;
               color: #333;
               
-
               i{
                 max-width: 100%;
                 height: auto;
                 max-height: 100%;
                 color: rgb(204, 204, 204);
-                margin-right: 10px;
-                
+                margin-right: 10px; 
               }
             }
-
           }
 
           &__todo{
@@ -224,14 +206,11 @@ header{
 
 
 .main{
-
   background-color: rgb(245, 245, 245);
 
   &__announcement{
     height: 390px;
     width: 100vw;
-    // background-size: auto;
-    // overflow: hidden;
     background-color: black;
 
     &__pictures{
@@ -287,7 +266,6 @@ header{
                 font-size: 18px;
                 margin-bottom: 24px;
                 line-height: 1.77777;
-
               }
 
               &__install{
@@ -304,8 +282,6 @@ header{
                 & a:last-child{
                   margin-left: 8px;
                 }
-                  
-                
               }
             }
           }
@@ -323,13 +299,16 @@ header{
     padding: 56px 0px 30px;
     @extend %centering;
     flex-direction: column;
+
     &__title{
       margin-bottom: 16px;
       font-size: 28px;
       font-weight: bold;
     }
+
     &__tags{
       display: flex;
+      
       a{
         display: block;
         box-sizing: border-box;
@@ -344,11 +323,6 @@ header{
         margin: 0 0 0 10px;
         font-weight: bold;
       }
-      
     }
-  }
-
-  &__items{
-    
   }
 }

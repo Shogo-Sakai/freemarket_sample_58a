@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TakasusControllerTest < ActionDispatch::IntegrationTest
+class MercarisControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

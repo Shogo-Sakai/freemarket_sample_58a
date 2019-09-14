@@ -1,38 +1,4 @@
-%header
-  .box
-    .box__top
-      .box__top__title
-        = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/logo-acdd90ac4f472d5a6f7a330d33ab1225.svg", size: "134x36"
-      .box__top__search
-        %form.box__top__search__form
-          %input.box__top__search__form__input{:placeholder => "何かお探しですか？", :type => "text"}
-          %button
-            %i.fas.fa-search
-
-    .box__lower
-      .box__lower__left
-        .box__lower__left__category
-          = link_to class: "" do
-            %i.fas.fa-list-ul
-            カテゴリーから探す
-        .box__lower__left__brand
-          = link_to class: "" do
-            %i.fas.fa-tag
-            ブランドから探す
-      .box__lower__right
-        %ul.box__lower__right__list
-          %li.box__lower__right__list__notice
-            = link_to class: "" do
-              %i.far.fa-bell
-              お知らせ
-          %li.box__lower__right__list__todo
-            = link_to class: "" do
-              %i.fas.fa-check
-              やることリスト
-          %li.box__lower__right__list__mypage
-            = link_to class: "" do
-              = image_tag src="https://static.mercdn.net/thumb/members/217956187.jpg?1521954365", size: "134x36"
-              マイページ
+= render "/layouts/main-header"
 
 .main
   .main__announcement
@@ -61,31 +27,6 @@
                   = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"
                 %a{href: "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"}
                   = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg"
-
-
-
-    
-
-.advertisement
-  .advertisement__box
-    .advertisement__box__left
-      .advertisement__box__left__description
-        スマホでかんたんフリマアプリ
-      .advertisement__box__left__reminder
-        今すぐ無料ダウンロード！
-      .advertisement__box__left__logos
-        .advertisement__box__left__logos__mercari
-          = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/mercari_icon-f75780e32e41e052c8aaa8b446331cd8.png"
-        .advertisement__box__left__logos__appstore
-          .dvertisement__box__left__logos__appstore__image
-            = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg"
-        .advertisement__box__left__logos__google
-          .advertisement__box__left__logos__google__image
-            = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/google-play-495575abb895b405aa6336b2a4304958.svg"
-
-    .advertisement__box__image
-    = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", size: "300x260"
-          アイウエオ
     
   .main__categories
     %h2.main__categories__title
