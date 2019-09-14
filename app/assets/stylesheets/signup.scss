@@ -19,6 +19,7 @@
   box-sizing: border-box;
   display: inline-block;
   color: $default-font-black;
+  width: 100%;
   &__half{
     width: calc(50% - 6px);
     display: inline;
@@ -34,6 +35,15 @@
   box-shadow: 0 0 0 1000px $normal-white inset;
 }
 
+//field_with_errorsの悪さを防ぐ
+.field_with_errors{
+  display: inline-block;
+  width: 100%;
+}
+
+.field_with_errors input,.field_with_errors select{
+  border: 1px solid $normal-red;
+}
 //デフォルトのselectフォーム
 .default-select{
   appearance: none; 
