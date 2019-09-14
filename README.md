@@ -7,6 +7,7 @@ Database design
 
 |Column|Type|Options|
 |------|----|-------|
+|nickname|string|null: false|
 |email|string|null: false,unique: true|
 |password|string|null: false|
 
@@ -28,14 +29,19 @@ Database design
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
 |user_id|references|foreign_key: true|
 |avatar|string||
-|birthday|string|null: false|
+|birthyear|integer|null: false|
+|birthmonth|integer|null: false|
+|birthday|integer|null: false|
 |family_name|string|null: false|
-|prersonal_name|string|null: false|
+|personal_name|string|null: false|
 |family_name_kana|string|null: false|
 |personal_name_kana|string|null: false|
+|post_family_name|string|null: false|
+|post_personal_name|string|null: false|
+|post_family_name_kana|string|null: false|
+|post_personal_name_kana|string|null: false|
 |postal_code|integer|null: false|
 |city|string|null: false|
 |adress|string|null: false|
@@ -52,7 +58,8 @@ Database design
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|card_token|string|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ### Association
 
