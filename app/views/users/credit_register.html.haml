@@ -2,7 +2,7 @@
 -# パンくず最後のページだけspan、リンクはaタグを使用する。
 -content_for :current_page do
   %span.current_page
-    %a{href: users_show_path }
+    = link_to users_show_path do
       マイページ
     %i.fa.fa-chevron-right
     %span.current_page__now
