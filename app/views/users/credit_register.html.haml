@@ -1,4 +1,13 @@
--# header
+= render "layouts/main-header"
+-# パンくず最後のページだけspan、リンクはaタグを使用する。
+-content_for :current_page do
+  %span.current_page
+    %a{href: users_show_path }
+      マイページ
+    %i.fa.fa-chevron-right
+    %span.current_page__now
+      支払い方法
+= render "layouts/breadcrumbs"
 .user-mypage-wrapper
   .user-mypage-wrapper__main
     .user-mypage-wrapper__main__credit
