@@ -415,3 +415,42 @@
     }
   }
 }
+
+
+// パンくず
+.breadcrumbs{
+  @extend %centering;
+  @extend %global-font;
+  height: 49px;
+  width: 100vw;
+  border-top: 1px solid #eee;
+  background-color: $normal-white;
+  font-size: 14px;
+  box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.16);
+  position: relative;
+  z-index: 100;
+  &__wrapper{
+    width: 1020px;
+    &__content{
+      display: flex;
+      a{
+        text-decoration: none;
+        color: #333333;
+        &:hover{
+          opacity: 0.4;
+          text-decoration: underline;
+        }
+      }
+      i{
+        margin:0 10px;
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+.current_page{
+  &__now{
+    font-weight: bold;
+  }
+}

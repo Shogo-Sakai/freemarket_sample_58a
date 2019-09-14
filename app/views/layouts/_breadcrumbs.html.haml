@@ -1,0 +1,10 @@
+.breadcrumbs
+  .breadcrumbs__wrapper
+    .breadcrumbs__wrapper__content
+      %a{href: root_path}
+        メルカリ
+      %ul
+        %li
+          %i.fa.fa-chevron-right
+          %span
+            = yield :current_page

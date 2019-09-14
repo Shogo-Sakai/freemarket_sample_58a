@@ -1,3 +1,14 @@
+= render "layouts/header-main"
+-# パンくず最後のページだけspan、リンクはaタグを使用する。
+-content_for :current_page do
+  %span.current_page
+    -# ※下記リンクテンプレート※使用時はコメントアウトを削除する。
+    -# %a{href:""}
+    -#   test
+    -# %i.fa.fa-chevron-right
+    %span.current_page__now
+      マイページ
+= render "layouts/breadcrumbs"
 .user-mypage-wrapper
   .user-mypage-wrapper__main
     .user-mypage-wrapper__main__profile
