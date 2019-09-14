@@ -26,7 +26,6 @@
     width:700px;
     float:right;
     &__profile{
-      // float:right;
       &__container{
         box-sizing: border-box;      
         background: url( https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?45085161 );
@@ -145,7 +144,6 @@
             }
             &__task{
               box-sizing: border-box;
-              // height: 230px;
               padding:160px 0 60px; 
               flex-direction: column;
               color: rgb(174, 174, 174);
@@ -169,7 +167,6 @@
     }
     // 商品関連
     &__products{
-      // float: right;
       margin-top: 40px;
       width:700px;
       background-color: white;
@@ -248,7 +245,6 @@
 
   // メニュー
   &__navi{
-    // float:left;
     width:280px;
     margin-right: 40px;
     h3 {
@@ -281,32 +277,14 @@
           animation-duration:150ms;
           // アニメーションの速度を指定
           animation-timing-function: ease;
-          // アニメーションの開始を遅らせる度合いを指定
-          // animation-delay:0s;
-          // アニメーションの繰り返し回数を指定。
-          // animation-iteration-count: infinite;
-          // アニメーションの方向を指定
-          // animation-direction: normal;
-          // アニメーションの開始前、終了後のスタイルを指定
           animation-fill-mode: forwards;
         }
         @keyframes moveRight{
           0%{
-            // opacity:0.5;
             color: #ccc;
             transform: translate3d(0px, 0px, 0px);
           }
-          // 25%{
-          //   transform: translate3d(100px, 0px, 10px)
-          // }
-          // 50%{
-          //   transform: translate3d(5px, -100px, 10px)
-          // }
-          // 75%{
-          //   transform: translate3d(-100px, -0px, 10px)
-          // }
           100%{
-            // opacity: 0.7;
             color: black;
             transform: translate3d(3px, 0px, 0px);
           }
@@ -326,7 +304,6 @@
 }
 
 // レスポンシブ対応
-
 // 小画面（スマホ等）
 @media screen and (max-width:767px){
   .user-mypage-wrapper{
