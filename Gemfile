@@ -84,8 +84,12 @@ gem 'fog-aws'
 
 # haml
 gem 'haml-rails'
-gem "font-awesome-rails"
+
+# font-awesome
+gem 'font-awesome-rails'
 gem 'jquery-rails'
 
-#デバッグ
+gem 'devise'
 gem 'pry-rails'
+gem 'active_hash'
+gem 'payjp'

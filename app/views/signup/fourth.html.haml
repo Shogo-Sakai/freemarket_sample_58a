@@ -7,7 +7,7 @@
       .signup-form-container__title
         = label :card_number, 'カード番号', class: 'signup-label'
         %span.signup-form-container__span.span-need 必須
-      = text_field :user, :card_number, placeholder: '半角数字のみ', class: 'default-input'
+      %input.default-input.number{placeholder: '半角数字のみ',name: 'number'}
     .registration-form__card-images
       = image_tag 'https://cdn.svgporn.com/logos/visa.svg', class: 'registration-form__card-images--card-image'
       = image_tag 'https://cdn.svgporn.com/logos/mastercard.svg', class: 'registration-form__card-images--card-image'
@@ -22,22 +22,29 @@
         %span.signup-form-container__span.span-need 必須
       .signup-form-container__birthday
         .select-wrap.select-wrap__half
-          = select :user, :card_limit_month, ['--'], {}, {class: 'default-select'}
+          %select.default-select.exp_month#exp_month{name: 'exp_month'}
+            %option{value: ''} --
+            - Month.all.each do |month|
+              %option{value: month.value} 
+                = month.show
           %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__card 月
         .select-wrap.select-wrap__half
-          = select :user, :card_limit_year, ['--'], {}, {class: 'default-select'}
+          %select.default-select.exp_year#exp_year{name: 'exp_year'}
+            %option{value: ''} --
+            - CreditYear.all.each do |year|
+              %option{value: year.value}
+                = year.show
           %i.select-arrow.fas.fa-chevron-down
         %span.signup-form-container__card 年
     .signup-form-container
       .signup-form-container__title
         = label :cvc, 'セキュリティコード', class: 'signup-label'
         %span.signup-form-container__span.span-need 必須
-      = text_field :user, :cvc, placeholder: 'カード背面4桁もしくは3桁の番号', class: 'default-input'
+      %input.default-input.cvc{placeholder: 'カード背面4桁もしくは3桁の番号',name: 'cvc'}
     .registration-form__link-cvc
       %p.registration-form__link-text--text.default-link-text 
         %i.fas.fa-question-circle.link-space-reset
         %a.default-link-text カード背面の番号とは？
-    %input.submit-btn.submit-btn-red{type: 'submit',value: '次へ進む'} 
+    %input.submit-btn.submit-btn-red#token_submit{type: 'submit',value: '次へ進む'} 
 = render partial: 'simple-footer'
-
