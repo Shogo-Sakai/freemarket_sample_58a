@@ -48,7 +48,7 @@
             %span.signup-form-container__span.span-need 必須
           .signup-form-container__birthday
             .select-wrap
-              = o.select :birthyear,['--'],{},{class: 'default-select select-year'}
+              = o.collection_select :birthyear, BirthYear.all,:year,:year,{include_blank: '--'},{class: 'default-select select-year'}
               %i.select-arrow.fas.fa-chevron-down
             %span.signup-form-container__birthday--span 年
             .select-wrap
@@ -56,17 +56,19 @@
               %i.select-arrow.fas.fa-chevron-down
             %span.signup-form-container__birthday--span 月
             .select-wrap
-              = o.select :birthday,['--'],{},{class: 'default-select select-day'}
+              = o.select :birthday,{},{},class: 'default-select select-day' do
+                %option{value: ""} --
               %i.select-arrow.fas.fa-chevron-down
             %span.signup-form-container__birthday--span 日
-      %p.form-infomation-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-      .signup-form-container
-        = text_field :signin,:recapture, placeholder: '私はロボットではありません',class: 'signup-form-recapture default-input',disabled: 'disabled' 
-      .signup-form-container
-        %p.signup-form-container__agreement-text
-          「次へ進む」のボタンを押すことにより、
-          %a.default-link-text.link-space-reset{href: ''}利用規約
-          に同意したものとみなします
+        %p.form-infomation-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        .signup-form-container
+          = o.label :recaptcha do
+            = recaptcha_tags
+        .signup-form-container
+          %p.signup-form-container__agreement-text
+            「次へ進む」のボタンを押すことにより、
+            %a.default-link-text.link-space-reset{href: ''}利用規約
+            に同意したものとみなします
       = f.submit '次へ進む',class: 'submit-btn submit-btn-red'
       .registration-form__link-text
         %p.registration-form__link-text--text.default-link-text

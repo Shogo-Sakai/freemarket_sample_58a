@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load',function(){
+  var html = `<div class="error-message__need">
+                必須項目です
+              </div>`
   $(".submit-btn").click(function() {
     $(".submit_btn").prop("disabled", true);
       var  number = $(".number").val();
@@ -15,14 +18,21 @@ $(document).on('turbolinks:load',function(){
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
         $(".submit_btn").prop('disabled', false);
-        return false;
+        if ($(".number").val().length === 0){
+          $(".number").addClass("error_form")
+          $("#number-error").html(html);
+        };
+        if  ($(".cvc").val().length === 0){
+          $(".cvc").addClass("error_form")
+          $("#cvc-error").html(html);
+        };
+        alert("カード情報を正しく入力してください")
       }
       else {
         $(".number").removeAttr("name");
         $(".cvc").removeAttr("name");
         $(".exp_month").removeAttr("name");
         $(".exp_year").removeAttr("name");
-
         var token = response.id;
         $.ajax({
           url: "/signup",
