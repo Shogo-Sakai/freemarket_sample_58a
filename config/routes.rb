@@ -21,11 +21,13 @@ Rails.application.routes.draw do
 
   get "/signin" => "signup#signin"
 
-  resources :signup do
+  resources :signup ,only: [:index] do
     collection do
       get 'registration'
+      post 'first_validation'
       get 'sms_authentication' 
       get 'adress' 
+      post 'second_validation'
       get 'creditcard'
       get 'done'
     end
