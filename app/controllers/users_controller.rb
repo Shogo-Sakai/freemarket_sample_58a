@@ -23,4 +23,6 @@ class UsersController < ApplicationController
   def credit_register
   end
 
+  def logout
+  end
 end
