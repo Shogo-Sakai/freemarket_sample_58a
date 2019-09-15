@@ -2,7 +2,7 @@
   .user-mypage-wrapper__navi__menu
     %ul
       %li
-        = link_to users_show_path ,class:"link" do
+        = link_to users_path ,class:"link" do
           マイページ
           %i.fas.fa-chevron-right.menu-icon
       %li
@@ -80,7 +80,7 @@
           発送元・お届け先住所変更
           %i.fas.fa-chevron-right.menu-icon
       %li
-        = link_to users_credit_register_path,class:"link" do
+        = link_to credit_register_users_path,class:"link" do
           支払い方法
           %i.fas.fa-chevron-right.menu-icon
       %li
@@ -88,7 +88,7 @@
           メール/パスワード
           %i.fas.fa-chevron-right.menu-icon
       %li
-        = link_to users_edit_path ,class:"link" do
+        = link_to edit_users_path ,class:"link" do
           本人情報
           %i.fas.fa-chevron-right.menu-icon
       %li
@@ -96,6 +96,6 @@
           電話番号の確認
           %i.fas.fa-chevron-right.menu-icon
       %li
-        = link_to logout_path,class:"link" do
+        = link_to logout_users_path,class:"link" do
           ログアウト          
           %i.fas.fa-chevron-right.menu-icon
