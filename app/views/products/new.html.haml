@@ -1,6 +1,90 @@
-%h1 Products#index
-%p Find me in app/views/products/index.html.erb
-= form_with url: products_path, local:true do |form|
-  = form.file_field :image , id: :image
-  = form.submit
-test comment 190909
+= render partial: '/signup/simple-header'
+.signup-container
+  .signup-top
+    %h2.signup-header 商品の情報を入力
+  .sell-upload-form
+    .sell-upload-form__image.sell-container-all-padding.container-border-top
+      %p
+        = label :image, '出品画像',class: 'sell-upload-label'
+        %span.signup-form-container__span.span-need 必須
+      %p.sell-container-content
+        最大10枚までアップロードできます
+      .upload-box
+        ドラッグアンドドロップ
+        %br
+        またはクリックしてファイルをアップロード
+    .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
+      .signup-form-container__title
+        %p
+          = label :name, '商品名',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+      = text_field :product,:name, placeholder: '商品名（必須40文字まで）', class: 'default-input'
+    .signup-form-container.registration-form__first-container.sell-container-side-padding
+      .signup-form-container__title
+        %p
+          = label :name, '商品の説明',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+      = text_area :product,:name, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）　2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 ", class: 'default-input sell-input-area'
+    .sell-container-all-padding.container-border-top.flex
+      .sell-container-left
+        商品の詳細
+      .sell-container-right
+        %p
+          = label :name, 'カテゴリー',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+        .select-wrap
+          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
+          %i.select-arrow.fas.fa-chevron-down
+        %p.margin-2rem
+          = label :name, '商品の状態',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+        .select-wrap
+          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
+          %i.select-arrow.fas.fa-chevron-down
+    .sell-container-all-padding.container-border-top.flex
+      .sell-container-left
+        %p
+          配送について
+          %i.fas.fa-question-circle.link-space-reset
+      .sell-container-right
+        %p
+          = label :name, '配送料の負担',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+        .select-wrap
+          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
+          %i.select-arrow.fas.fa-chevron-down
+        %p.margin-2rem
+          = label :name, '発送元の地域',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+        .select-wrap
+          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
+          %i.select-arrow.fas.fa-chevron-down
+        %p.margin-2rem
+          = label :name, '発送までの日数',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+        .select-wrap
+          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
+          %i.select-arrow.fas.fa-chevron-down
+    .sell-container-all-padding.container-border-top.flex
+      .sell-container-left.link-space-reset
+        %p
+          販売価格
+          %span.link-space-reset (300~9,999,999)
+          %i.fas.fa-question-circle
+      .sell-container-right
+        .sell-price-wrapper
+          %p
+            = label :name, '価格',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+          .sell-price-wrapper__input
+            %p
+              ¥
+              = text_field :product, :price, placeholder: "例：300", class: 'default-input ', style:"text-align:right"
+        %p.margin-2rem
+          = label :name, '商品の状態',class: 'signup-label'
+          %span.signup-form-container__span.span-need 必須
+        .select-wrap
+          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
+          %i.select-arrow.fas.fa-chevron-down
+
+= render 'signup/simple-footer'

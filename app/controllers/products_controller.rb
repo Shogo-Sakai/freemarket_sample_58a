@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def new
+    render layout: 'form_layout'
   end
 
   def create
