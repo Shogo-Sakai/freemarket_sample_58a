@@ -3,7 +3,7 @@
 .signup-container
   %h2.signup-header 会員情報入力
   .registration-form
-    = form_for @user, url: second_signup_index_path,method: :get do |f|
+    = form_for @user, url: sms_authentication_signup_index_path,method: :get do |f|
       .signup-form-container.registration-form__first-container
         .signup-form-container__title
           = label :nickname, 'ニックネーム', class: 'signup-label'
@@ -27,7 +27,7 @@
       .signup-form-container
         = label :announce, '本人確認', class: 'signup-label'
         %p.registration-form__message 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-      = fields_for @profile,url: second_signup_index_path,method: :get do |o|
+      = fields_for @profile,url: sms_authentication_signup_index_path,method: :get do |o|
         .signup-form-container
           .signup-form-container__title
             = label :name, 'お名前(全角)', class: 'signup-label'

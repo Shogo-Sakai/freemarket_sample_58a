@@ -3,32 +3,31 @@ class SignupController < ApplicationController
   require 'payjp'
   Payjp.api_key = ENV["PAYJP_PRYVATE_KEY"]
   #2ページ目のみ編集したい場合は下の行をコメントアウト
-  before_action :first_validation, only: :second
+  before_action :first_validation, only: :sms_authentication 
   #4ページ目のみ編集する場合は下の行をコメントアウト
-  before_action :second_validation, only: :fourth
+  before_action :second_validation, only: :creditcard
 
-  def signup
+  def index
   end
 
-  def first
+  def registration
     @user = User.new
     @profile = Profile.new
   end
 
-  def second
+  def sms_authentication
     @profile = Profile.new
   end
 
-  def third
-    @user = User.new
+  def adress
     @profile = Profile.new
   end
 
-  def fourth
+  def creditcard
    
   end
 
-  def fifth
+  def done
   end
 
   def signin
@@ -36,7 +35,7 @@ class SignupController < ApplicationController
 
   def create
     @user = User.new(nickname: session[:nickname],email: session[:email],password: session[:password],password_confirmation: session[:password_confirmation])
-    render "signup/first" unless @user.save
+    render "signup/registration" unless @user.save
     @profile = Profile.create(
       user: @user,
       birthyear: session[:birthyear],
@@ -57,18 +56,32 @@ class SignupController < ApplicationController
       tel: session[:tel],
       building: session[:building]
     )
-    binding.pry
     customer = Payjp::Customer.create(
       card: params[:payjp_token]
     )
     @creditcard = Creditcard.new(user: @user,customer_id: customer.id,card_id: customer.default_card)
     if @creditcard.save
-      redirect_to fifth_signup_index_path
+      reset_session
+      redirect_to done_signup_index_path
     else
-      redirect_to "/signup/signup"
+      reset_session
+      redirect_to signup_index_path
     end
   end
+  
+  
+  private
+  
+  
 
+  def user_params
+    params.require(:user).permit(:nickname,:email,:password,:password_confirmation)
+  end
+
+  def profile_params
+    params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel)
+  end
+  
   def first_validation
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
@@ -105,7 +118,9 @@ class SignupController < ApplicationController
       adress: 'うちなー',
       postal_code: '888-8888'
     )
-    render 'signup/first' unless @user.valid? && @profile.valid?
+    @user.valid?
+    @profile.valid?
+    render 'signup/registration' unless @user.valid? && @profile.valid?
   end
 
   def second_validation
@@ -143,16 +158,10 @@ class SignupController < ApplicationController
       adress: session[:adress],
       postal_code: session[:postal_code]
     )
-    render 'signup/third' unless @profile.valid?
+    
+    render 'signup/adress' unless @profile.valid? 
+
   end
 
-  private
 
-  def user_params
-    params.require(:user).permit(:nickname,:email,:password,:password_confirmation)
-  end
-
-  def profile_params
-    params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel)
-  end
 end

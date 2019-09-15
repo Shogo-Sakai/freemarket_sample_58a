@@ -18,15 +18,16 @@ Rails.application.routes.draw do
   # products
   resources 'products'
   root 'products#new'
+
+  get "/signin" => "signup#signin"
+
   resources :signup do
     collection do
-      get 'signup' 
-      get 'signin'
-      get 'first'
-      get 'second' 
-      get 'third' 
-      get 'fourth'
-      get 'fifth'
+      get 'registration'
+      get 'sms_authentication' 
+      get 'adress' 
+      get 'creditcard'
+      get 'done'
     end
   end
 end
