@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'credit_register'
       get 'show'
       get 'edit'
+      get 'logout'
     end
   end
 
