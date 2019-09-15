@@ -3,8 +3,6 @@ class SignupController < ApplicationController
   require 'payjp'
   Payjp.api_key = ENV["PAYJP_PRYVATE_KEY"]
 
-  
-
   def index
   end
 
@@ -31,8 +29,6 @@ class SignupController < ApplicationController
   def signin
 
   end
-
-
 
   def first_validation
     session[:nickname] = user_params[:nickname]
@@ -72,7 +68,8 @@ class SignupController < ApplicationController
     )
     @user.valid?
     @profile.valid?
-    unless @user.valid? && @profile.valid?
+    unless verify_recaptcha(model: @profile) && @user.valid? && @profile.valid?
+      binding.pry
       render 'signup/registration' 
     else
       redirect_to sms_authentication_signup_index_path
@@ -161,8 +158,6 @@ class SignupController < ApplicationController
   
   private
   
-  
-
   def user_params
     params.require(:user).permit(:nickname,:email,:password,:password_confirmation)
   end
@@ -170,7 +165,5 @@ class SignupController < ApplicationController
   def profile_params
     params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel)
   end
-  
-
 
 end

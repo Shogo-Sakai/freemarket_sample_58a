@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get "/signin" => "signup#signin"
 
-  resources :signup ,only: [:index] do
+  resources :signup ,only: [:index,:create] do
     collection do
       get 'registration'
       post 'first_validation'
