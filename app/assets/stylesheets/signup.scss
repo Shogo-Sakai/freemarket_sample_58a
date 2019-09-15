@@ -38,11 +38,16 @@
 //field_with_errorsの悪さを防ぐ
 .field_with_errors{
   display: inline-block;
+}
+.select-wrap .field_with_errors{
   width: 100%;
 }
-
-.field_with_errors input,.field_with_errors select{
+.field_with_errors input,.field_with_errors select,{
   border: 1px solid $normal-red;
+}
+
+.field_with_errors .default-input__half{
+  width: 165.5px;
 }
 //デフォルトのselectフォーム
 .default-select{
