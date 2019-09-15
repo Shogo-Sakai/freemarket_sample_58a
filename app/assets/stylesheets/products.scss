@@ -131,6 +131,7 @@
   color: #333333;
   .sell-container-all-padding{
     padding: 40px;
+    
   }
   .sell-container-side-padding{
     padding: 0 40px 40px;
@@ -182,14 +183,51 @@
     span{
       font-weight: 550;
     }
-    i{
+    a{
+      letter-spacing: -0.5px;
+      text-decoration: none;
       color: $link-text-blue;
+      line-height: inherit;
+      &:hover{
+        opacity: 0.7;
+        text-decoration: underline;
+      }
     }
   }
   .sell-container-right{
     display: inline-block;
     box-sizing: border-box;
     width: 400px;
+    &__price-wrapper{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      border-bottom: 0.5px solid #ccc;
+      padding-bottom: 24px;
+      input{
+        margin-left: 8px;
+        width: 160px;
+      }
+    }
+    &__price-fee{
+      height: 63px;
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size: 14px;
+      border-bottom: 0.5px solid #ccc;
+    }
+    &__price-benefit{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      h2{
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    }
     .margin-2rem{
       margin-top: 2rem;
     }
@@ -198,17 +236,37 @@
       display: flex;
       justify-content: space-between;
       width: 400px;
-      .sell-select-box{
+      &__sell-select-box{
         padding: 0 16px;
       }
     }
-    .sell-price-wrapper{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 14px;
-      border-bottom: 0.5px solid #ccc;
-      padding-bottom: 24px;
+  }
+  .sell-container-description{
+    font-size: 14px;
+    margin-bottom: 20px;
+    a{
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: $link-text-blue;
+      line-height: inherit;
+      &:hover{
+        opacity: 0.7;
+        text-decoration: underline;
+      }
+    }
+  }
+  .sell-container-submit{
+    @extend %centering;
+    margin-bottom: -40px;
+    &__btn{
+      width: 620px;
+    }
+  }
+  .sell-container-back{
+    @extend %centering;
+    margin-bottom: -40px;
+    &__btn{
+      width: 279px;
     }
   }
 }
