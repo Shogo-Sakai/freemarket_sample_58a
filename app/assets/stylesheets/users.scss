@@ -21,7 +21,7 @@
   width:100vw;
   background-color: $global-back-color;
   padding-bottom: 40px;
-  padding-top: 24px;
+  padding-top: 40px;
   &__main{
     width:700px;
     float:right;
@@ -408,6 +408,44 @@
     }
   }
 }
+
+// 本人情報の登録
+.user-mypage-wrapper__main__box__contents{
+  width: 100%;
+  padding: 64px;
+  box-sizing: border-box;
+  .signup-label{
+    line-height: auto;
+  }
+  a{
+    display: block;
+    width: auto;
+    margin-top: 8px;
+    text-align: right;
+    color: $link-text-blue;
+    text-decoration: none;
+    &:hover{
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
+  &__notice{
+    margin-bottom: 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .mypage-form-container{
+    margin-top: 40px;
+  }
+  .content-end{
+    margin-top: 40px;
+  }
+  .submit-btn{
+    cursor: pointer;
+  }
+}
+
 
 // 画面下部のカメラ部
 .bottom-camera{

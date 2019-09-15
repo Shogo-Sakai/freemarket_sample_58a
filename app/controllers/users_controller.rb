@@ -19,4 +19,8 @@ class UsersController < ApplicationController
 
   def delete
   end
+
+  def credit_register
+  end
+
 end
