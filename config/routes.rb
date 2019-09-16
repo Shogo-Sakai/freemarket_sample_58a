@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'mercaris#index'
-  root 'products#new'
+
+  # products
+  resources 'products'
 
   # signup
   get '/signin' => 'signup#signin'
