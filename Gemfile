@@ -81,3 +81,4 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'jquery-rails'
+gem 'rspec-rails'
