@@ -113,3 +113,6 @@ gem 'dotenv-rails'
 #私はロボットではありませんフォーム
 gem "recaptcha", require: "recaptcha/rails"
 
+# SMS認証
+gem 'twilio-ruby', '~> 5.6.0'
+

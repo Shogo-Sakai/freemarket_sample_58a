@@ -2,6 +2,12 @@ class SignupController < ApplicationController
   layout 'form_layout'
   require 'payjp'
   Payjp.api_key = ENV["PAYJP_PRYVATE_KEY"]
+  
+  #不正アクセス対策
+  before_action :redirect_to_index_from_sms,only: [:sms_authentication]
+  before_action :redirect_to_index_from_credit,only: :creditcard
+  before_action :redirect_to_index_from_sms_confirmation,only: :sms_confirmation
+  before_action :redirect_to_index_from_adress, only: :adress
 
   def index
   end
@@ -15,21 +21,59 @@ class SignupController < ApplicationController
     @profile = Profile.new
   end
 
+  #sms送信アクション
+  def sms_post
+    @profile = Profile.new
+    render sms_authentication_signup_index_path unless  profile_params[:tel].present?
+    phone_number = profile_params[:tel].sub(/\A./,'+81')
+    client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
+    pass = []
+    5.times do
+      number = rand(1..9)
+      pass << number
+    end
+    sms_number = pass.join
+    session[:sms_number] = sms_number
+    begin 
+      client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: phone_number,body: sms_number)
+    rescue
+      render "signup/sms_authentication"
+      return false;
+    end
+    session[:through_send_number] = "through_send_number"
+    redirect_to sms_confirmation_signup_index_path
+  end
+  
+  def sms_confirmation
+    @profile = Profile.new
+  end
+
+  #smsの確認
+  def sms_check
+    @profile = Profile.new
+    sms_number = profile_params[:tel]
+    if sms_number == session[:sms_number]
+      session[:sms_through] = "sms_through"
+      redirect_to adress_signup_index_path
+    else
+      render "signup/sms_confirmation"
+    end
+  end
+
   def adress
     @profile = Profile.new
   end
 
   def creditcard
-   
   end
 
   def done
   end
 
   def signin
-
   end
 
+  #1→2ページへのバリデーション判定
   def first_validation
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
@@ -58,25 +102,26 @@ class SignupController < ApplicationController
       family_name_kana: session[:family_name_kana],
       personal_name_kana: session[:personal_name_kana],
       post_family_name: "仮登録",
-      post_personal_name: "仮免",
+      post_personal_name: "仮登録",
       post_family_name_kana: "カリ",
-      post_personal_name_kana: "トウ",
+      post_personal_name_kana: "トウロク",
       prefecture: '沖縄',
       city: '那覇市',
-      adress: 'うちなー',
+      adress: 'テスト',
       postal_code: '888-8888'
     )
     @user.valid?
     @profile.valid?
     unless verify_recaptcha(model: @profile) && @user.valid? && @profile.valid?
-      binding.pry
       render 'signup/registration' 
     else
+      session[:through_first_valid] = "through_first_valid"
       redirect_to sms_authentication_signup_index_path
     end
 
   end
-
+  
+  #3→4ページ目のバリデーション判定
   def second_validation
     session[:prefecture] = profile_params[:prefecture]
     session[:city] = profile_params[:city]
@@ -103,10 +148,10 @@ class SignupController < ApplicationController
       personal_name: session[:personal_name],
       family_name_kana: session[:family_name_kana],
       personal_name_kana: session[:personal_name_kana],
-      post_family_name: session[:family_name],
-      post_personal_name: session[:personal_name],
-      post_family_name_kana: session[:family_name_kana],
-      post_personal_name_kana: session[:personal_name_kana],
+      post_family_name: session[:post_family_name],
+      post_personal_name: session[:post_personal_name],
+      post_family_name_kana: session[:post_family_name_kana],
+      post_personal_name_kana: session[:post_personal_name_kana],
       prefecture: session[:prefecture],
       city: session[:city],
       adress: session[:adress],
@@ -115,13 +160,18 @@ class SignupController < ApplicationController
     unless @profile.valid? 
       render 'signup/adress' 
     else
+      session[:through_second_valid] = "through_second_valid"
       redirect_to creditcard_signup_index_path
     end
   end
 
+  #ユーザー情報の一括create
   def create
     @user = User.new(nickname: session[:nickname],email: session[:email],password: session[:password],password_confirmation: session[:password_confirmation])
-    render "signup/registration" unless @user.save
+    unless @user.save
+      reset_session
+      redirect_to signup_index_path
+    end
     @profile = Profile.create(
       user: @user,
       birthyear: session[:birthyear],
@@ -131,10 +181,10 @@ class SignupController < ApplicationController
       personal_name: session[:personal_name],
       family_name_kana: session[:family_name_kana],
       personal_name_kana: session[:personal_name_kana],
-      post_family_name: session[:family_name],
-      post_personal_name: session[:personal_name],
-      post_family_name_kana: session[:family_name_kana],
-      post_personal_name_kana: session[:personal_name_kana],
+      post_family_name: session[:post_family_name],
+      post_personal_name: session[:post_personal_name],
+      post_family_name_kana: session[:post_family_name_kana],
+      post_personal_name_kana: session[:post_personal_name_kana],
       prefecture: session[:prefecture],
       city: session[:city],
       adress: session[:adress],
@@ -142,9 +192,7 @@ class SignupController < ApplicationController
       tel: session[:tel],
       building: session[:building]
     )
-    customer = Payjp::Customer.create(
-      card: params[:payjp_token]
-    )
+    customer = Payjp::Customer.create(card: params[:payjp_token])
     @creditcard = Creditcard.new(user: @user,customer_id: customer.id,card_id: customer.default_card)
     if @creditcard.save
       reset_session
@@ -155,7 +203,6 @@ class SignupController < ApplicationController
     end
   end
   
-  
   private
   
   def user_params
@@ -163,7 +210,24 @@ class SignupController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel)
+    params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel,:post_family_name,:post_personal_name,:post_family_name_kana,:post_personal_name_kana)
+  end
+
+  #不正アクセス対策
+  def redirect_to_index_from_sms
+    redirect_to signup_index_path unless session[:through_first_valid].present? && session[:through_first_valid] == "through_first_valid"
+  end
+
+  def redirect_to_index_from_credit
+    redirect_to signup_index_path unless session[:through_second_valid].present? && session[:through_second_valid] == "through_second_valid"
+  end
+
+  def redirect_to_index_from_sms_confirmation
+    redirect_to signup_index_path unless session[:through_send_number].present? && session[:through_send_number] == "through_send_number"
+  end
+
+  def redirect_to_index_from_adress
+    redirect_to signup_index_path unless session[:sms_through].present? && session[:sms_through] == "sms_through"
   end
 
 end

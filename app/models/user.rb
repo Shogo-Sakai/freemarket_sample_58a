@@ -6,10 +6,10 @@ class User < ApplicationRecord
   has_one :profile
   has_one :creditcard
   
-  EMAIL_VALIDATION =  /.*@.*/
-  # 1ページ目入力項目
-  validates :email,                   presence: true, format: { with: EMAIL_VALIDATION }
-  validates :password,                presence: true, length: {minimum: 6, maximum: 128}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  PASSWORD_VALIDATION = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i
+  validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
+  validates :password,                presence: true, length: {minimum: 6, maximum: 128},format: { with: PASSWORD_VALIDATION }
   validates :password_confirmation,   presence: true, length: {minimum: 6, maximum: 128}
   validates :nickname, presence: true,length: {maximum: 20}
 end

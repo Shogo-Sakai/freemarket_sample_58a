@@ -24,10 +24,14 @@ Rails.application.routes.draw do
   resources :signup ,only: [:index,:create] do
     collection do
       get 'registration'
-      post 'first_validation'
+      post 'registration' => 'signup#first_validation'
       get 'sms_authentication' 
+      post 'sms_authentication' => 'signup#sms_post'
+      get 'sms_confirmation' 
+      post 'sms_confirmation' => 'signup#sms_check'
       get 'adress' 
-      post 'second_validation'
+      post 'adress' => 'signup#second_validation'
+      get 'sms_confirmation'
       get 'creditcard'
       get 'done'
     end

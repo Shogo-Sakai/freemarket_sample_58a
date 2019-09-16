@@ -3,24 +3,36 @@
 .signup-container
   %h2.signup-header 発送元・お届け先住所入力
   .registration-form
-    = form_for @profile ,url: second_validation_signup_index_path,method: :post do |f|
+    = form_for @profile ,url: adress_signup_index_path,method: :post do |f|
       .signup-form-container.registration-form__first-container
         .signup-form-container__title
           = label :name, 'お名前', class: 'signup-label'
           %span.signup-form-container__span.span-need 必須
         = f.text_field :post_family_name, placeholder: '例）山田', class: 'default-input'
         = f.text_field :post_personal_name, placeholder: '例）彩', class: 'default-input__under default-input'
+        - if (@profile.errors.details[:post_family_name].present? && @profile.errors.messages[:post_family_name].include?("can't be blank")) || (@profile.errors.details[:post_personal_name].present? && @profile.errors.messages[:post_personal_name].include?("can't be blank"))
+          .input-error 入力してください
+        - if (@profile.errors.details[:post_family_name].present? && @profile.errors.messages[:post_family_name].include?("is too long (maximum is 35 characters)")) || (@profile.errors.details[:post_personal_name].present? && @profile.errors.messages[:post_personal_name].include?("is too long (maximum is 35 characters)"))
+          .input-error 35文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
           = label :name, 'お名前カナ', class: 'signup-label'
           %span.signup-form-container__span.span-need 必須
         = f.text_field :post_family_name_kana, placeholder: '例）ヤマダ', class: 'default-input'
         = f.text_field :post_personal_name_kana, placeholder: '例）アヤ', class: 'default-input__under default-input'
+        - if (@profile.errors.details[:post_family_name_kana].present? && @profile.errors.messages[:post_family_name_kana].include?("can't be blank")) || (@profile.errors.details[:post_personal_name_kana].present? && @profile.errors.messages[:post_personal_name_kana].include?("can't be blank"))
+          .input-error 入力してください
+        - if (@profile.errors.details[:post_personal_name_kana].present? && @profile.errors.messages[:post_personal_name_kana].include?("is too long (maximum is 35 characters)")) || (@profile.errors.details[:post_family_name_kana].present? && @profile.errors.messages[:post_family_name_kana].include?("is too long (maximum is 35 characters)"))
+          .input-error 35文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
           = label :postal_code, '郵便番号', class: 'signup-label'
           %span.signup-form-container__span.span-need 必須
         = f.text_field :postal_code, placeholder: '例）123-4567', class: 'default-input'
+        - if @profile.errors.details[:postal_code].present? && @profile.errors.messages[:postal_code].include?("can't be blank")
+          .input-error 入力してください
+        - if @profile.errors.details[:postal_code].present? && @profile.errors.messages[:postal_code].include?("is invalid")
+          .input-error フォーマットが不適切です
       .signup-form-container
         .signup-form-container__title
           = label :prefecture, '都道府県', class: 'signup-label'
@@ -28,25 +40,39 @@
         .select-wrap.select-wrap__full
           = f.collection_select :prefecture, Prefecture.all,:name,:name,{include_blank: '--'}, {class: 'default-select default-select__full'}
           %i.select-arrow.fas.fa-chevron-down
+        - if @profile.errors.details[:prefecture].present? && @profile.errors.messages[:prefecture].include?("can't be blank")
+          .input-error 入力してください
       .signup-form-container
         .signup-form-container__title
           = label :city, '市区町村', class: 'signup-label'
           %span.signup-form-container__span.span-need 必須
         = f.text_field :city, placeholder: '例）横浜市緑区', class: 'default-input'
+        - if @profile.errors.details[:city].present? && @profile.errors.messages[:city].include?("can't be blank")
+          .input-error 入力してください
+        - if @profile.errors.details[:city].present? && @profile.errors.messages[:city].include?("is too long (maximum is 50 characters)")
+          .input-error 50文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
           = label :adress, '番地', class: 'signup-label'
           %span.signup-form-container__span.span-need 必須
         = f.text_field :adress, placeholder: '例）青山1-1-1', class: 'default-input'
+        - if @profile.errors.details[:adress].present? && @profile.errors.messages[:adress].include?("can't be blank")
+          .input-error 入力してください
+        - if @profile.errors.details[:adress].present? && @profile.errors.messages[:adress].include?("is too long (maximum is 100 characters)")
+          .input-error 100文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
           = label :building, '建物名', class: 'signup-label'
           %span.signup-form-container__span.span-optional 任意
         = f.text_field :building, placeholder: '例）柳ビル103', class: 'default-input'
+        - if @profile.errors.details[:building].present? && @profile.errors.messages[:building].include?("is too long (maximum is 100 characters)")
+          .input-error 100文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
           = label :tel, '電話', class: 'signup-label'
           %span.signup-form-container__span.span-optional 任意
         = f.text_field :tel, placeholder: '例）09012345678', class: 'default-input'
+        - if @profile.errors.details[:tel].present? && @profile.errors.messages[:tel].include?("is too long (maximum is 100 characters)")
+          .input-error 100文字以下で入力してください
       = f.submit '次へ進む',class: 'submit-btn submit-btn-red'
 = render partial: 'simple-footer'

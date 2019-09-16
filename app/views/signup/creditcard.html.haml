@@ -45,6 +45,6 @@
     .registration-form__link-cvc
       %p.registration-form__link-text--text.default-link-text 
         %i.fas.fa-question-circle.link-space-reset
-        %a.default-link-text カード背面の番号とは？
+        = link_to 'カード背面の番号とは？','',{class: "default-link-text"}
     %input.submit-btn.submit-btn-red#token_submit{type: 'submit',value: '次へ進む'} 
 = render partial: 'simple-footer'
