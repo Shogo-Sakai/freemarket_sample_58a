@@ -124,6 +124,30 @@ header{
           list-style: none;
           display: flex;
 
+          &__heart{
+            padding: 0px 14px 0px 0px;
+            
+            a{
+              -webkit-box-align: center;
+              align-items: center;
+              display: flex;
+              font-size: 14px;
+              height: 32px;
+              transform: scale(1);
+              transition: all 0.3s ease-out 0s;
+              text-decoration: none;
+              color: #333;
+              
+              i{
+                max-width: 100%;
+                height: auto;
+                max-height: 100%;
+                color: rgb(204, 204, 204);
+                margin-right: 10px; 
+              }
+            }
+          }
+
           &__notice{
             padding: 0px 14px 0px 0px;
             

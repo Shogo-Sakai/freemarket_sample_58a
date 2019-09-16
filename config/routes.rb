@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'show'
       get 'edit'
       get 'logout'
+      get 'edit_profile'
     end
   end
 
