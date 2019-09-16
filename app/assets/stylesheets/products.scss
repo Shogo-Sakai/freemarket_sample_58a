@@ -124,14 +124,12 @@
   }
 }
 
-
 // 商品出品ページ
 .sell-upload-form{
   @extend %global-font;
   color: #333333;
   .sell-container-all-padding{
     padding: 40px;
-    
   }
   .sell-container-side-padding{
     padding: 0 40px 40px;
