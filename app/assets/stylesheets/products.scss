@@ -135,6 +135,39 @@
   }
   .sell-input{
     width: 100%;
+    min-height: 303px;
+    .dropzone{
+      box-sizing: border-box;
+      width: 620px;
+      min-height: 162px;
+      max-height: 825.87px;
+      overflow: hidden;
+      background-color: #f5f5f5;
+      padding: 40px;
+      margin-top: 16px;
+      @extend %centering;
+      flex-wrap: wrap;
+      border: 1px dashed #ccc;
+      text-align: center;
+      font-size: 14px;
+      font-family: monospace;
+    }
+  }
+  .sell-upload-label{
+    font-weight: bold;
+    display: inline-block;
+    height: 16px;
+  }
+  .container-border-top{
+    border-top: 1px solid #eee;
+  }
+  .sell-container-content{
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  .sell-input-area{
+    width: 620px;
+    height: 142px;
   }
   .signup-container{
     .sell-upload-form{
