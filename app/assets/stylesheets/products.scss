@@ -228,6 +228,9 @@
         margin-top: 1rem;
         font-weight: bold;
       }
+      #price_benefit{
+        font-size: 32px;
+      }
     }
     .margin-2rem{
       margin-top: 2rem;
@@ -261,6 +264,9 @@
     margin-bottom: -40px;
     &__btn{
       width: 620px;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
   .sell-container-back{
