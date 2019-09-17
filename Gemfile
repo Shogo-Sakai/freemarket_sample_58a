@@ -81,3 +81,6 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'jquery-rails'
+
+# 画像アップロード
+gem "dropzonejs-rails"
