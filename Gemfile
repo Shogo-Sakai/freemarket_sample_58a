@@ -120,3 +120,5 @@ gem "recaptcha", require: "recaptcha/rails"
 # SMS認証
 gem 'twilio-ruby', '~> 5.6.0'
 
+# 画像アップロード
+gem "dropzonejs-rails"
