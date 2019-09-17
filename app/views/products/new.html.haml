@@ -11,9 +11,19 @@
       %p.sell-container-content
         最大10枚までアップロードできます
       .upload-box
-        ドラッグアンドドロップ
-        %br
-        またはクリックしてファイルをアップロード
+        = form_for(Product.new, html: {multipart:true, class: "dropzone"}) do |f|
+          .fallback
+            = f.file_field :file_name, multiple: true
+          #dzmercari
+            .dz-preview.dz-file-preview
+              .dz-details
+                .dz-filename
+                  %span{"data-dz-name" => ""}
+                .dz-size{"data-dz-size" => ""}
+                %img{"data-dz-thumbnail" => ""}
+          ドラッグアンドドロップ
+          %br
+          またはクリックしてファイルをアップロード
     -# 商品名、商品の説明
     .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
       .signup-form-container__title
