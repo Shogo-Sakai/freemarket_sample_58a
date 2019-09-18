@@ -8,6 +8,7 @@ class SignupController < ApplicationController
   before_action :redirect_to_index_from_credit,only: :creditcard
   before_action :redirect_to_index_from_sms_confirmation,only: :sms_confirmation
   before_action :redirect_to_index_from_adress, only: :adress
+  before_action :redirect_to_root_user_signed_in
 
   def index
   end
@@ -26,19 +27,14 @@ class SignupController < ApplicationController
     @profile = Profile.new
     render sms_authentication_signup_index_path unless  profile_params[:tel].present?
     phone_number = profile_params[:tel].sub(/\A./,'+81')
-    client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
-    pass = []
-    5.times do
-      number = rand(1..9)
-      pass << number
-    end
-    sms_number = pass.join
+    sms_number = rand(10000..99999)
     session[:sms_number] = sms_number
+    client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
     begin 
       client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: phone_number,body: sms_number)
     rescue
       render "signup/sms_authentication"
-      return false;
+      return false
     end
     session[:through_send_number] = "through_send_number"
     redirect_to sms_confirmation_signup_index_path
@@ -52,7 +48,7 @@ class SignupController < ApplicationController
   def sms_check
     @profile = Profile.new
     sms_number = profile_params[:tel]
-    if sms_number == session[:sms_number]
+    if sms_number.to_i == session[:sms_number]
       session[:sms_through] = "sms_through"
       redirect_to adress_signup_index_path
     else
@@ -68,10 +64,9 @@ class SignupController < ApplicationController
   end
 
   def done
+    sign_in User.find(session[:id])
   end
-
-  def signin
-  end
+   
 
   #1→2ページへのバリデーション判定
   def first_validation
@@ -196,6 +191,7 @@ class SignupController < ApplicationController
     @creditcard = Creditcard.new(user: @user,customer_id: customer.id,card_id: customer.default_card)
     if @creditcard.save
       reset_session
+      session[:id] = @user.id
       redirect_to done_signup_index_path
     else
       reset_session
@@ -212,7 +208,7 @@ class SignupController < ApplicationController
   def profile_params
     params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel,:post_family_name,:post_personal_name,:post_family_name_kana,:post_personal_name_kana)
   end
-
+  
   #不正アクセス対策
   def redirect_to_index_from_sms
     redirect_to signup_index_path unless session[:through_first_valid].present? && session[:through_first_valid] == "through_first_valid"
@@ -229,5 +225,4 @@ class SignupController < ApplicationController
   def redirect_to_index_from_adress
     redirect_to signup_index_path unless session[:sms_through].present? && session[:sms_through] == "sms_through"
   end
-
 end

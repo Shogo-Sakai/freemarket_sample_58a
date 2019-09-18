@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-
+  devise_for :users, skip: :all
+  devise_scope :user do
+    delete 'destroy' => 'devise/sessions#destroy',as: :current_user_destroy
+  end
   
   # ユーザー
   resources 'users', except: [:show, :edit] do
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
   resources 'products'
   root 'products#new'
 
-  get "/signin" => "signup#signin"
+  resources :signin ,only: [:new,:create,:index]
 
   resources :signup ,only: [:index,:create] do
     collection do
