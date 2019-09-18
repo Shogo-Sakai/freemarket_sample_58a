@@ -7,7 +7,7 @@ class SignupController < ApplicationController
   before_action :redirect_to_index_from_sms,only: [:sms_authentication]
   before_action :redirect_to_index_from_credit,only: :creditcard
   before_action :redirect_to_index_from_sms_confirmation,only: :sms_confirmation
-  before_action :redirect_to_index_from_adress, only: :adress
+  before_action :redirect_to_index_from_address, only: :address
   before_action :redirect_to_root_user_signed_in
 
   def index
@@ -50,13 +50,13 @@ class SignupController < ApplicationController
     sms_number = profile_params[:tel]
     if sms_number.to_i == session[:sms_number]
       session[:sms_through] = "sms_through"
-      redirect_to adress_signup_index_path
+      redirect_to address_signup_index_path
     else
       render "signup/sms_confirmation"
     end
   end
 
-  def adress
+  def address
     @profile = Profile.new
   end
 
@@ -101,7 +101,7 @@ class SignupController < ApplicationController
       post_personal_name_kana: "トウロク",
       prefecture: '沖縄',
       city: '那覇市',
-      adress: 'テスト',
+      address: 'テスト',
       postal_code: '888-8888'
     )
     @user.valid?
@@ -119,7 +119,7 @@ class SignupController < ApplicationController
   def second_validation
     session[:prefecture] = profile_params[:prefecture]
     session[:city] = profile_params[:city]
-    session[:adress] = profile_params[:adress]
+    session[:address] = profile_params[:address]
     session[:postal_code] = profile_params[:postal_code]
     session[:tel] = profile_params[:tel]
     session[:building] = profile_params[:building]
@@ -148,11 +148,11 @@ class SignupController < ApplicationController
       post_personal_name_kana: session[:post_personal_name_kana],
       prefecture: session[:prefecture],
       city: session[:city],
-      adress: session[:adress],
+      address: session[:address],
       postal_code: session[:postal_code]
     )
     unless @profile.valid? 
-      render 'signup/adress' 
+      render 'signup/address' 
     else
       session[:through_second_valid] = "through_second_valid"
       redirect_to creditcard_signup_index_path
@@ -181,7 +181,7 @@ class SignupController < ApplicationController
       post_personal_name_kana: session[:post_personal_name_kana],
       prefecture: session[:prefecture],
       city: session[:city],
-      adress: session[:adress],
+      address: session[:address],
       postal_code: session[:postal_code],
       tel: session[:tel],
       building: session[:building]
@@ -205,7 +205,7 @@ class SignupController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:adress,:building,:tel,:post_family_name,:post_personal_name,:post_family_name_kana,:post_personal_name_kana)
+    params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:address,:building,:tel,:post_family_name,:post_personal_name,:post_family_name_kana,:post_personal_name_kana)
   end
   
   #不正アクセス対策
@@ -221,7 +221,7 @@ class SignupController < ApplicationController
     redirect_to signup_index_path unless session[:through_send_number].present? && session[:through_send_number] == "through_send_number"
   end
 
-  def redirect_to_index_from_adress
+  def redirect_to_index_from_address
     redirect_to signup_index_path unless session[:sms_through].present? && session[:sms_through] == "sms_through"
   end
 end

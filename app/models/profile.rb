@@ -12,7 +12,7 @@ class Profile < ApplicationRecord
   validates :postal_code, presence: true, length: {maximum: 100},format: { with: POSTAL_CODE_VALID }
   validates :prefecture, presence: true, length: {maximum: 100}
   validates :city, presence: true, length: {maximum: 50}
-  validates :adress, presence: true, length: {maximum: 100}
+  validates :address, presence: true, length: {maximum: 100}
   validates :post_family_name,presence: true, length: {maximum: 35}
   validates :post_personal_name,presence: true, length: {maximum: 35}
   validates :post_family_name_kana,presence: true, length: {maximum: 35}

@@ -97,7 +97,7 @@
             %span.signup-form-container__birthday--span 日
           - if @profile.errors.details[:birthyear].present? || @profile.errors.details[:birthmonth].present? || @profile.errors.details[:birthday].present?
             .input-error 生年月日を入力してください
-        %p.form-infomation-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+        %p.form-information-text ※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
         .signup-form-container.recaptcha-container
           - if @profile.errors.messages[:base].present? && @profile.errors.messages[:base].include?("reCAPTCHA verification failed, please try again.")
             .recaptcha-error-border
