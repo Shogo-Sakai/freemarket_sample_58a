@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_082153) do
+ActiveRecord::Schema.define(version: 2019_09_18_095533) do
 
   create_table "bigcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +18,12 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_indices_id"], name: "index_bigcategories_on_category_indices_id"
+  end
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "category_indices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,6 +77,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
     t.bigint "category_indices_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_indices_id"], name: "index_products_on_category_indices_id"
   end
 
@@ -88,19 +96,22 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
     t.index ["bigcategories_id"], name: "index_smallcategories_on_bigcategories_id"
   end
 
-  create_table "smallcategory_has_sizetables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "smallcategories_id"
-    t.bigint "sizes_id"
-    t.index ["sizes_id"], name: "index_smallcategory_has_sizetables_on_sizes_id"
-    t.index ["smallcategories_id"], name: "index_smallcategory_has_sizetables_on_smallcategories_id"
+  create_table "smallcategories_has_sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "smallcategory_id"
+    t.bigint "size_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["size_id"], name: "index_smallcategories_has_sizes_on_size_id"
+    t.index ["smallcategory_id"], name: "index_smallcategories_has_sizes_on_smallcategory_id"
   end
 
   add_foreign_key "bigcategories", "category_indices", column: "category_indices_id"
   add_foreign_key "deliveries", "products", column: "products_id"
   add_foreign_key "images", "products", column: "products_id"
   add_foreign_key "prices", "products", column: "products_id"
+  add_foreign_key "products", "brands"
   add_foreign_key "products", "category_indices", column: "category_indices_id"
   add_foreign_key "smallcategories", "bigcategories", column: "bigcategories_id"
-  add_foreign_key "smallcategory_has_sizetables", "sizes", column: "sizes_id"
-  add_foreign_key "smallcategory_has_sizetables", "smallcategories", column: "smallcategories_id"
+  add_foreign_key "smallcategories_has_sizes", "sizes"
+  add_foreign_key "smallcategories_has_sizes", "smallcategories"
 end
