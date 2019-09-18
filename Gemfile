@@ -66,6 +66,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 
+  # ER図作成gem
+  gem "rails-erd"
 end
 
 group :test do
