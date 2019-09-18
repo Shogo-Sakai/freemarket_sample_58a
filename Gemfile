@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rails-controller-testing'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 
 # capistrano関係
   gem 'capistrano'
@@ -63,6 +66,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  #ダミーデータ作成のため（created_atが同一になることを防ぐ）
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -81,4 +86,6 @@ gem 'fog-aws'
 gem 'haml-rails'
 gem "font-awesome-rails"
 gem 'jquery-rails'
-gem 'rspec-rails'
+
+#デバッグ
+gem 'pry-rails'
