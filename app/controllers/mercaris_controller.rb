@@ -1,5 +1,5 @@
 class MercarisController < ApplicationController
   def index
-    @products = Product.all.order('created_at DESC').limit(10)
+    @products = Product.order('created_at DESC').limit(10)
   end
 end
