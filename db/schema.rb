@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
 
   create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
 ActiveRecord::Schema.define(version: 2019_09_18_080813) do
+ActiveRecord::Schema.define(version: 2019_09_18_082153) do
 
   create_table "bigcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +57,17 @@ ActiveRecord::Schema.define(version: 2019_09_18_080813) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "fee_person", null: false
+    t.string "from_area", null: false
+    t.integer "day_id", null: false
+    t.integer "how_id", null: false
+    t.bigint "products_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["products_id"], name: "index_deliveries_on_products_id"
   end
 
   create_table "deploy_checks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -162,6 +174,24 @@ ActiveRecord::Schema.define(version: 2019_09_18_080813) do
   add_foreign_key "smallcategories", "bigcategories"
   add_foreign_key "smallcategories_has_sizes", "sizes"
   add_foreign_key "smallcategories_has_sizes", "smallcategories"
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content", null: false
+    t.bigint "products_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["products_id"], name: "index_images_on_products_id"
+  end
+
+  create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "sell", null: false
+    t.integer "fee", null: false
+    t.integer "benefit", null: false
+    t.bigint "products_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["products_id"], name: "index_prices_on_products_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "text", null: false
@@ -197,6 +227,9 @@ ActiveRecord::Schema.define(version: 2019_09_18_080813) do
   end
 
   add_foreign_key "bigcategories", "category_indices", column: "category_indices_id"
+  add_foreign_key "deliveries", "products", column: "products_id"
+  add_foreign_key "images", "products", column: "products_id"
+  add_foreign_key "prices", "products", column: "products_id"
   add_foreign_key "products", "category_indices", column: "category_indices_id"
   add_foreign_key "smallcategories", "bigcategories", column: "bigcategories_id"
   add_foreign_key "smallcategory_has_sizetables", "sizes", column: "sizes_id"
