@@ -67,7 +67,6 @@ class SignupController < ApplicationController
     sign_in User.find(session[:id])
   end
    
-
   #1→2ページへのバリデーション判定
   def first_validation
     session[:nickname] = user_params[:nickname]

@@ -13,7 +13,6 @@ class SigninController < ApplicationController
   def create
     @signin = Signin.new(email: signin_params[:email], password: signin_params[:password])
     @signin.valid?
-    binding.pry
     unless verify_recaptcha(@signin) && @signin.valid?
       render "signin/new"
     else
