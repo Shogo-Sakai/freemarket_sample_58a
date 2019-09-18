@@ -1,0 +1,36 @@
+- content_for(:html_title) {'ログイン'}
+= render partial: 'signup/simple-header'
+.signin-container
+  .signin-top
+    .signin-top__signup
+      %p.signin-top__signup__text アカウントをお持ちでない方はこちら
+      = link_to '新規会員登録',registration_signup_index_path,class: 'submit-btn signin-top__signup--btn'
+    .signin-top__form
+      .signin-top__form__sns
+        = link_to root_path,class: 'submit-btn signin-top__form__sns__facebook' do
+          %i.fab.fa-facebook-square.signin-top__form--icon.signin-top__form--facebook
+          = 'Facebookでログイン'
+        = link_to root_path,class: 'submit-btn signin-top__form__sns__google' do
+          %i.fab.fa-google.signin-top__form--icon.signin-top__form--google
+          = 'Googleでログイン'
+      .signin-top__form__normal
+        = form_for @signin,url: signin_index_path,method: :post do |f|
+          = f.email_field :email, placeholder: 'メールアドレス',class: 'signin-top__form__normal--email default-input'
+          - if @signin.errors.messages[:email].present? && @signin.errors.messages[:email].include?("can't be blank")
+            .input-error メールアドレスを入力してください
+          - elsif @signin.errors.messages[:email].present? && @signin.errors.messages[:email].include?("is invalid")
+            .input-error フォーマットが不適切です
+          = f.password_field :password, placeholder: 'パスワード',class: 'signin-top__form__normal--password default-input'
+          - if @signin.errors.messages[:password].present? && @signin.errors.messages[:password].include?("can't be blank")
+            .input-error パスワードを入力してください
+          - if @signin.errors.messages[:password].present? && (@signin.errors.messages[:password].include?("is too short (minimum is 6 characters)") || @signin.errors.messages[:password].include?("is too long (maximum is 128 characters)"))
+            .input-error パスワードは7文字以上128文字以下で入力してください
+          .signup-form-container.recaptcha-container
+            - if @signin.errors.messages[:base].present? && @signin.errors.messages[:base].include?("reCAPTCHA verification failed, please try again.")
+              .recaptcha-error-border
+            = recaptcha_tags
+            - if @signin.errors.messages[:base].present? && @signin.errors.messages[:base].include?("reCAPTCHA verification failed, please try again.")
+              .input-error 選択してください
+          =f.submit "ログイン",class: "submit-btn submit-btn-red"
+        = link_to 'パスワードをお忘れの方', '',class: 'signin-top__form__normal--link default-link-text'
+= render partial: 'signup/simple-footer'

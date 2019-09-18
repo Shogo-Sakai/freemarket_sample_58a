@@ -13,8 +13,7 @@
       .user-mypage-wrapper__main__box__title
         %form.user-mypage-wrapper__main__box__title__inner
           .user-mypage-wrapper__main__box__title__inner__content
-            %button.user-mypage-wrapper__main__box__title__inner__content__btn
-              ログアウト
+            = link_to 'ログアウト',current_user_destroy_path,method: :delete,class: "user-mypage-wrapper__main__box__title__inner__content__btn submit-btn submit-btn-red"
   = render "layouts/user-navi"  
 
 -# footer

@@ -29,7 +29,8 @@
         = f.password_field :password,placeholder: '７文字以上', class: 'default-input'
         - if @user.errors.details[:password].present? && @user.errors.messages[:password].include?("can't be blank")
           .input-error パスワードを入力してください
-        - if @user.errors.details[:password].present? && @user.errors.messages[:password].include?("is too short (minimum is 6 characters)") && @user.errors.messages[:password].include?("is too long (maximum is 128 characters)")
+        - if @user.errors.details[:password].
+        present? && (@user.errors.messages[:password].include?("is too short (minimum is 6 characters)") && @user.errors.messages[:password].include?("is too long (maximum is 128 characters)"))
           .input-error パスワードは7文字以上128文字以下で入力してください
         - if @user.errors.details[:password].present? && @user.errors.messages[:password].include?("is invalid")
           .input-error 英字と数字両方を含むパスワードを設定してください
