@@ -17,7 +17,7 @@ Database design
 - has_one :creditcard, dependent: :destroy
 - has_many :products, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-- has_many :infomations, dependent: :destroy
+- has_many :informations, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id", dependent: :destroy
 - has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id", dependent: :destroy
@@ -44,7 +44,7 @@ Database design
 |post_personal_name_kana|string|null: false|
 |postal_code|integer|null: false|
 |city|string|null: false|
-|adress|string|null: false|
+|address|string|null: false|
 |building|string||
 |tel|integer||
 |prefecture|string|null: false|
@@ -65,7 +65,7 @@ Database design
 
 - belongs_to :user
 
-## Infomationsテーブル
+## informationsテーブル
 
 |Column|Type|Options|
 |------|----|-------|

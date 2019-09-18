@@ -3,7 +3,7 @@
 .signup-container
   %h2.signup-header 発送元・お届け先住所入力
   .registration-form
-    = form_for @profile ,url: adress_signup_index_path,method: :post do |f|
+    = form_for @profile ,url: address_signup_index_path,method: :post do |f|
       .signup-form-container.registration-form__first-container
         .signup-form-container__title
           = label :name, 'お名前', class: 'signup-label'
@@ -53,12 +53,12 @@
           .input-error 50文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
-          = label :adress, '番地', class: 'signup-label'
+          = label :address, '番地', class: 'signup-label'
           %span.signup-form-container__span.span-need 必須
-        = f.text_field :adress, placeholder: '例）青山1-1-1', class: 'default-input'
-        - if @profile.errors.details[:adress].present? && @profile.errors.messages[:adress].include?("can't be blank")
+        = f.text_field :address, placeholder: '例）青山1-1-1', class: 'default-input'
+        - if @profile.errors.details[:address].present? && @profile.errors.messages[:address].include?("can't be blank")
           .input-error 入力してください
-        - if @profile.errors.details[:adress].present? && @profile.errors.messages[:adress].include?("is too long (maximum is 100 characters)")
+        - if @profile.errors.details[:address].present? && @profile.errors.messages[:address].include?("is too long (maximum is 100 characters)")
           .input-error 100文字以下で入力してください
       .signup-form-container
         .signup-form-container__title
