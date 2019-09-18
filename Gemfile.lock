@@ -412,6 +412,7 @@ DEPENDENCIES
   rails-erd
   recaptcha
   rspec-rails
+  rails-erd
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
