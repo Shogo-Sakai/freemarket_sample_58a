@@ -1,0 +1,8 @@
+class CreateSmallcategoryHasSizetable < ActiveRecord::Migration[5.2]
+  def change
+    create_table :smallcategory_has_sizetables do |t|
+      t.references :smallcategories, foreign_key: true
+      t.references :sizes, foreign_key: true
+    end
+  end
+end
