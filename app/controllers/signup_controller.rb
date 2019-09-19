@@ -55,9 +55,10 @@ class SignupController < ApplicationController
       address: 'テスト',
       postal_code: '888-8888'
     )
-    @user.valid?
-    @profile.valid?
-    unless verify_recaptcha(model: @profile) && @user.valid? && @profile.valid?
+    #バリデーションエラーを事前に取得させる
+    check_user_validation = @user.valid?
+    check_profile_validation = @profile.valid?
+    unless verify_recaptcha(model: @profile) && check_user_validation && check_profile_validation
       render 'signup/registration' 
     else
       session[:through_first_valid] = "through_first_valid"
