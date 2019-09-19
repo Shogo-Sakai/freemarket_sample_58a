@@ -68,6 +68,9 @@ group :development do
 
   # ER図作成gem
   gem "rails-erd"
+
+  # activehash
+  gem 'active_hash'
 end
 
 group :test do
