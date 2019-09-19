@@ -29,7 +29,7 @@
         = f.password_field :password,placeholder: '７文字以上', class: 'default-input'
         - if judge_blank(@user,:password)
           .input-error パスワードを入力してください
-        - if judge_length_short(@user,:password,7) && judge_length_long(@user,:password,128)
+        - if judge_length_short(@user,:password,7) || judge_length_long(@user,:password,128)
           .input-error パスワードは7文字以上128文字以下で入力してください
         - if judge_format(@user,:password)
           .input-error 英字と数字両方を含むパスワードを設定してください
