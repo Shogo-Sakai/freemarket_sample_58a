@@ -7,7 +7,6 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer    :user_id
       t.integer    :sell_status_id,   null: false
       t.integer    :size_id
-      t.references :category_indices, foreign_key: true
 
       t.timestamps
     end
