@@ -4,7 +4,7 @@ class SignupController < ApplicationController
   Payjp.api_key = ENV["PAYJP_PRYVATE_KEY"]
   
   #不正アクセス対策
-  before_action :redirect_to_index_from_sms,only: [:sms_authentication]
+  before_action :redirect_to_index_from_sms,only: :sms_authentication
   before_action :redirect_to_index_from_credit,only: :creditcard
   before_action :redirect_to_index_from_sms_confirmation,only: :sms_confirmation
   before_action :redirect_to_index_from_address, only: :address
@@ -18,55 +18,6 @@ class SignupController < ApplicationController
     @profile = Profile.new
   end
 
-  def sms_authentication
-    @profile = Profile.new
-  end
-
-  #sms送信アクション
-  def sms_post
-    @profile = Profile.new
-    render sms_authentication_signup_index_path unless  profile_params[:tel].present?
-    phone_number = profile_params[:tel].sub(/\A./,'+81')
-    sms_number = rand(10000..99999)
-    session[:sms_number] = sms_number
-    client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
-    begin 
-      client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: phone_number,body: sms_number)
-    rescue
-      render "signup/sms_authentication"
-      return false
-    end
-    session[:through_send_number] = "through_send_number"
-    redirect_to sms_confirmation_signup_index_path
-  end
-  
-  def sms_confirmation
-    @profile = Profile.new
-  end
-
-  #smsの確認
-  def sms_check
-    @profile = Profile.new
-    sms_number = profile_params[:tel]
-    if sms_number.to_i == session[:sms_number]
-      session[:sms_through] = "sms_through"
-      redirect_to address_signup_index_path
-    else
-      render "signup/sms_confirmation"
-    end
-  end
-
-  def address
-    @profile = Profile.new
-  end
-
-  def creditcard
-  end
-
-  def done
-    sign_in User.find(session[:id])
-  end
-   
   #1→2ページへのバリデーション判定
   def first_validation
     session[:nickname] = user_params[:nickname]
@@ -112,9 +63,63 @@ class SignupController < ApplicationController
       session[:through_first_valid] = "through_first_valid"
       redirect_to sms_authentication_signup_index_path
     end
+  end
 
+  def sms_authentication
+    @profile = Profile.new
+  end
+
+  # sms送信アクション(SMS送信可能な番号が限られているためコメントアウト)
+  # 使用する場合は、環境変数に自身のtwillioAPIを設定してコメントアウトを外して動作させてください。
+  def sms_post
+    @profile = Profile.new
+    # render sms_authentication_signup_index_path unless  profile_params[:tel].present?
+    # phone_number = profile_params[:tel].sub(/\A./,'+81')
+    # sms_number = rand(10000..99999)
+    # session[:sms_number] = sms_number
+    # client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
+    # begin 
+    #   client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: phone_number,body: sms_number)
+    # rescue
+    #   render "signup/sms_authentication"
+    #   return false
+    # end
+    session[:through_send_number] = "through_send_number"
+    redirect_to sms_confirmation_signup_index_path
   end
   
+  def sms_confirmation
+    @profile = Profile.new
+  end
+
+  # smsの確認(SMS送信可能な番号が限られているためコメントアウト)
+  # 使用する場合は、環境変数に自身のtwillioAPIを設定してコメントアウトを外して動作させてください。
+  def sms_check
+    @profile = Profile.new
+    # sms_number = profile_params[:tel]
+    # if sms_number.to_i == session[:sms_number]
+      session[:sms_through] = "sms_through"
+      redirect_to address_signup_index_path
+    # else
+    #  render "signup/sms_confirmation"
+    # end
+  end
+
+  def address
+    @profile = Profile.new
+  end
+
+  def creditcard
+  end
+
+  def done
+    unless session[:id]
+      redirect_to signup_index_path 
+      return false
+    end
+    sign_in User.find(session[:id])
+  end
+   
   #3→4ページ目のバリデーション判定
   def second_validation
     session[:prefecture] = profile_params[:prefecture]

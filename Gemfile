@@ -43,12 +43,18 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 
-# capistrano関係
+  # capistrano関係
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+
+  #テスト
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -62,6 +68,7 @@ group :development do
   #better_errors
   gem 'better_errors'
   gem 'binding_of_caller'
+
 end
 
 group :test do
