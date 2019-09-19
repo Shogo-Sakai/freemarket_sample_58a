@@ -14,7 +14,6 @@ class SigninController < ApplicationController
     @signin = Signin.new(email: signin_params[:email], password: signin_params[:password])
     @signin.valid?
     unless verify_recaptcha(@signin) && @signin.valid?
-      binding.pry
       render "signin/new"
     else
       @user = User.find_by_email(@signin.email)

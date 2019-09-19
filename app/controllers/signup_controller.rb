@@ -213,7 +213,6 @@ class SignupController < ApplicationController
     params.require(:profile).permit(:birthyear,:birthmonth,:birthday,:family_name,:personal_name,:family_name_kana,:personal_name_kana,:postal_code,:prefecture,:city,:address,:building,:tel,:post_family_name,:post_personal_name,:post_family_name_kana,:post_personal_name_kana)
   end
   
-  #不正アクセス対策
   def redirect_to_index_from_sms
     redirect_to signup_index_path unless session[:through_first_valid].present? && session[:through_first_valid] == "through_first_valid"
   end
