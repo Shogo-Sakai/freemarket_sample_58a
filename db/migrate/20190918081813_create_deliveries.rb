@@ -5,7 +5,7 @@ class CreateDeliveries < ActiveRecord::Migration[5.2]
       t.string :from_area,       null:false
       t.integer :day_id,         null:false
       t.integer :how_id,         null:false
-      t.references :products, foreign_key: true
+      t.references :product, foreign_key: true
 
       t.timestamps
     end
