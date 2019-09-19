@@ -34,7 +34,6 @@ Rails.application.routes.draw do
       post 'sms_confirmation' => 'signup#sms_check'
       get 'address' 
       post 'address' => 'signup#second_validation'
-      get 'sms_confirmation'
       get 'creditcard'
       get 'done'
     end
