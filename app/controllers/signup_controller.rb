@@ -56,8 +56,8 @@ class SignupController < ApplicationController
       postal_code: '888-8888'
     )
     #バリデーションエラーを事前に取得させる
-    check_user_validation = @user.valid?
-    check_profile_validation = @profile.valid?
+    check_user_valid = @user.valid?
+    check_profile_valid = @profile.valid?
     unless verify_recaptcha(model: @profile) && check_user_validation && check_profile_validation
       render 'signup/registration' 
     else
