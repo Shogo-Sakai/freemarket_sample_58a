@@ -12,8 +12,9 @@ class SigninController < ApplicationController
 
   def create
     @signin = Signin.new(email: signin_params[:email], password: signin_params[:password])
-    @signin.valid?
-    unless verify_recaptcha(@signin) && @signin.valid?
+    #バリデーションエラーを事前に取得
+    check_valid = @signin.valid?
+    unless verify_recaptcha(@signin) && check_valid
       render "signin/new"
     else
       @user = User.find_by_email(@signin.email)
