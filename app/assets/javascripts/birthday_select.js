@@ -1,8 +1,6 @@
 $(document).on('turbolinks:load',function(){
   function addHtml(value){
-    var html = `<option value=${value}>
-                ${value}
-                </option>`
+    var html = `<option value=${value}>${value}</option>`
     return html;
   };
   var blankHtml = `<option>--</option>`

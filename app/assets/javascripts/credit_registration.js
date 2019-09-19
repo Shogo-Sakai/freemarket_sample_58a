@@ -1,7 +1,5 @@
 $(document).on('turbolinks:load',function(){
-  var html = `<div class="error-message__need">
-                必須項目です
-              </div>`
+  var html = `<div class="error-message__need">必須項目です</div>`
   $(".submit-btn").click(function() {
     $(".submit_btn").prop("disabled", true);
       var  number = $(".number").val();
@@ -19,14 +17,14 @@ $(document).on('turbolinks:load',function(){
       if (response.error) {
         $(".submit_btn").prop('disabled', false);
         if ($(".number").val().length === 0){
-          $(".number").addClass("error_form")
+          $(".number").addClass("error_form");
           $("#number-error").html(html);
         };
         if  ($(".cvc").val().length === 0){
-          $(".cvc").addClass("error_form")
+          $(".cvc").addClass("error_form");
           $("#cvc-error").html(html);
         };
-        alert("カード情報を正しく入力してください")
+        alert("カード情報を正しく入力してください");
       }
       else {
         $(".number").removeAttr("name");
