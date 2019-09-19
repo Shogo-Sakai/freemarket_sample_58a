@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_095533) do
+ActiveRecord::Schema.define(version: 2019_09_19_065446) do
 
   create_table "bigcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -213,8 +213,12 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
     t.bigint "category_index_id"
+    t.bigint "bigcategory_id"
+    t.bigint "smallcategory_id"
+    t.index ["bigcategory_id"], name: "index_products_on_bigcategory_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_index_id"], name: "index_products_on_category_index_id"
+    t.index ["smallcategory_id"], name: "index_products_on_smallcategory_id"
   end
 
   create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -244,8 +248,10 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
   add_foreign_key "deliveries", "products"
   add_foreign_key "images", "products"
   add_foreign_key "prices", "products"
+  add_foreign_key "products", "bigcategories"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "category_indices"
+  add_foreign_key "products", "smallcategories"
   add_foreign_key "smallcategories", "bigcategories"
   add_foreign_key "smallcategories_has_sizes", "sizes"
   add_foreign_key "smallcategories_has_sizes", "smallcategories"
