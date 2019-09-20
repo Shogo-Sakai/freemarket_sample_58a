@@ -11,7 +11,4 @@ class ProductFreshness < ActiveHash::Base
     {id: 6, status: "全体的に状態が悪い"}
   ]
 
-  # アソシエーション
-  belongs_to :product
-
 end

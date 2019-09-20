@@ -61,6 +61,10 @@ group :development do
 
   # activehash
   gem 'active_hash'
+
+  # bettererrors
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -81,6 +85,7 @@ end
 
 # S3、画像関係
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog-aws'
 
 # haml

@@ -1,4 +1,4 @@
 class Size < ApplicationRecord
   has_many :smallcategories_has_sizes
-  has_one :product
+  belongs_to :product, optional:true
 end

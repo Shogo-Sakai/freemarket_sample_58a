@@ -7,7 +7,5 @@ class DeliverFee < ActiveHash::Base
     {id: 2, fee: "着払い(購入者負担)"}
   ]
 
-  # アソシエーション
-  belongs_to :product
 
 end
