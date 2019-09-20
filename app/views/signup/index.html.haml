@@ -8,10 +8,10 @@
         = link_to registration_signup_index_path,class: 'signup-top__form__content__btn signup-top__form__content__email' do
           %i.signup-top__form__content__btn--icon.email-icon
           = 'メールアドレスで登録する'
-        = link_to '#',class: 'signup-top__form__content__btn signup-top__form__content__facebook' do
+        = link_to user_facebook_omniauth_authorize_path ,class: 'signup-top__form__content__btn signup-top__form__content__facebook' do
           %i.fab.fa-facebook-square.signup-top__form__content__btn--icon.facebook-icon
           = 'Facebookで登録する'
-        = link_to '#',class: 'signup-top__form__content__btn signup-top__form__content__google' do
+        = link_to user_google_oauth2_omniauth_authorize_path,class: 'signup-top__form__content__btn signup-top__form__content__google' do
           %i.fab.fa-google.signup-top__form__content__btn--icon.google-icon
           = 'Googleで登録する'
 = render partial: 'simple-footer'

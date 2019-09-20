@@ -1,7 +1,7 @@
 class SignupController < ApplicationController
   layout 'form_layout'
   require 'payjp'
-  Payjp.api_key = ENV["PAYJP_PRYVATE_KEY"]
+  Payjp.api_key = Rails.application.secrets.PAYJP_PRYVATE_KEY
   
   #不正アクセス対策
   before_action :redirect_to_index_from_sms,only: :sms_authentication
@@ -22,8 +22,10 @@ class SignupController < ApplicationController
   def first_validation
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
+    if user_params[:password].present? && user_params[:password_confirmation].present?
+      session[:password] = user_params[:password] 
+      session[:password_confirmation] = user_params[:password_confirmation]
+    end
     session[:birthyear] = profile_params[:birthyear]
     session[:birthmonth] = profile_params[:birthmonth]
     session[:birthday] = profile_params[:birthday]
@@ -58,7 +60,8 @@ class SignupController < ApplicationController
     #バリデーションエラーを事前に取得させる
     check_user_valid = @user.valid?
     check_profile_valid = @profile.valid?
-    unless verify_recaptcha(model: @profile) && check_user_validation && check_profile_validation
+    binding.pry
+    unless verify_recaptcha(model: @profile) && check_user_valid && check_profile_valid
       render 'signup/registration' 
     else
       session[:through_first_valid] = "through_first_valid"
@@ -78,9 +81,9 @@ class SignupController < ApplicationController
     # phone_number = profile_params[:tel].sub(/\A./,'+81')
     # sms_number = rand(10000..99999)
     # session[:sms_number] = sms_number
-    # client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
+    # client = Twilio::REST::Client.new(Rails.application.secrets.TWILLIO_SID,Rails.application.secrets.TWILLIO_TOKEN)
     # begin 
-    #   client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: phone_number,body: sms_number)
+    #   client.api.account.messages.create(from: Rails.application.secrets.TWILLIO_NUMBER, to: phone_number,body: sms_number)
     # rescue
     #   render "signup/sms_authentication"
     #   return false
@@ -167,7 +170,14 @@ class SignupController < ApplicationController
 
   #ユーザー情報の一括create
   def create
-    @user = User.new(nickname: session[:nickname],email: session[:email],password: session[:password],password_confirmation: session[:password_confirmation])
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      uid: session[:uid],
+      provider: session[:provider]
+    )
     unless @user.save
       reset_session
       redirect_to signup_index_path

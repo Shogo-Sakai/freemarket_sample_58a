@@ -50,7 +50,6 @@ group :development, :test do
   #テスト
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'rails-controller-testing'
 end
 
@@ -117,4 +116,11 @@ gem "recaptcha", require: "recaptcha/rails"
 
 # SMS認証
 gem 'twilio-ruby', '~> 5.6.0'
+
+# sns認証
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+
+# faker
+gem 'faker'
 

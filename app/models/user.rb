@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+          :recoverable, :rememberable, :validatable, :omniauthable
   has_one :profile
   has_one :creditcard
 
@@ -12,4 +12,21 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 7, maximum: 128},format: { with: PASSWORD_VALIDATION }
   validates :password_confirmation, presence: true, length: {minimum: 7, maximum: 128}
   validates :nickname, presence: true,length: {maximum: 20}
+  
+  # sns認証、認証後、ユーザーの有無に応じて挙動を変更する
+  def self.from_omniauth(auth)
+    user = User.find_by(uid: auth.uid, provider: auth.provider)
+    if user
+      return user
+    else
+      new_user = User.new(
+        email: auth.info.email,
+        nickname: auth.info.name,
+        uid: auth.uid,
+        provider: auth.provider,
+        password: Faker::Internet.password(min_length: 8,max_length: 128)
+      )
+      return new_user
+    end
+  end
 end
