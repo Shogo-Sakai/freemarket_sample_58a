@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def new
     @product = Product.new
     @product.product_images.build

@@ -4,7 +4,7 @@ class CreatePrices < ActiveRecord::Migration[5.2]
       t.integer :sell,        null: false
       t.integer :fee,         null: false
       t.integer :benefit,     null: false
-      t.references :product, foreign_key: true
+      t.references :product,  foreign_key: true
 
       t.timestamps
     end

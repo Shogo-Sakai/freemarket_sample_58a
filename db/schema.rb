@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_19_065446) do
+ActiveRecord::Schema.define(version: 2019_09_19_101731) do
 
   create_table "bigcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "fee_person", null: false
+    t.string "fee_person", null: false
     t.string "from_area", null: false
     t.integer "day_id", null: false
     t.integer "how_id", null: false
@@ -153,6 +153,8 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
     t.datetime "updated_at", null: false
     t.index ["size_id"], name: "index_smallcategories_has_sizes_on_size_id"
     t.index ["smallcategory_id"], name: "index_smallcategories_has_sizes_on_smallcategory_id"
+    t.string "sending_day", null: false
+    t.string "deliver_way", null: false
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -185,7 +187,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
   add_foreign_key "smallcategories_has_sizes", "sizes"
   add_foreign_key "smallcategories_has_sizes", "smallcategories"
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content", null: false
+    t.string "image"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -205,9 +207,9 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "text", null: false
-    t.integer "fresh_status_id", null: false
+    t.string "fresh_status", null: false
     t.integer "user_id"
-    t.integer "sell_status_id", null: false
+    t.string "sell_status", null: false
     t.integer "size_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

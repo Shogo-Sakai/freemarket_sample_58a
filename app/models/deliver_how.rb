@@ -13,5 +13,4 @@ class DeliverHow < ActiveHash::Base
     {id:9, way:"ゆうパケット"}
   ]
 
-  belongs_to :delivery
 end
