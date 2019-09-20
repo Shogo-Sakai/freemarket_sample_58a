@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   root 'mercaris#index'
 
   # products
+  post 'products/new' => "products#create"
   resources 'products'
   root 'products#new'
 

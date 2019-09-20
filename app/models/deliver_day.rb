@@ -8,7 +8,4 @@ class DeliverDay < ActiveHash::Base
     {id: 3, days: "3-4日で発送"}
   ]
 
-  # アソシエーション
-  belongs_to :product
-
 end
