@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(params_int(product_params))
+    @product = Product.new(product_params)
     respond_to do |format|
       if @product.save
         params[:product_image][:image].each do |image|
@@ -22,20 +22,6 @@ class ProductsController < ApplicationController
   end
 
   private
-  def integer_string?(str)
-  #   Integer(str)
-  #   true
-  # rescue ArgumentError
-  #   false
-  end
-
-  def params_int(model_params)
-    model_params.each do |key, value|
-      if integer_string?(value)
-        model_params[key] = value.to_i
-      end
-    end
-  end
 
   def product_params
     # userはまだ入っていない
