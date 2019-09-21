@@ -85,6 +85,8 @@ group :test do
   gem 'chromedriver-helper'
   #ダミーデータ作成のため（created_atが同一になることを防ぐ）
   gem 'faker'
+
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
