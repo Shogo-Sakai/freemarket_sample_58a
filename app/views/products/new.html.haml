@@ -1,26 +1,21 @@
 = render partial: '/signup/simple-header'
-.signup-container
-  .signup-top
-    %h2.signup-header 商品の情報を入力
-  .sell-upload-form
-    -# 画像アップロード
-    .sell-upload-form__image.sell-container-all-padding.container-border-top
-      %p
-        = label :image, '出品画像',class: 'sell-upload-label'
-        %span.signup-form-container__span.span-need 必須
-      %p.sell-container-content
-        最大10枚までアップロードできます
-      .upload-box
-        = form_with(url:products_path, enctype:"multipart/form-data", class:"dropzone") do |f|
-          %input{name:"authenticity_token", type:"hidden", value:form_authenticity_token}/
-          .fallback
-            %input{multiple: "multiple", name:"image", type:"file"}/
-          #dzmercari
-          %p
-            ドラッグアンドドロップ
-            %br
-            またはクリックしてファイルをアップロード
-    = form_with model: @product, local:true do |f|
+.signup-container.sell-container
+  = form_for @product, html:{class: "sell-form"} do |f|
+    .signup-top
+      %h2.signup-header
+        商品の情報を入力
+    .sell-upload-form
+      -# 画像アップロード
+      .sell-upload-form__image.sell-container-all-padding.container-border-top
+        %p
+          = label :image, '出品画像',class: 'sell-upload-label'
+          %span.signup-form-container__span.span-need
+            必須
+        = f.fields_for :product_image do |image|
+          .upload-box
+            #preview
+            = image.label :image, class:"dropzone-box", for: "upload-image" do
+              = image.file_field :image, multiple: true, name:'product_image[image][]',class:"input_area dropzone", id:"item-dropzone"
       -# 商品名、商品の説明
       .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
         .signup-form-container__title
@@ -43,7 +38,7 @@
             = label :category_index, 'カテゴリー',class: 'signup-label'
             %span.signup-form-container__span.span-need 必須
           .select-wrap
-            = f.select :category_index, CategoryIndex.pluck(:name).unshift('---'),{},{class: 'default-select sell-select-box'}
+            = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box'})
             %i.select-arrow.fas.fa-chevron-down
 
           -# ここにbigcategory,smallcategoryを挿入する
@@ -52,7 +47,7 @@
             = label :fresh_status, '商品の状態',class: 'signup-label'
             %span.signup-form-container__span.span-need 必須
           .select-wrap
-            = f.select :fresh_status, ProductFreshness.pluck(:status).unshift('---'),{},{class: 'default-select sell-select-box'}
+            = f.select:fresh_status, ProductFreshness.pluck(:status).unshift('---'),{},{class: 'default-select sell-select-box'}
             %i.select-arrow.fas.fa-chevron-down
       -# 配送について
       .sell-container-all-padding.container-border-top.flex
@@ -131,4 +126,5 @@
           %p
             = link_to users_path,class: 'submit-btn submit-btn-gray user-mypage-wrapper__main__credit__content__btn sell-container-back__btn' do
               %span もどる
-= render 'signup/simple-footer'
+.sell-footer
+  = render 'signup/simple-footer'
