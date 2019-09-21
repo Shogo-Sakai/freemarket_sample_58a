@@ -88,7 +88,7 @@
 .simple-form{
   background-color: $global-back-color;
   box-sizing: border-box;
-  padding-bottom: 230px;
+  // padding-bottom: 230px;
   position: relative;
   min-height: 100vh;
 }
@@ -154,7 +154,8 @@
 
 .simple-footer{
   width: 100vw;
-  position: absolute;
+  // position: absolute;
+  @extend %centering;
   right: 0;
   left: 0; 
   bottom: 0;

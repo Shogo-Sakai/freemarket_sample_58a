@@ -86,10 +86,10 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
   end
 
   create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "fee_person", null: false
-    t.string "from_area", null: false
-    t.string "sending_day", null: false
-    t.string "deliver_way", null: false
+    t.string "fee_person"
+    t.string "from_area"
+    t.string "sending_day"
+    t.string "deliver_way"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -110,9 +110,9 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
   end
 
   create_table "prices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "sell", null: false
-    t.integer "fee", null: false
-    t.integer "benefit", null: false
+    t.integer "sell"
+    t.integer "fee"
+    t.integer "benefit"
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
     t.string "text"
     t.string "fresh_status"
     t.integer "user_id"
-    t.string "sell_status"
+    t.string "sell_status", default: "出品中"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"

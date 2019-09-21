@@ -1,4 +1,4 @@
-class DeliverHow < ActiveHash::Base
+class DeliverWay < ActiveHash::Base
   include ActiveHash::Associations
 
   self.data = [
