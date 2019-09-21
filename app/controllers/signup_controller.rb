@@ -60,7 +60,6 @@ class SignupController < ApplicationController
     #バリデーションエラーを事前に取得させる
     check_user_valid = @user.valid?
     check_profile_valid = @profile.valid?
-    binding.pry
     unless verify_recaptcha(model: @profile) && check_user_valid && check_profile_valid
       render 'signup/registration' 
     else
