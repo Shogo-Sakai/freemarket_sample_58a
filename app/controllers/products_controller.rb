@@ -28,21 +28,5 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :text, :category_index_id ,:fresh_status,product_image_attributes:[:image], delivery_attributes:[:deliver_way, :fee_person, :from_area, :sending_day], price_attributes:[:benefit, :fee, :sell])
   end
 
-  def image_params
-    params.require(@image).permit(:image)
-  end
-
-  def price_params
-    params.require(@price).permit(:benefit, :fee, :sell)
-  end
-
-  def delivery_params
-    params.require(@delivery).permit(:deliver_way, :fee_person, :from_area, :sending_day)
-  end
-
-  def brand_params
-    params.require(@brand).permit(:name)
-  end
-
 end
 
