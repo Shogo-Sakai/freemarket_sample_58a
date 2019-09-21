@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_images.build
-
-    @testimage = ProductImage.find(1)
+    @product.build_delivery
+    @product.build_price
   end
 
   def create
@@ -30,10 +30,10 @@ class ProductsController < ApplicationController
 
   private
   def integer_string?(str)
-    Integer(str)
-    true
-  rescue ArgumentError
-    false
+  #   Integer(str)
+  #   true
+  # rescue ArgumentError
+  #   false
   end
 
   def params_int(model_params)
@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
 
   def product_params
     # userはまだ入っていない
-    params.require(:product).permit(:name, :text, :category_index_id ,:fresh_status,product_image_attributes:[:image], delivery_attributes:[:delivery_way, :fee_person, :from_area, :sending_day], price_attributes:[:benefit, :fee, :sell])
+    params.require(:product).permit(:name, :text, :category_index_id ,:fresh_status,product_image_attributes:[:image], delivery_attributes:[:deliver_way, :fee_person, :from_area, :sending_day], price_attributes:[:benefit, :fee, :sell])
   end
 
   def image_params
