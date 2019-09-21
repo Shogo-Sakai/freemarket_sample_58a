@@ -2,8 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Users, type: :model do
 
-  it 'is pass user registration' do
+  it 'is pass user registration without sms content' do
     user = build(:user)
+    expect(user).to be_valid
+  end
+
+  it 'is pass user registration with sms content' do
+    user = build(:user, provider: 'google', uid: Faker::Internet.password(10))
     expect(user).to be_valid
   end
 
