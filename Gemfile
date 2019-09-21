@@ -95,3 +95,4 @@ gem 'jquery-rails'
 
 # 画像アップロード
 gem "dropzonejs-rails"
+gem "ezdz-rails"

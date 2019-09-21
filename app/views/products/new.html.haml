@@ -6,14 +6,15 @@
     -# 画像アップロード
     .sell-upload-form__image.sell-container-all-padding.container-border-top
       %p
-        = label :content, '出品画像',class: 'sell-upload-label'
+        = label :image, '出品画像',class: 'sell-upload-label'
         %span.signup-form-container__span.span-need 必須
       %p.sell-container-content
         最大10枚までアップロードできます
       .upload-box
-        = form_for(products_path, html: {multipart:true, class:"dropzone"}) do |f|
+        = form_with(url:products_path, enctype:"multipart/form-data", class:"dropzone") do |f|
+          %input{name:"authenticity_token", type:"hidden", value:form_authenticity_token}/
           .fallback
-            = f.file_field :content, multiple: true
+            %input{multiple: "multiple", name:"image", type:"file"}/
           #dzmercari
           %p
             ドラッグアンドドロップ
