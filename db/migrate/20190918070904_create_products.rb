@@ -5,8 +5,8 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string     :text             
       t.string     :fresh_status     
       t.integer    :user_id
-      t.string     :sell_status   
-
+      t.string     :sell_status, default:"出品中"
+      
       t.timestamps
     end
   end
