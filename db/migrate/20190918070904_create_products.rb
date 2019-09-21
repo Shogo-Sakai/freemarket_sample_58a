@@ -1,12 +1,11 @@
 class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
-      t.string     :name,             null: false
-      t.string     :text,             null: false
-      t.integer    :fresh_status,  null: false
+      t.string     :name            
+      t.string     :text             
+      t.string     :fresh_status     
       t.integer    :user_id
-      t.integer    :sell_status,   null: false
-      t.integer    :size_id
+      t.string     :sell_status   
 
       t.timestamps
     end

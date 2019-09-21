@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_082153) do
 ActiveRecord::Schema.define(version: 2019_09_18_095533) do
 ActiveRecord::Schema.define(version: 2019_09_19_065446) do
 ActiveRecord::Schema.define(version: 2019_09_19_101731) do
+ActiveRecord::Schema.define(version: 2019_09_18_095533) do
 
   create_table "bigcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -118,22 +119,31 @@ ActiveRecord::Schema.define(version: 2019_09_19_101731) do
     t.index ["product_id"], name: "index_prices_on_product_id"
   end
 
+  create_table "product_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_product_images_on_product_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "text", null: false
-    t.string "fresh_status", null: false
+    t.string "name"
+    t.string "text"
+    t.string "fresh_status"
     t.integer "user_id"
-    t.string "sell_status", null: false
-    t.integer "size_id"
+    t.string "sell_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
     t.bigint "category_index_id"
     t.bigint "bigcategory_id"
     t.bigint "smallcategory_id"
+    t.bigint "size_id"
     t.index ["bigcategory_id"], name: "index_products_on_bigcategory_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_index_id"], name: "index_products_on_category_index_id"
+    t.index ["size_id"], name: "index_products_on_size_id"
     t.index ["smallcategory_id"], name: "index_products_on_smallcategory_id"
   end
 
@@ -162,11 +172,12 @@ ActiveRecord::Schema.define(version: 2019_09_19_101731) do
 
   add_foreign_key "bigcategories", "category_indices"
   add_foreign_key "deliveries", "products"
-  add_foreign_key "images", "products"
   add_foreign_key "prices", "products"
+  add_foreign_key "product_images", "products"
   add_foreign_key "products", "bigcategories"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "category_indices"
+  add_foreign_key "products", "sizes"
   add_foreign_key "products", "smallcategories"
   add_foreign_key "smallcategories", "bigcategories"
   add_foreign_key "smallcategories_has_sizes", "sizes"
