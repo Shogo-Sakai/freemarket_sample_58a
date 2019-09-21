@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   def new
     @product = Product.new
     @product.product_images.build
@@ -26,6 +25,20 @@ class ProductsController < ApplicationController
   end
 
   private
+  def integer_string?(str)
+    Integer(str)
+    true
+  rescue ArgumentError
+    false
+  end
+
+  def params_int(model_params)
+    model_params.each do |key, value|
+      if integer_string?(value)
+        model_params[key] = value.to_i
+      end
+    end
+  end
 
   def product_params
     # userはまだ入っていない

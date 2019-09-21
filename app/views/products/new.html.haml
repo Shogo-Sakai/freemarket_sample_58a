@@ -1,134 +1,92 @@
 = render partial: '/signup/simple-header'
-.signup-container
-  .signup-top
-    %h2.signup-header 商品の情報を入力
-  .sell-upload-form
-    -# 画像アップロード
-    .sell-upload-form__image.sell-container-all-padding.container-border-top
-      %p
-        = label :image, '出品画像',class: 'sell-upload-label'
-        %span.signup-form-container__span.span-need 必須
-      %p.sell-container-content
-        最大10枚までアップロードできます
-      .upload-box
-        = form_with(url:products_path, enctype:"multipart/form-data", class:"dropzone") do |f|
-          %input{name:"authenticity_token", type:"hidden", value:form_authenticity_token}/
-          .fallback
-            = f.file_field :file_name, multiple: true
-          #dzmercari
-            .dz-preview.dz-file-preview
-              .dz-details
-                .dz-filename
-                  %span{"data-dz-name" => ""}
-                .dz-size{"data-dz-size" => ""}
-                %img{"data-dz-thumbnail" => ""}
-          ドラッグアンドドロップ
-          %br
-          またはクリックしてファイルをアップロード
-    -# 商品名、商品の説明
-    .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
-      .signup-form-container__title
+.signup-container.sell-container
+  = form_for @product, html:{class: "sell-form"} do |f|
+    .signup-top
+      %h2.signup-header
+        商品の情報を入力
+    .sell-upload-form
+      -# 画像アップロード
+      .sell-upload-form__image.sell-container-all-padding.container-border-top
         %p
-          = label :name, '商品名',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-      = text_field :product,:name, placeholder: '商品名（必須40文字まで）', class: 'default-input'
-    .signup-form-container.registration-form__first-container.sell-container-side-padding
-      .signup-form-container__title
-        %p
-          = label :name, '商品の説明',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-      = text_area :product,:name, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）　2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 ", class: 'default-input sell-input-area'
-    -# 商品の明細
-    .sell-container-all-padding.container-border-top.flex
-      .sell-container-left
-        商品の詳細
-      .sell-container-right
-        %p
-          = label :name, 'カテゴリー',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-        .select-wrap
-          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
-          %i.select-arrow.fas.fa-chevron-down
-        %p.margin-2rem
-          = label :name, '商品の状態',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-        .select-wrap
-          = select :product,:category,['---'],{},{class: 'default-select sell-select-box'}
-          %i.select-arrow.fas.fa-chevron-down
-    -# 配送について
-    .sell-container-all-padding.container-border-top.flex
-      .sell-container-left
-        %p
-          配送について
-          =link_to "" do
-            %i.fas.fa-question-circle.link-space-reset
-      .sell-container-right
-        %p
-          = label :name, '配送料の負担',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-        .select-wrap
-          = select :product,:category,['---'],{},{class: 'default-select select-wrap__sell-select-box'}
-          %i.select-arrow.fas.fa-chevron-down
-        %p.margin-2rem
-          = label :name, '発送元の地域',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-        .select-wrap
-          = select :product,:category,['---'],{},{class: 'default-select select-wrap__sell-select-box'}
-          %i.select-arrow.fas.fa-chevron-down
-        %p.margin-2rem
-          = label :name, '発送までの日数',class: 'signup-label'
-          %span.signup-form-container__span.span-need 必須
-        .select-wrap
-          = select :product,:category,['---'],{},{class: 'default-select select-wrap__sell-select-box'}
-          %i.select-arrow.fas.fa-chevron-down
-    -# 販売価格
-    .sell-container-all-padding.container-border-top.flex
-      .sell-container-left.link-space-reset
-        %p
-          販売価格
-          %span.link-space-reset (300~9,999,999)
-          = link_to "" do
-            %i.fas.fa-question-circle
-      .sell-container-right
-        .sell-container-right__price-wrapper
+          = label :image, '出品画像',class: 'sell-upload-label'
+          %span.signup-form-container__span.span-need
+            必須
+        = f.fields_for :product_image do |image|
+          .upload-box
+            #preview
+            = image.label :image, class:"dropzone-box", for: "upload-image" do
+              = image.file_field :image, multiple: true, name:'product_image[image][]',class:"input_area dropzone", id:"item-dropzone"
+      -# 商品名、商品の説明
+      .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
+        .signup-form-container__title
           %p
-            = label :image, '出品画像',class: 'sell-upload-label'
-            %span.signup-form-container__span.span-need
-              必須
-          = f.fields_for :product_image do |image|
-            .upload-box
-              #preview
-              = image.label :image, class:"dropzone-box", for: "upload-image" do
-                = image.file_field :image, multiple: true, name:'product_image[image][]',class:"input_area dropzone", id:"item-dropzone", type:"file"
-        -# 商品名、商品の説明
-        .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
-          .signup-form-container__title
-            %p
-              = label :name, '商品名',class: 'signup-label'
-              %span.signup-form-container__span.span-need 必須
-          = f.text_field :name, placeholder: '商品名（必須40文字まで）', class: 'default-input sell-input'
-        .signup-form-container.registration-form__first-container.sell-container-side-padding
-          .signup-form-container__title
-            %p
-              = label :text, '商品の説明',class: 'signup-label'
-              %span.signup-form-container__span.span-need 必須
-          = f.text_area :text, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）　2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 ", class: 'default-input sell-input-area'
-        -# 商品の明細
-        .sell-container-all-padding.container-border-top.flex
-          .sell-container-left
-            商品の詳細
-          .sell-container-right
-            %p
-              = label :category_index, 'カテゴリー',class: 'signup-label'
-              %span.signup-form-container__span.span-need 必須
-            .select-wrap
-              = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box'})
-              %i.select-arrow.fas.fa-chevron-down
+            = label :name, '商品名',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+        = f.text_field :name, placeholder: '商品名（必須40文字まで）', class: 'default-input'
+      .signup-form-container.registration-form__first-container.sell-container-side-padding
+        .signup-form-container__title
+          %p
+            = label :text, '商品の説明',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+        = f.text_area :text, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）　2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 ", class: 'default-input sell-input-area'
+      -# 商品の明細
+      .sell-container-all-padding.container-border-top.flex
+        .sell-container-left
+          商品の詳細
+        .sell-container-right
+          %p
+            = label :category_index, 'カテゴリー',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+          .select-wrap
+            = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box'})
+            %i.select-arrow.fas.fa-chevron-down
 
             -# ここにbigcategory,smallcategoryを挿入する
 
-            %p.margin-2rem
-              = label :fresh_status, '商品の状態',class: 'signup-label'
+          %p.margin-2rem
+            = label :fresh_status, '商品の状態',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+          .select-wrap
+            = f.select:fresh_status, ProductFreshness.pluck(:status).unshift('---'),{},{class: 'default-select sell-select-box'}
+            %i.select-arrow.fas.fa-chevron-down
+      -# 配送について
+      .sell-container-all-padding.container-border-top.flex
+        .sell-container-left
+          %p
+            配送について
+            = link_to "" do
+              %i.fas.fa-question-circle.link-space-reset
+        .sell-container-right
+          %p
+            = label :fee_person, '配送料の負担',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+          .select-wrap
+            = select :delivery, :fee_person, DeliverFee.pluck(:fee).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
+            %i.select-arrow.fas.fa-chevron-down
+          %p.margin-2rem
+            = label :from_area, '発送元の地域',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+          .select-wrap
+            = select :delivery,:from_area ,['都道府県'],{},{class: 'default-select select-wrap__sell-select-box'}
+            %i.select-arrow.fas.fa-chevron-down
+          %p.margin-2rem
+            = label :sending_day, '発送までの日数',class: 'signup-label'
+            %span.signup-form-container__span.span-need 必須
+          .select-wrap
+            = select :delivery, :sending_day,DeliverDay.pluck(:days).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
+            %i.select-arrow.fas.fa-chevron-down
+      -# 販売価格
+      .sell-container-all-padding.container-border-top.flex
+        .sell-container-left.link-space-reset
+          %p
+            販売価格
+            %span.link-space-reset (300~9,999,999)
+            = link_to "" do
+              %i.fas.fa-question-circle
+        .sell-container-right
+          .sell-container-right__price-wrapper
+            %p
+              = label :sell, '価格',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
             .select-wrap
               = f.select:fresh_status, ProductFreshness.pluck(:status).unshift('---'),{},{class: 'default-select sell-select-box sell-input'}
