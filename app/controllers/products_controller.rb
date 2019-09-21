@@ -6,16 +6,19 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    @product.save
-
-    @image = Image.new(content: params[:file])
-    if @image.save
-      render json: { message:"success", fileID:@image.id }, status: 200
-    else
-      render json: { error: @image.errors.full_messages.join(',')}, status: 400
+    # @product = Product.new(product_params)
+    # @product.save
+    @image = Image.new(image: params[:file])
+    # debugger
+    if @image.save!
+      respond_to do |format|
+        format.json{render json: @image}
+        # debugger
+      end
     end
-    redirect_to users_path
+
+    # redirect_to users_path
+    # exit
   end
 
   def show
@@ -28,7 +31,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(@product).permit(:bigcategory, :category_index, :fresh_status, :name, :sell_status,:size, :smallcategory, :text, :user)
+    params.require(@product).permit(:category_index, :fresh_status, :name, :text, :image)
   end
 
   def image_params
@@ -48,3 +51,4 @@ class ProductsController < ApplicationController
   end
 
 end
+
