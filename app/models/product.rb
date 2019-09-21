@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :user,  optional:true
   belongs_to :brand, optional:true
-  has_many :images,  dependent: :destroy
-  accepts_nested_attributes_for :images
+  has_many :product_images,  dependent: :destroy
+  accepts_nested_attributes_for :product_images
   has_one :price 
   has_one :delivery
   
