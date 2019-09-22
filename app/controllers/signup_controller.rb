@@ -1,7 +1,7 @@
 class SignupController < ApplicationController
   layout 'form_layout'
   require 'payjp'
-  Payjp.api_key = ENV["PAYJP_PRYVATE_KEY"]
+  Payjp.api_key = Rails.application.secrets.PAYJP_PRYVATE_KEY
   
   #不正アクセス対策
   before_action :redirect_to_index_from_sms,only: :sms_authentication
@@ -58,7 +58,7 @@ class SignupController < ApplicationController
     #バリデーションエラーを事前に取得させる
     check_user_valid = @user.valid?
     check_profile_valid = @profile.valid?
-    unless verify_recaptcha(model: @profile) && check_user_validation && check_profile_validation
+    unless verify_recaptcha(model: @profile) && check_user_valid && check_profile_valid
       render 'signup/registration' 
     else
       session[:through_first_valid] = "through_first_valid"
@@ -78,9 +78,9 @@ class SignupController < ApplicationController
     # phone_number = profile_params[:tel].sub(/\A./,'+81')
     # sms_number = rand(10000..99999)
     # session[:sms_number] = sms_number
-    # client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
+    # client = Twilio::REST::Client.new(Rails.application.secrets.TWILLIO_SID,Rails.application.secrets.TWILLIO_TOKEN)
     # begin 
-    #   client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: phone_number,body: sms_number)
+    #   client.api.account.messages.create(from: Rails.application.secrets.TWILLIO_NUMBER, to: phone_number,body: sms_number)
     # rescue
     #   render "signup/sms_authentication"
     #   return false
@@ -120,7 +120,7 @@ class SignupController < ApplicationController
     end
     sign_in User.find(session[:id])
   end
-   
+  
   #3→4ページ目のバリデーション判定
   def second_validation
     session[:prefecture] = profile_params[:prefecture]
