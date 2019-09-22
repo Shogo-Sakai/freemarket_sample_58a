@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
     t.string "title"
     t.string "text"
     t.string "fresh_status"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "sell_status", default: "出品中"
     t.integer "price"
     t.string "deliver_person"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
     t.index ["category_index_id"], name: "index_products_on_category_index_id"
     t.index ["size_id"], name: "index_products_on_size_id"
     t.index ["smallcategory_id"], name: "index_products_on_smallcategory_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -141,6 +142,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
   add_foreign_key "products", "category_indices"
   add_foreign_key "products", "sizes"
   add_foreign_key "products", "smallcategories"
+  add_foreign_key "products", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "smallcategories", "bigcategories"
   add_foreign_key "smallcategories_has_sizes", "sizes"
