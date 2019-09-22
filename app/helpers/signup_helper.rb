@@ -1,5 +1,13 @@
 module SignupHelper
 
+  def judge_exception(model,hash)
+    if model.errors.details[hash].present? && model.errors.messages[hash].include?("is reserved")
+      return true
+    else
+      return false
+    end
+  end
+
   def judge_blank(model,hash)
     if model.errors.details[hash].present? && model.errors.messages[hash].include?("can't be blank")
       return true
