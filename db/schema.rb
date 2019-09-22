@@ -128,11 +128,16 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "text"
     t.string "fresh_status"
     t.integer "user_id"
     t.string "sell_status", default: "出品中"
+    t.integer "price"
+    t.string "deliver_person"
+    t.string "from_area"
+    t.string "deliver_leadtime"
+    t.string "deliver_way"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
@@ -171,8 +176,6 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
   end
 
   add_foreign_key "bigcategories", "category_indices"
-  add_foreign_key "deliveries", "products"
-  add_foreign_key "prices", "products"
   add_foreign_key "product_images", "products"
   add_foreign_key "products", "bigcategories"
   add_foreign_key "products", "brands"
