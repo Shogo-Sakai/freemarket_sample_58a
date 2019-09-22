@@ -68,7 +68,7 @@
               = label :deliver_leadtime, '配達の方法',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
             .select-wrap
-              = f.select :deliver_leadtime,DeliverWay.pluck(:way).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
+              = f.select :deliver_way,DeliverWay.pluck(:way).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
               %i.select-arrow.fas.fa-chevron-down
             %p.margin-2rem
               = label :from_area, '発送元の地域',class: 'signup-label'

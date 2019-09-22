@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
         params[:product_image][:image].each do |image|
           @product.product_images.create(image: image, product_id: @product.id)
         end
+        # debugger
         format.html{redirect_to root_path}
       else
         @product.product_images.build
@@ -25,8 +26,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price,product_image_attributes:[:image]).merge(user_id: current_user.id)
+    params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, product_image_attributes:[:image]).merge(user_id: current_user.id)
   end
 
 end
-

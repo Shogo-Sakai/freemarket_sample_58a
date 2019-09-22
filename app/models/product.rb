@@ -1,14 +1,14 @@
 class Product < ApplicationRecord
   # バリデーション
-  validates :name,             length:    {maximum: 40},         presence: true
-  validates :text,             length:    {maximum: 1000},       presence: true
-  validates :category_index,   exclusion: {in: %w(--- nil ) },   presence: true
-  validates :fresh_status ,    exclusion: {in: %w(---) },        presence: true
-  validates :deliver_way,      exclusion: {in: %w(---)}
-  validates :deliver_person,   exclusion: {in: %w(---)}
-  validates :from_area,        exclusion: {in: %w(---)}
-  validates :deliver_leadtime, exclusion: {in: %w(---)}
-  validates :price,            numericality: [greater_than: 300, less_than: 10000000 ]
+  validates :title,               length:    {maximum: 40},         presence: true
+  validates :text,                length:    {maximum: 1000},       presence: true
+  validates :category_index_id,   exclusion: {in: %w(--- nil ) },   presence: true
+  validates :fresh_status ,       exclusion: {in: %w(---) },        presence: true
+  validates :deliver_way,         exclusion: {in: %w(---)}
+  validates :deliver_person,      exclusion: {in: %w(---)}
+  validates :from_area,           exclusion: {in: %w(都道府県)}
+  validates :deliver_leadtime,    exclusion: {in: %w(---)}
+  validates :price,               numericality: [greater_than: 300, less_than: 10000000 ]
   # アソシエーション
   belongs_to :user,                             optional:true
   belongs_to :brand,                            optional:true
