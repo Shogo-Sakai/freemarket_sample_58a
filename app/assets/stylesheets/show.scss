@@ -116,6 +116,8 @@
           min-width: 300px;
           max-width: 300px;
           min-height: 375px;
+          position: relative;
+          overflow: hidden;
 
           &__up{
             display: flex;

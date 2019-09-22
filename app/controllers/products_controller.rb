@@ -11,7 +11,6 @@ class ProductsController < ApplicationController
         params[:product_image][:image].each do |image|
           @product.product_images.create(image: image, product_id: @product.id)
         end
-        # debugger
         format.html{redirect_to root_path}
       else
         @product.product_images.build
@@ -21,6 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   private

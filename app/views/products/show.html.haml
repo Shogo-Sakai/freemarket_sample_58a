@@ -3,48 +3,48 @@
 .container
   .container__product-details
     %h1.container__product-details__product-name
-      謎の端末
+      = @product.title
     .container__product-details__main
       .container__product-details__main__images
         .container__product-details__main__images__display
+          - if @product.sell_status == "SOLD"
+            .badge.sold
+              SOLD
+          -elsif @product.sell_status == "公開停止中"
+            .badge.stop
+              公開停止中
           %ul.container__product-details__main__images__display__up
-            %li.container__product-details__main__images__display__up__slide-image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "300x300"
-            %li.container__product-details__main__images__display__up__slide-image
-              = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png", size: "300x300"
-            %li.container__product-details__main__images__display__up__slide-image
-              = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", size: "300x300"
+            - @product.product_images.each do |product_image|
+              %li.container__product-details__main__images__display__up__slide-image
+                = image_tag product_image.image_url, size: "300x300"
           %ul.container__product-details__main__images__display__down
-            %li.container__product-details__main__images__display__down__thumbnail-image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "60x60"
-            %li.container__product-details__main__images__display__down__thumbnail-image
-              = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-device-1f627e51e488f6ca35feaa6a08b79736.png", size: "60x60"
-            %li.container__product-details__main__images__display__down__thumbnail-image
-              = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/app-store-a5c17948c6fd6d5b60b13d421cd60b35.svg", size: "60x60"
+            - @product.product_images.each do |product_image|
+              %li.container__product-details__main__images__display__down__thumbnail-image
+                = image_tag product_image.image_url, size: "60x60"
       %table.container__product-details__main__detail
         %tbody
           %tr
             %th
               出品者
             %td
-              = link_to "名前", ""
+              = link_to @product.user.nickname, ""
               %div.evaluation
                 %div
                   %i.far.fa-laugh
-                  10
+                  = rand(100)
                 %div
                   %i.fas.far.fa-meh
-                  10
+                  = rand(100)
                 %div
                   %i.far.fa-sad-tear
-                  10
+                  = rand(100)
           %tr
             %th
               カテゴリー
             %td.category
               = link_to "" do
                 %div.category
-                  カテゴリー
+                  = CategoryIndex.find(@product.category_index_id).name
               = link_to "" do
                 %div.category
                   %i.fas.fa-chevron-right
@@ -62,47 +62,50 @@
             %th
               商品の状態
             %td
-              秘密♪
+              = @product.fresh_status
           %tr
             %th
               配送料の負担
             %td
-              購入者
+              = @product.deliver_person
           %tr
             %th
               配送の方法
             %td
-              歩き
+              = @product.deliver_way
           %tr
             %th
               配送元地域
             %td
-              = link_to "都道府県名", ""
+              = link_to @product.from_area, "#"
           %tr
             %th
               発送日の目安
             %td
-              気分次第
+              = @product.deliver_leadtime
 
     .container__product-details__price
       %span.container__product-details__price__amount
-        ¥xxx
+        ¥
+        = @product.price
       %span.container__product-details__price__tax
         (税込)
       %span.container__product-details__price__delivery-fee
         送料込み
     .container__product-details__message
       .container__product-details__message__money
-        売上金¥1.000とP1,000を
+        売上金¥
+        = rand(1000)
+        とP
+        = rand(1000)
+        を
         %br
         お持ちです。
     = link_to "購入画面に進む","", class: "container__product-details__purchase-screen-button"
 
     .container__product-details__product-description
       %p.container__product-details__product-description__inner
-        ぼったくり端末です
-        購入は自己責任で
-        よろ
+        = simple_format @product.text
     .container__product-details__buttons
       .container__product-details__buttons__left
         %button.container__product-details__buttons__left__heart
@@ -110,7 +113,7 @@
           %span
             いいね!
           %span
-            0
+            = rand (1000)
         %button.container__product-details__buttons__left__report
           %i.far.fa-flag
           %span
@@ -160,44 +163,24 @@
   .container__other-products
     .container__other-products__login-user
       %h2.container__other-products__login-user__title
-        = link_to "ログインユーザさんのその他の出品", ""
+        = link_to "#{current_user.nickname}さんのその他の出品", ""
       .container__other-products__login-user__products
-        .container__other-products__login-user__products__product
-          = link_to "", class:".container__other-products__login-user__products__product__link" do
-            %figure.container__other-products__login-user__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__login-user__products__product__link__body
-              %h3.container__other-products__login-user__products__product__link__body__name
-                商品名
-              .container__other-products__login-user__products__product__link__body__num
-                .container__other-products__login-user__products__product__link__body__num__price
-                  ¥1,000
-                .container__other-products__login-user__products__product__link__body__num__heart
-                  %i.far.fa-heart
-                  %span
-                    100
-        
-        .container__other-products__login-user__products__product
-          = link_to "", class:".container__other-products__login-user__products__product__link" do
-            %figure.container__other-products__login-user__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__login-user__products__product__link__body
-              %h3.container__other-products__login-user__products__product__link__body__name
-                商品名
-              .container__other-products__login-user__products__product__link__body__num
-                .container__other-products__login-user__products__product__link__body__num__price
-                  ¥1,000
-        
-        .container__other-products__login-user__products__product
-          = link_to "", class:".container__other-products__login-user__products__product__link" do
-            %figure.container__other-products__login-user__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__login-user__products__product__link__body
-              %h3.container__other-products__login-user__products__product__link__body__name
-                商品名
-              .container__other-products__login-user__products__product__link__body__num
-                .container__other-products__login-user__products__product__link__body__num__price
-                  ¥1,000
+        - current_user.products.where(sell_status: "出品中").each do |product|
+          .container__other-products__login-user__products__product
+            = link_to "/products/#{product.id}", class:".container__other-products__login-user__products__product__link" do
+              %figure.container__other-products__login-user__products__product__link__image
+                = image_tag product.product_images.find_by(product_id: product.id).image_url, size:"220x220"
+              .container__other-products__login-user__products__product__link__body
+                %h3.container__other-products__login-user__products__product__link__body__name
+                  = product.title
+                .container__other-products__login-user__products__product__link__body__num
+                  .container__other-products__login-user__products__product__link__body__num__price
+                    ¥
+                    = product.price
+                  .container__other-products__login-user__products__product__link__body__num__heart
+                    %i.far.fa-heart
+                    %span
+                      = rand(1000)
 
     .container__other-products__same-category
       %h2.container__other-products__same-category__title
