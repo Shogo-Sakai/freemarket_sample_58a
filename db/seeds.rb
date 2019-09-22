@@ -10,6 +10,9 @@ require "csv"
 
 CSV.foreach('db/seeds/csv/all_category.csv', encoding: 'Shift_JIS:UTF-8', headers:true ) do |row|
   
+  # テストユーザー
+  test = User.create(email:"test@test.com", nickname:"tester", password: "testtest12", password_confirmation:"testtest12")
+
   # カテゴリ、サイズ名を取得
   index         = row['index']
   bigcategory   = row['bigcategory']
