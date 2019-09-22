@@ -72,9 +72,6 @@ group :development do
   # activehash
   gem 'active_hash'
 
-  # bettererrors
-  gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 group :test do
@@ -83,10 +80,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  #ダミーデータ作成のため（created_atが同一になることを防ぐ）
-  gem 'faker'
 
-  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
