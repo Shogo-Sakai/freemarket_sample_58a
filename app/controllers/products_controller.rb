@@ -12,6 +12,10 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def purchase_confirmation
+    render layout: 'form_layout'
+  end
+
   private
 
   def product_params

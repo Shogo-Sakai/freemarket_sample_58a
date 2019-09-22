@@ -16,7 +16,11 @@ Rails.application.routes.draw do
   root 'mercaris#index'
 
   # products
-  resources 'products'
+  resources 'products' do
+    collection do
+      get 'purchase_confirmation'
+    end
+  end
 
   # signup
   get '/signin' => 'signup#signin'
