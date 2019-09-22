@@ -51,7 +51,6 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 
   #テスト
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rails-controller-testing'
