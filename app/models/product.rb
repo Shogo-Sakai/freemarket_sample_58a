@@ -9,7 +9,6 @@ class Product < ApplicationRecord
   validates :from_area,        exclusion: {in: %w(---)}
   validates :deliver_leadtime, exclusion: {in: %w(---)}
   validates :price,            numericality: [greater_than: 300, less_than: 10000000 ]
-
   # アソシエーション
   belongs_to :user,                             optional:true
   belongs_to :brand,                            optional:true
