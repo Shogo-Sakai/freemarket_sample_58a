@@ -39,16 +39,19 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rails-controller-testing'
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
 
-# capistrano関係
+  # capistrano関係
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+
+  #テスト
+  gem 'faker'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -58,6 +61,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #better_errors
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
 end
 
 group :test do
@@ -84,8 +92,31 @@ gem 'fog-aws'
 
 # haml
 gem 'haml-rails'
-gem "font-awesome-rails"
+
+# font-awesome
+gem 'font-awesome-rails'
+
+#jquery
 gem 'jquery-rails'
 
-#デバッグ
+#devise
+gem 'devise'
+
+#pry
 gem 'pry-rails'
+
+#初期データ用
+gem 'active_hash'
+
+#クレジット登録用
+gem 'payjp'
+
+#環境変数用
+gem 'dotenv-rails'
+
+#私はロボットではありませんフォーム
+gem "recaptcha", require: "recaptcha/rails"
+
+# SMS認証
+gem 'twilio-ruby', '~> 5.6.0'
+

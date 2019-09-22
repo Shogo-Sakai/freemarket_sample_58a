@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-
+  devise_for :users, skip: :all
+  devise_scope :user do
+    delete 'destroy' => 'devise/sessions#destroy',as: :current_user_destroy
+  end
   
   # ユーザー
   resources 'users', except: [:show, :edit] do
@@ -17,14 +20,20 @@ Rails.application.routes.draw do
 
   # products
   resources 'products'
+  root 'products#new'
 
-  # signup
-  get '/signin' => 'signup#signin'
-  resources 'signup' do
+  resources :signin ,only: [:new,:create,:index]
+
+  resources :signup ,only: [:index,:create] do
     collection do
       get 'registration'
-      get 'sms_authentication'
-      get 'adress'
+      post 'registration' => 'signup#first_validation'
+      get 'sms_authentication' 
+      post 'sms_authentication' => 'signup#sms_post'
+      get 'sms_confirmation' 
+      post 'sms_confirmation' => 'signup#sms_check'
+      get 'address' 
+      post 'address' => 'signup#second_validation'
       get 'creditcard'
       get 'done'
     end

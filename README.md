@@ -7,6 +7,7 @@ Database design
 
 |Column|Type|Options|
 |------|----|-------|
+|nickname|string|null: false|
 |email|string|null: false,unique: true|
 |password|string|null: false|
 
@@ -16,7 +17,7 @@ Database design
 - has_one :creditcard, dependent: :destroy
 - has_many :products, dependent: :destroy
 - has_many :favorites, dependent: :destroy
-- has_many :infomations, dependent: :destroy
+- has_many :informations, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id", dependent: :destroy
 - has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id", dependent: :destroy
@@ -28,17 +29,22 @@ Database design
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
 |user_id|references|foreign_key: true|
 |avatar|string||
-|birthday|string|null: false|
+|birthyear|integer|null: false|
+|birthmonth|integer|null: false|
+|birthday|integer|null: false|
 |family_name|string|null: false|
-|prersonal_name|string|null: false|
+|personal_name|string|null: false|
 |family_name_kana|string|null: false|
 |personal_name_kana|string|null: false|
+|post_family_name|string|null: false|
+|post_personal_name|string|null: false|
+|post_family_name_kana|string|null: false|
+|post_personal_name_kana|string|null: false|
 |postal_code|integer|null: false|
 |city|string|null: false|
-|adress|string|null: false|
+|address|string|null: false|
 |building|string||
 |tel|integer||
 |prefecture|string|null: false|
@@ -52,13 +58,14 @@ Database design
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|card_token|string|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 
 ### Association
 
 - belongs_to :user
 
-## Infomationsテーブル
+## informationsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
