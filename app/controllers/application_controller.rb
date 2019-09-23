@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
-
+  
   private
+
   def production?
     Rails.env.production?
   end
@@ -12,4 +13,9 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+  
+  def redirect_to_root_user_signed_in
+    redirect_to root_path if user_signed_in?
+  end
+
 end
