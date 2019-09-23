@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
   
+  post 'products/new' => "products#create"
+  resources 'products'
   root 'products#new'
 
   resources :signin ,only: [:new,:create,:index]

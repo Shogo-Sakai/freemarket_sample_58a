@@ -66,6 +66,12 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 
+  # ER図作成gem
+  gem "rails-erd"
+
+  # activehash
+  gem 'active_hash'
+
 end
 
 group :test do
@@ -74,8 +80,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  #ダミーデータ作成のため（created_atが同一になることを防ぐ）
-  gem 'faker'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -88,6 +93,7 @@ end
 
 # S3、画像関係
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'fog-aws'
 
 # haml
@@ -120,3 +126,5 @@ gem "recaptcha", require: "recaptcha/rails"
 # SMS認証
 gem 'twilio-ruby', '~> 5.6.0'
 
+# 画像アップロード
+gem "dropzonejs-rails"

@@ -9,10 +9,11 @@
     .main__products__product__contents
       - @products.each do |product|
         .main__products__product__contents__content.effect-fade
-          .main__products__product__contents__content__image
-            -# ※carrierwaveなどで画像を正方形に加工する必要あり※
-            = image_tag "#{product.image}"
-            .main__products__product__contents__content__image__price
-              = "¥#{product.price}"
-          .main__products__product__contents__content__name
-            %p= "#{product.title}"
+          = link_to "/products/#{product.id}" do
+            .main__products__product__contents__content__image
+              -# ※carrierwaveなどで画像を正方形に加工する必要あり※
+              = image_tag product.product_images.find_by(product_id: product.id).image_url
+              .main__products__product__contents__content__image__price
+                = "¥#{product.price}"
+            .main__products__product__contents__content__name
+              %p= "#{product.title}"
