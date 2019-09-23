@@ -38,7 +38,6 @@ testproduct = Product.create(title:"test product", text:"test text", category_in
   testimage = ProductImage.create(image:File.open("./app/assets/images/aquos.jpeg"), product_id: product.id)
 }
 
-# 工事中
 50.times{
   testimage = ProductImage.create(image:File.open("./app/assets/images/aquos.jpeg"), product_id: rand(1..Product.count))
   # debugger
