@@ -2,8 +2,8 @@ class Product < ApplicationRecord
   # バリデーション
   validates :title,               length:    {maximum: 40},         presence: true
   validates :text,                length:    {maximum: 1000},       presence: true
-  validates :category_index_id,   exclusion: {in: %w(--- nil ) },   presence: true
-  validates :fresh_status ,       exclusion: {in: %w(---) },        presence: true
+  validates :category_index_id,   exclusion: {in: %w(---) }
+  validates :fresh_status ,       exclusion: {in: %w(---) }
   validates :deliver_way,         exclusion: {in: %w(---)}
   validates :deliver_person,      exclusion: {in: %w(---)}
   validates :from_area,           exclusion: {in: %w(都道府県)}

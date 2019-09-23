@@ -1,8 +1,20 @@
 FactoryBot.define do
+
+
+  factory :category_index do
+    name             {"テックエキスパート問題集"}
+  end
+
   factory :product do
-    title      {"単体テスト"}
-    price      {"400"}
-    image      {"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A"}
+    title             {"単体テスト"}
+    text              {"test text"}
+    category_index_id {1}
+    fresh_status      {"新品、未使用"}
+    deliver_way       {"ゆうパック"}
+    deliver_person    {"送料込み(出品者負担)"}
+    from_area         {"三重県"}
+    deliver_leadtime  {"3-4日で発送"}
+    price             {"400"}
     created_at { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
   end
 
