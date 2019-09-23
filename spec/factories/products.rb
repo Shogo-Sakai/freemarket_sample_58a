@@ -2,7 +2,8 @@ FactoryBot.define do
 
 
   factory :category_index do
-    name             {"テックエキスパート問題集"}
+    id                {1}
+    name              {"テックエキスパート問題集"}
   end
 
   factory :product do
