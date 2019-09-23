@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load',function(){
   var html = `<div class="error-message__need">必須項目です</div>`
-  $(".submit-btn").click(function() {
-    $(".submit_btn").prop("disabled", true);
+  $("#token_submit").click(function() {
+    $("#token_submit").prop("disabled", true);
       var  number = $(".number").val();
         cvc = $(".cvc").val();
         exp_month = $(".exp_month").val();
@@ -15,7 +15,7 @@ $(document).on('turbolinks:load',function(){
     Payjp.setPublicKey('pk_test_f638357dbba49468618ee91b');
     Payjp.createToken(card, function(s, response) {
       if (response.error) {
-        $(".submit_btn").prop('disabled', false);
+        $("#token_submit").prop('disabled', false);
         if ($(".number").val().length === 0){
           $(".number").addClass("error_form");
           $("#number-error").html(html);

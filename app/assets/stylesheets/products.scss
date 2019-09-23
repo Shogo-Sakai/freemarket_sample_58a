@@ -150,19 +150,16 @@
         box-sizing: border-box;
         width: 100%;
         min-height: 303px;
-        .dropzone{
+        #preview{
           box-sizing: border-box;
           width: 620px;
           min-height: 162px;
           max-height: 825.87px;
           overflow: hidden;
           background-color: #f5f5f5;
-          padding: 40px;
           margin-top: 16px;
-          @extend %centering;
           flex-wrap: wrap;
           border: 1px dashed #ccc;
-          text-align: center;
           font-size: 14px;
           font-family: monospace;
         }
@@ -301,4 +298,20 @@
       }
     }
   }
+}
+#preview{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.product-image{
+  width: 20%;
+  &__option{
+    display: flex;
   }
+  & img{
+    width: 123.59px;
+    height: 123.59px;
+    object-fit: cover;
+  }
+}
