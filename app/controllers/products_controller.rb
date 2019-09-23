@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
       end
       redirect_to root_path
     else
-      binding.pry
       render "products/new"
     end
   end
