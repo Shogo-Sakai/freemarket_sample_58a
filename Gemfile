@@ -48,7 +48,6 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 
   #テスト
-  gem 'faker'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
@@ -128,3 +127,6 @@ gem 'twilio-ruby', '~> 5.6.0'
 
 # 画像アップロード
 gem "dropzonejs-rails"
+
+# seed data作成
+gem 'faker'
