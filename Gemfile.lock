@@ -138,8 +138,6 @@ GEM
       i18n (~> 1.6.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ezdz-rails (0.5.1)
-      railties (>= 3.2, < 6.0)
     ffi (1.11.1)
     fog-aws (3.5.2)
       fog-core (~> 2.1)
@@ -384,7 +382,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.1.0)
   byebug
-  capistrano
+  capistrano (= 3.11.0)
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
