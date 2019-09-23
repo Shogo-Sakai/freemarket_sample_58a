@@ -19,10 +19,16 @@ Rails.application.routes.draw do
   root 'mercaris#index'
 
   # products
-  resources 'products'
+  resources 'products' do
+    collection do
+      get 'purchase_confirmation'
+    end
+  end
+  
   root 'products#new'
 
   resources :signin ,only: [:new,:create,:index]
+
 
   resources :signup ,only: [:index,:create] do
     collection do
