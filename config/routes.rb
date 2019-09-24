@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources 'products' do
     collection do
       get 'purchase_confirmation'
+      post 'purchase_confirmation' => 'products#purchase'
     end
   end
 
