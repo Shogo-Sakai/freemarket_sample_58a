@@ -225,6 +225,12 @@
 
     &__message{
       text-align: center;
+      .submit-btn{
+        margin-top: 16px;
+      }
+      p{
+        margin-top: 16px;
+      }
       
       &__money{
         display: inline-block;
