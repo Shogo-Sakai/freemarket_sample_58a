@@ -35,7 +35,7 @@ testuser = User.create(email:"techexpert@techmaster.com", nickname:"tech-expert-
 testproduct = Product.create(title:"test product", text:"test text", category_index_id: 1, fresh_status:"新品、未使用", deliver_way:"ゆうパック", deliver_person:"送料込み(出品者負担)", from_area:"三重県", deliver_leadtime:"3-4日で発送", price:"3000", user_id: 1)
 testimage = ProductImage.create(image:File.open("./app/assets/images/aquos.jpeg"), product_id: 1)
 20.times{
-  product = Product.create(title: Faker::Device.unique.model_name, text: Faker::Quote.unique.most_interesting_man_in_the_world, category_index_id: rand(1..13), fresh_status: ProductFreshness.find(rand(1..6)).status, deliver_way:DeliverWay.find(rand(1..9)).way, deliver_person: DeliverFee.find(1).fee, from_area: Prefecture.find(rand(1..47)).name, deliver_leadtime: DeliverDay.find(rand(1..3)).days, price: rand(100000), user_id: rand(1..User.count), sell_status: rand(1..SellStatus.count) )
+  product = Product.create(title: Faker::Device.unique.model_name, text: Faker::Quote.unique.most_interesting_man_in_the_world, category_index_id: rand(1..13), fresh_status: ProductFreshness.find(rand(1..6)).status, deliver_way:DeliverWay.find(rand(1..9)).way, deliver_person: DeliverFee.find(1).fee, from_area: Prefecture.find(rand(1..47)).name, deliver_leadtime: DeliverDay.find(rand(1..3)).days, price: rand(100000), user_id: rand(1..User.count))
   testimage = ProductImage.create(image:File.open("./app/assets/images/aquos.jpeg"), product_id: product.id)
 }
 
