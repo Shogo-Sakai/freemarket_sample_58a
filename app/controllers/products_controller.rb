@@ -7,13 +7,22 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
-    if @product.save
+
+    if @product.category_index_id != nil && params[:product_image].present? && params[:product_image][:image].length <= 10 && @product.save
       params[:product_image][:image].each do |image|
         @product.product_images.create(image: image, product_id: @product.id)
       end
       redirect_to root_path
+      return false
     else
-      render "products/new"
+      @product.valid?
+      if params[:product_image].present? == false
+        @product.errors.messages[:image] = ["image is blank"]
+      elsif params[:product_image][:image].length > 10
+        @product.errors.messages[:image] = ["image is too many"]
+      end 
+      @product.errors.messages[:category_index_id] = ["is reserved"] if @product.category_index_id == nil
+      render json: {errors: @product.errors.messages},status: 422
     end
   end
 
