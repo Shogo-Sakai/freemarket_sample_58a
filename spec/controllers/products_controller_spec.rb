@@ -43,4 +43,14 @@ describe ProductsController do
     end
   end
 
+  describe 'DELETE #destroy' do
+    it 'redirect to root page if deleted' do
+      category = create(:category_index)
+      user = create(:user)
+      sign_in(user)
+      product = create(:product)
+      delete :destroy, params: {id:product.id}
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end

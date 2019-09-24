@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   # アソシエーション
   belongs_to :user,                             optional:true
   belongs_to :brand,                            optional:true
-  has_many :product_images,                     dependent: :destroy
+  has_many :product_images,                     dependent: :delete_all
   accepts_nested_attributes_for :product_images
   
   # カテゴリ関係

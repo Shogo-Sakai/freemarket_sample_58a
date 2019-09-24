@@ -93,15 +93,22 @@
       %span.container__product-details__price__delivery-fee
         送料込み
     .container__product-details__message
-      .container__product-details__message__money
-        売上金¥
-        = rand(1000)
-        とP
-        = rand(1000)
-        を
-        %br
-        お持ちです。
-    = link_to "購入画面に進む","", class: "container__product-details__purchase-screen-button"
+      -if current_user.id == @product.user_id
+        = link_to "商品の編集", edit_product_path, class: "submit-btn submit-btn-red"
+        %p
+          or
+        = link_to "出品を再開する","", class: "submit-btn submit-btn-red"
+        = link_to "この商品を削除する", product_path, class: "submit-btn submit-btn-gray", method: "DELETE"
+      - else
+        .container__product-details__message__money
+          売上金¥
+          = rand(1000)
+          とP
+          = rand(1000)
+          を
+          %br
+          お持ちです。
+        = link_to "購入画面に進む","", class: "container__product-details__purchase-screen-button"
 
     .container__product-details__product-description
       %p.container__product-details__product-description__inner
@@ -161,26 +168,27 @@
           %i.fab.fa-pinterest-square.fa-3x
 
   .container__other-products
-    .container__other-products__login-user
-      %h2.container__other-products__login-user__title
-        = link_to "#{current_user.nickname}さんのその他の出品", ""
-      .container__other-products__login-user__products
-        - current_user.products.where(sell_status: "出品中").each do |product|
-          .container__other-products__login-user__products__product
-            = link_to "/products/#{product.id}", class:".container__other-products__login-user__products__product__link" do
-              %figure.container__other-products__login-user__products__product__link__image
-                = image_tag product.product_images.find_by(product_id: product.id).image_url, size:"220x220"
-              .container__other-products__login-user__products__product__link__body
-                %h3.container__other-products__login-user__products__product__link__body__name
-                  = product.title
-                .container__other-products__login-user__products__product__link__body__num
-                  .container__other-products__login-user__products__product__link__body__num__price
-                    ¥
-                    = product.price
-                  .container__other-products__login-user__products__product__link__body__num__heart
-                    %i.far.fa-heart
-                    %span
-                      = rand(1000)
+    -if current_user
+      .container__other-products__login-user
+        %h2.container__other-products__login-user__title
+          = link_to "#{current_user.nickname}さんのその他の出品", ""
+        .container__other-products__login-user__products
+          - current_user.products.where(sell_status: "出品中").each do |product|
+            .container__other-products__login-user__products__product
+              = link_to "/products/#{product.id}", class:".container__other-products__login-user__products__product__link" do
+                %figure.container__other-products__login-user__products__product__link__image
+                  = image_tag product.product_images.find_by(product_id: product.id).image_url, size:"220x220"
+                .container__other-products__login-user__products__product__link__body
+                  %h3.container__other-products__login-user__products__product__link__body__name
+                    = product.title
+                  .container__other-products__login-user__products__product__link__body__num
+                    .container__other-products__login-user__products__product__link__body__num__price
+                      ¥
+                      = product.price
+                    .container__other-products__login-user__products__product__link__body__num__heart
+                      %i.far.fa-heart
+                      %span
+                        = rand(1000)
 
     .container__other-products__same-category
       %h2.container__other-products__same-category__title
