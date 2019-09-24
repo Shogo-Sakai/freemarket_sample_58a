@@ -3,5 +3,5 @@ class ProductImage < ApplicationRecord
   
   validates  :image,   presence: true
   
-  belongs_to :product, optional: true
+  belongs_to :product, optional: true, dependent: :destroy
 end

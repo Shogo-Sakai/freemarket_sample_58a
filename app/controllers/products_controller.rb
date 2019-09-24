@@ -34,6 +34,13 @@ class ProductsController < ApplicationController
     render layout: 'form_layout'
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    debugger
+    redirect_to root_path
+  end
+
   private
 
   def product_params
