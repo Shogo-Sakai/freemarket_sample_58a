@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   end
   
   # ユーザー
-  resources 'users', except: [:show, :edit] do
+  resources 'users', except: [:edit] do
     collection do
       get 'credit_register'
-      get 'show'
       get 'edit'
       get 'logout'
       get 'edit_profile'

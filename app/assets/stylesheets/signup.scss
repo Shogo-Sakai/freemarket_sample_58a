@@ -278,7 +278,7 @@
 }
 
 .facebook-icon{
-   font-size: 30px;
+  font-size: 30px;
 }
 
 //signinページ
@@ -602,4 +602,24 @@
 .rc-anchor-normal{
   height: 74px;
   width: 300px;
+}
+
+.header-registration-btn{
+  display: inline-block;
+  line-height: 30px;
+  margin-top: 0;
+  padding: 0px 4px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.header-signin-btn{
+  color: rgb(0, 149, 238);
+  display: block;
+  font-size: 14px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(0, 149, 238);
+  border-image: initial;
+  border-radius: 4px;
 }

@@ -11,7 +11,8 @@
         .user-mypage-wrapper__main__profile__container__image
           = image_tag "https://static.mercdn.net/images/member_photo_noimage_thumb.png", "alt width":"60", height:"60"
         .user-mypage-wrapper__main__profile__container__content.bold
-          %h2 手区 江来酢羽斗
+          %h2 
+            = @user.nickname
         .user-mypage-wrapper__main__profile__container__status
           .user-mypage-wrapper__main__profile__container__status__content
             .user-mypage-wrapper__main__profile__container__status__content__name
