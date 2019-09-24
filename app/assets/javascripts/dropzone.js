@@ -41,16 +41,44 @@ $(document).on('turbolinks:load', function(){
     files_array.forEach(function(file){
       formData.append("product_image[image][]" , file)
     });
+    var url = $(this).attr("action");
     $.ajax({
-      url: '/products',
+      url: url,
       type: 'POST',
       data: formData,
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
-      },
       contentType: false,
       processData: false,
-      async: false
+      async: true
+    })
+    .fail(function(data){
+      $(".sell-container-submit__btn").prop("disabled", false);
+      var errors = JSON.parse(data.responseText).errors;
+      if(errors === "image is blank"){
+        $("#product_image_error").text("画像がありません");
+      }else{
+        $.each(errors,function(key,value){
+          $("#product_" + key).addClass("error_form");
+          if (key === "price"){
+            $(".sell-container-submit__btn").val("出品する");
+            $("#product_" + key + "_error").text("300以上9999999以下で入力してください");
+          }else{
+            value.forEach(function(message){
+              $(".sell-container-submit__btn").val("出品する");
+              if(message === "can't be blank"){
+                $("#product_" + key + "_error").text("入力してください");
+              }else if(message === "is reserved"){
+                $("#product_" + key + "_error").text("選択してください");
+              }else if(message === "image is blank"){
+                $("#product_" + key + "_error").text("画像がありません");
+                $("#preview").css("border","1px dashed #ea352d");
+              }else if(message === "image is too many"){
+                $("#product_" + key + "_error").text("画像は10枚まで投稿できます");
+                $("#preview").css("border","1px dashed #ea352d");
+              }
+            });
+          }
+        })
+      }
     })
   })
   
