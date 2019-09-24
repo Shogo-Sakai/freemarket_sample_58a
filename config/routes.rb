@@ -22,13 +22,8 @@ Rails.application.routes.draw do
   resources 'products' do
     collection do
       get 'purchase_confirmation'
-      post 'new' => "products#create"
     end
   end
-  
-  post 'products/new' => "products#create"
-  resources 'products'
-  root 'products#new'
 
   resources :signin ,only: [:new,:create,:index]
 
