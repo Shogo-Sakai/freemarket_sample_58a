@@ -21,7 +21,6 @@ class ProductsController < ApplicationController
       elsif params[:product_image][:image].length > 10
         @product.errors.messages[:image] = ["image is too many"]
       end 
-      binding.pry
       @product.errors.messages[:category_index_id] = ["is reserved"] if @product.category_index_id == nil
       render json: {errors: @product.errors.messages},status: 422
     end
