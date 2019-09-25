@@ -16,10 +16,16 @@ $(document).on("turbolinks:load", function(){
     `
 
     var sizeBoxHtml = `
-    <div class="select-wrap size_wrapper">
-      <select class="default-select sell-select-box size_box " name="product[size_id]" id="size_id">
-        <option value="">---</option>
-      <i class="select-arrow fas fa-chevron-down"></i>
+    <div class="size_wrapper">
+      <p class="margin-2rem">
+        <label class="signup-label" for="category_index_サイズ">サイズ</label>
+        <span class="signup-form-container__span span-need">必須</span>
+      </p>
+        <div class="select-wrap size_wrapper">
+        <select class="default-select sell-select-box size_box " name="product[size_id]" id="size_id">
+          <option value="">---</option>
+        <i class="select-arrow fas fa-chevron-down"></i>
+        </div>
     </div>
     `
 
@@ -94,14 +100,15 @@ $(document).on("turbolinks:load", function(){
 
           // sizeの箱を追加
           $('.sell_smallcategory_box').on('change',function(){
-            var smallCategoryId = $('#smallcatebory_id').val();
+            var smallCategoryId = $('#smallcategory_id').val();
             if(!($('.size_wrapper').length)){
               var sizeHtml = sizeBoxHtml;
               $('.category_wrapper').append(sizeHtml);
-            }
+            };
             if (smallCategoryId == ''){
               $('.size_wrapper').remove();
-            }
+            };
+            console.log(smallCategoryId)
             $.ajax({
               url:      'products/size',
               type:     'GET',
@@ -118,6 +125,9 @@ $(document).on("turbolinks:load", function(){
                 sizeOptionHtml = insertSizeHtml;
                 $('#size_id').append(sizeOptionHtml);
               });
+              if($('#size_id').children('option').length == 1) {
+                $('.size_wrapper').remove();
+              }
             });
           });
 

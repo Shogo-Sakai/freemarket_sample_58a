@@ -54,7 +54,8 @@ class ProductsController < ApplicationController
   def size
     # debugger
     respond_to do |format|
-      format.json{@size_options = SmallcategoriesHasSizes.where(smallcategory_id: params[:smallcategory_id])}
+      # debugger
+      format.json{@size_options = Smallcategory.find_by(id: params[:smallcategory_id]).smallcategories_has_sizes}
       # debugger
     end
   end
@@ -62,7 +63,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, :deliver_day)
+    params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, :deliver_day,:bigcategory_id, :smallcategory_id, :size_id)
   end
 
   def image_params
