@@ -32,7 +32,6 @@ class PurchaseController < ApplicationController
 
   def create
     @product = Product.find(params[:product_id])
-    @product = Product.find(params[:product_id])
     @trade = Trade.new(buyer_id: current_user.id, seller_id: @product.user.id, product: @product)
     if current_user.id != @product.user.id && current_user.creditcard.present?
       card = current_user.creditcard
