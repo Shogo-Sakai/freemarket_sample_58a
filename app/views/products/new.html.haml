@@ -38,10 +38,11 @@
             %p
               = label :category_index, 'カテゴリー',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
-            .select-wrap
-              = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box'})
-              %i.select-arrow.fas.fa-chevron-down
-            .input-error#product_category_index_id_error
+            .category_wrapper
+              .select-wrap.category_index_wrapper
+                = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box select_category_index'})
+                %i.select-arrow.fas.fa-chevron-down
+              .input-error#product_category_index_id_error
 
             -# ここにbigcategory,smallcategoryを挿入する
 

@@ -37,6 +37,28 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  def bigcategory
+    # debugger
+    respond_to do |format|
+      format.json{@bigcategory_options = Bigcategory.where(category_index: params[:category_id])}
+    end
+  end
+
+  def smallcategory
+    respond_to do |format|
+      format.json{@smallcategory_options = Smallcategory.where(bigcategory: params[:bigcategory_id])}
+      # debugger
+    end
+  end
+
+  def size
+    # debugger
+    respond_to do |format|
+      format.json{@size_options = SmallcategoriesHasSizes.where(smallcategory_id: params[:smallcategory_id])}
+      # debugger
+    end
+  end
+
   private
 
   def product_params
