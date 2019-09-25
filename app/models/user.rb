@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_one :profile
   has_one :creditcard
   has_many :products, dependent: :destroy
+  has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id", dependent: :destroy
+  has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id", dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   PASSWORD_VALIDATION = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i

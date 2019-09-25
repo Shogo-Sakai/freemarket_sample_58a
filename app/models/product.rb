@@ -14,6 +14,7 @@ class Product < ApplicationRecord
   belongs_to :brand,                            optional:true
   has_many :product_images,                     dependent: :delete_all
   accepts_nested_attributes_for :product_images
+  has_one :trade
   
   # カテゴリ関係
   has_one :category_index

@@ -140,13 +140,11 @@
           }
 
           &__purchase-button{
-            background: #ccc;
             margin: 16px 0 0;
 
             &__box{
               &__text{
                 padding: 16px;
-                border: 1px solid #ccc;
                 color: $default-font-black;
               }
             }

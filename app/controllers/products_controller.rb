@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :redirect_to_login_form_unless_signed_in, except: :show
   def new
     @product = Product.new
   end
@@ -28,10 +29,6 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-  end
-
-  def purchase_confirmation
-    render layout: 'form_layout'
   end
 
   def destroy

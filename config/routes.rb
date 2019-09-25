@@ -19,9 +19,7 @@ Rails.application.routes.draw do
 
   # products
   resources 'products' do
-    collection do
-      get 'purchase_confirmation'
-    end
+    resources 'purchase' ,only: [:new,:create,:index]
   end
 
   resources :signin ,only: [:new,:create,:index]
