@@ -93,22 +93,23 @@
       %span.container__product-details__price__delivery-fee
         送料込み
     .container__product-details__message
-      -if current_user.id == @product.user_id
-        = link_to "商品の編集", edit_product_path, class: "submit-btn submit-btn-red"
-        %p
-          or
-        = link_to "出品を再開する","", class: "submit-btn submit-btn-red"
-        = link_to "この商品を削除する", product_path, class: "submit-btn submit-btn-gray", method: "DELETE"
-      - else
-        .container__product-details__message__money
-          売上金¥
-          = rand(1000)
-          とP
-          = rand(1000)
-          を
-          %br
-          お持ちです。
-        = link_to "購入画面に進む","", class: "container__product-details__purchase-screen-button"
+      - if current_user
+        - if current_user.id == @product.user_id
+          = link_to "商品の編集", edit_product_path, class: "submit-btn submit-btn-red"
+          %p
+            or
+          = link_to "出品を再開する","", class: "submit-btn submit-btn-red"
+          = link_to "この商品を削除する", product_path, class: "submit-btn submit-btn-gray", method: "DELETE"
+        - else
+          .container__product-details__message__money
+            売上金¥
+            = rand(1000)
+            とP
+            = rand(1000)
+            を
+            %br
+            お持ちです。
+          = link_to "購入画面に進む","", class: "container__product-details__purchase-screen-button"
 
     .container__product-details__product-description
       %p.container__product-details__product-description__inner
