@@ -8,12 +8,14 @@
       .main-container__purchase-details__item__inner
         .main-container__purchase-details__item__inner__product
           %h3.main-container__purchase-details__item__inner__product__image
-            = image_tag src="https://web-jp-assets.mercdn.net/_next/static/images/download_app_pc-a4418175e8be071827ac88d073f40e4a.png", size: "64x64"
+            = image_tag @product.product_images.first.image_url, size: "64x64"
           %p.main-container__purchase-details__item__inner__product__name
             商品名
+            %br
+            = @product.title
         %form.main-container__purchase-details__item__inner__purchase-details
           %p.main-container__purchase-details__item__inner__purchase-details__price
-            ¥xxx
+            = "¥ #{@product.price.to_s(:delimited)}"
             %span.main-container__purchase-details__item__inner__purchase-details__price__shipping-fee
               送料込み
           %ul.main-container__purchase-details__item__inner__purchase-details__use-points
@@ -47,13 +49,12 @@
                 支払い金額
               .main-container__purchase-details__item__inner__purchase-details__buy-price__box__amount
                 %span
-                  ¥xxx
+                  = "¥ #{@product.price.to_s(:delimited)}"
           %p.main-container__purchase-details__item__inner__purchase-details__error-text
             この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
           %ul.main-container__purchase-details__item__inner__purchase-details__purchase-button
             %li.main-container__purchase-details__item__inner__purchase-details__purchase-button__box
-              = link_to .main-container__purchase-details__item__inner__purchase-details__purchase-button__box__text
-                購入する
+              = link_to "購入する", product_purchase_index_path(@product),method: :post,class: "submit-btn submit-btn-red"
           %p.main-container__purchase-details__item__inner__purchase-details__attention
             アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
           %br
@@ -67,11 +68,11 @@
         %h3
           配送先
         %address.main-container__purchase-details__user-info__inner__address
-          〒xxx-xxxx
+          = "〒#{current_user.profile.postal_code}"
           %br
-          〇〇県〜
+          = @post_address
           %br
-          氏名
+          = @post_name
         = link_to "" do
           %span
             変更する
@@ -82,7 +83,11 @@
           支払い方法
         %p.main-container__purchase-details__user-pay-info__inner__text
           %br
-          \/
+          = "**** **** ****" + @customer_card.last4
+          %br
+          = @customer_card.exp_month.to_s + "/" + @customer_card.exp_year.to_s
+          %br
+          = @customer_card.brand
         = link_to "" do
           %span
             変更する
