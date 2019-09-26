@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # search
+  resources 'search',only: :index
+
   resources :signin ,only: [:new,:create,:index]
 
 
