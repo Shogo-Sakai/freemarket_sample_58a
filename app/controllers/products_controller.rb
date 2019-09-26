@@ -33,12 +33,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product.destroy
+    @product.destroy
     redirect_to root_path
   end
 
   def bigcategory
-    # debugger
     respond_to do |format|
       format.json{@bigcategory_options = Bigcategory.where(category_index: params[:category_id])}
     end
@@ -47,16 +46,12 @@ class ProductsController < ApplicationController
   def smallcategory
     respond_to do |format|
       format.json{@smallcategory_options = Smallcategory.where(bigcategory: params[:bigcategory_id])}
-      # debugger
     end
   end
 
   def size
-    # debugger
     respond_to do |format|
-      # debugger
       format.json{@size_options = Smallcategory.find_by(id: params[:smallcategory_id]).smallcategories_has_sizes}
-      # debugger
     end
   end
 
@@ -75,9 +70,6 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, :deliver_day,:bigcategory_id, :smallcategory_id, :size_id)
-  end
-
-  def image_params
   end
 
   def get_product
