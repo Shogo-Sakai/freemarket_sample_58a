@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :redirect_to_login_form_unless_signed_in, except: :show
+  before_action :get_product, only: [:show, :destroy, :destroy, :edit, :update]
+  
   def new
     @product = Product.new
   end
@@ -28,11 +30,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def destroy
-    product = Product.find(params[:id])
     product.destroy
     redirect_to root_path
   end
@@ -61,18 +61,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
-    if @product.user_id == current_user.id
-      if @product.update(product_params)
-        redirect_to root_path
-      else
-        render 'products/edit'
-      end
-    else 
+    if @product.user_id == current_user.id && @product.update(product_params)
+      redirect_to root_path
+    else
       render 'products/edit'
     end
   end
@@ -84,6 +78,10 @@ class ProductsController < ApplicationController
   end
 
   def image_params
+  end
+
+  def get_product
+    @product = Product.find(params[:id])
   end
 
 end
