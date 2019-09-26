@@ -75,7 +75,7 @@ describe ProductsController do
       product = create(:product, user: user)
       sign_in(user)
       patch :update, params:{ id: product.id ,product:{user_id: user.id, title:"test product", text:"test text", category_index_id: 1, fresh_status:"新品、未使用", deliver_way:"ゆうパック", deliver_person:"送料込み(出品者負担)", from_area:"三重県", deliver_leadtime:"3-4日で発送", price:"3000"}}
-    expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(root_path)
     end
   end
 end
