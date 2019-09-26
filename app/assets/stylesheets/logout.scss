@@ -4,18 +4,13 @@
 
   &__main{
     background-color: $normal-white;
-
     &__box{
-
-      &__title{
-        
+      &__title{        
         &__inner{
           padding: 64px;
-
           &__content{
             max-width: 320px;
             margin: 0 auto;
-
             &__btn{
               background: $normal-red;
               border: 1px solid $normal-red;

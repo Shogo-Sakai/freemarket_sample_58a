@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_095533) do
+ActiveRecord::Schema.define(version: 2019_09_24_115142) do
 
   create_table "bigcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -121,6 +121,15 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
     t.index ["smallcategory_id"], name: "index_smallcategories_has_sizes_on_smallcategory_id"
   end
 
+  create_table "trades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "buyer_id"
+    t.bigint "seller_id"
+    t.index ["buyer_id"], name: "index_trades_on_buyer_id"
+    t.index ["product_id"], name: "index_trades_on_product_id"
+    t.index ["seller_id"], name: "index_trades_on_seller_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -147,4 +156,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_095533) do
   add_foreign_key "smallcategories", "bigcategories"
   add_foreign_key "smallcategories_has_sizes", "sizes"
   add_foreign_key "smallcategories_has_sizes", "smallcategories"
+  add_foreign_key "trades", "products"
+  add_foreign_key "trades", "users", column: "buyer_id"
+  add_foreign_key "trades", "users", column: "seller_id"
 end

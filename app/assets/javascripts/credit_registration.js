@@ -6,7 +6,7 @@ $(document).on('turbolinks:load',function(){
         cvc = $(".cvc").val();
         exp_month = $(".exp_month").val();
         exp_year = $(".exp_year").val();
-     var card = {
+      var card = {
           number: number,
           cvc: cvc,
           exp_month: exp_month,

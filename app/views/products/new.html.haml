@@ -14,8 +14,7 @@
               必須
           .upload-box
             %ul#preview
-          - if judge_blank(@product, :product_images)
-            .input-error 画像がありません
+          .input-error#product_image_error
         -# 商品名、商品の説明
         .signup-form-container.registration-form__first-container.sell-container-all-padding.container-border-top
           .signup-form-container__title
@@ -23,20 +22,14 @@
               = label :title, '商品名',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
           = f.text_field :title, placeholder: '商品名（必須40文字まで）', class: 'default-input sell-input'
-          - if judge_blank(@product, :title)
-            .input-error 入力してください
-          - if judge_length_long(@product, :title, 40)
-            .input-error 40文字以下で入力してください
+          .input-error#product_title_error
         .signup-form-container.registration-form__first-container.sell-container-side-padding
           .signup-form-container__title
             %p
               = label :text, '商品の説明',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
           = f.text_area :text, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）　2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。 ", class: 'default-input sell-input-area'
-          - if judge_blank(@product, :text)
-            .input-error 入力してください
-          - if judge_length_long(@product, :title, 1000)
-            .input-error 1000文字以下で入力してください
+          .input-error#product_text_error
         -# 商品の明細
         .sell-container-all-padding.container-border-top.flex
           .sell-container-left
@@ -45,11 +38,11 @@
             %p
               = label :category_index, 'カテゴリー',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
-            .select-wrap
-              = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box'})
-              %i.select-arrow.fas.fa-chevron-down
-            - if judge_blank(@product, :category_index_id)
-              .input-error 選択してください
+            .category_wrapper
+              .select-wrap.category_index_wrapper
+                = f.collection_select(:category_index_id, CategoryIndex.all,:id,:name,{prompt:"---"}, {class: 'default-select sell-select-box select_category_index'})
+                %i.select-arrow.fas.fa-chevron-down
+              .input-error#product_category_index_id_error
 
             -# ここにbigcategory,smallcategoryを挿入する
 
@@ -59,8 +52,7 @@
             .select-wrap
               = f.select:fresh_status, ProductFreshness.pluck(:status).unshift('---'),{},{class: 'default-select sell-select-box sell-input'}
               %i.select-arrow.fas.fa-chevron-down
-            - if judge_exception(@product, :fresh_status)
-              .input-error 選択してください
+            .input-error#product_fresh_status_error
         -# 配送について
         .sell-container-all-padding.container-border-top.flex
           .sell-container-left
@@ -75,32 +67,28 @@
             .select-wrap
               = f.select :deliver_person, DeliverFee.pluck(:fee).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
               %i.select-arrow.fas.fa-chevron-down
-            - if judge_exception(@product, :deliver_person)
-              .input-error 選択してください
+            .input-error#product_deliver_person_error
             %p.margin-2rem
               = label :deliver_leadtime, '配達の方法',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
             .select-wrap
               = f.select :deliver_way,DeliverWay.pluck(:way).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
               %i.select-arrow.fas.fa-chevron-down
-            - if judge_exception(@product, :deliver_way)
-              .input-error 選択してください
+            .input-error#product_deliver_way_error
             %p.margin-2rem
               = label :from_area, '発送元の地域',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
             .select-wrap
               = f.select :from_area ,Prefecture.pluck(:name).unshift('都道府県', '未定'),{},{class: 'default-select select-wrap__sell-select-box'}
               %i.select-arrow.fas.fa-chevron-down
-            - if judge_exception(@product, :from_area)
-              .input-error 選択してください
+            .input-error#product_from_area_error
             %p.margin-2rem
               = label :deliver_leadtime, '発送までの日数',class: 'signup-label'
               %span.signup-form-container__span.span-need 必須
             .select-wrap
               = f.select :deliver_leadtime,DeliverDay.pluck(:days).unshift('---'),{},{class: 'default-select select-wrap__sell-select-box'}
               %i.select-arrow.fas.fa-chevron-down
-            - if judge_exception(@product, :deliver_leadtime)
-              .input-error 選択してください
+            .input-error#product_deliver_leadtime_error
         -# 販売価格
         .sell-container-all-padding.container-border-top.flex
           .sell-container-left.link-space-reset
@@ -119,8 +107,7 @@
                 %p
                   ¥
                   = f.text_field :price, placeholder: "例：300", id:"product_price", class: 'default-input price ', style:"text-align:right"
-            - if @product.errors.details[:price].present?
-              .input-error 300以上9999999以下で入力してください
+            .input-error#product_price_error
             .sell-container-right__price-fee
               .sell-container-right__price-fee__text
                 %p
@@ -153,6 +140,6 @@
             = f.submit value: "出品する",class: 'submit-btn submit-btn-red user-mypage-wrapper__main__credit__content__btn sell-container-submit__btn'
           .sell-container-back
             %p
-              = link_to users_path,class: 'submit-btn submit-btn-gray user-mypage-wrapper__main__credit__content__btn sell-container-back__btn' do
+              = link_to root_path,class: 'submit-btn submit-btn-gray user-mypage-wrapper__main__credit__content__btn sell-container-back__btn' do
                 %span もどる
   = render 'signup/simple-footer'

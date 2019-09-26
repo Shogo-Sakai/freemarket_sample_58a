@@ -19,8 +19,12 @@ Rails.application.routes.draw do
 
   # products
   resources 'products' do
+    resources 'purchase' ,only: [:new,:create,:index]
     collection do
       get 'purchase_confirmation'
+      get 'products/bigcategory'   => 'products#bigcategory',   defaults:{format: 'json'}
+      get 'products/smallcategory' => 'products#smallcategory', defaults:{format: 'json'}
+      get 'products/size'          => 'products#size',          defaults:{format: 'json'}
     end
   end
 
