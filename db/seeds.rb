@@ -40,6 +40,25 @@ testuser = User.create(
   password:              "techexpert58",
   password_confirmation: "techexpert58"
 )
+testprofile = Profile.create(
+  user_id:                 1,
+  birthyear:               2019,
+  birthmonth:              7,
+  birthday:                27,
+  family_name:             "てっく",
+  personal_name:           "すぱお",
+  family_name_kana:        "テック",
+  personal_name_kana:      "スパオ",
+  postal_code:             "739-0133",
+  prefecture:              "福岡県",
+  city:                    "東広島市城南区飯田",
+  address:                  "１０－８２９－２８１０, ラポールエキスパート５８号室",
+  building:                Faker::Address.unique.building_number,
+  post_family_name:        "てっく",
+  post_personal_name:      "すぱお",
+  post_family_name_kana:   "テック",
+  post_personal_name_kana: "スパオ"
+)
 10.times{
   user   = User.create(
     email:                 Faker::Internet.email,
@@ -47,6 +66,27 @@ testuser = User.create(
     password:              "password58",
     password_confirmation: "password58"
   )
+  first_name = Faker::Name.unique.first_name
+  last_name = Faker::Name.unique.last_name
+  testprofile = Profile.create(
+    user_id:                 user.id,
+    birthyear:               rand(1900..2019),
+    birthmonth:              rand(1..12),
+    birthday:                rand(1..28),
+    family_name:             last_name,
+    personal_name:           first_name,
+    family_name_kana:        last_name,
+    personal_name_kana:      first_name,
+    postal_code:             "#{rand(100..999)}-#{rand(1000..9999)}",
+    prefecture:              Prefecture.find(rand(1..47)).name,
+    city:                    Faker::Address.unique.city,
+    address:                 Faker::Address.unique.street_address,
+    building:                Faker::Address.unique.building_number,
+    post_family_name:        last_name,
+    post_personal_name:      first_name,
+    post_family_name_kana:   last_name,
+    post_personal_name_kana: first_name
+  )  
 }
 
 
@@ -88,7 +128,7 @@ testimage        = ProductImage.create(
     smallcategory_id:  smallcategory.id,
     size_id:           size,
     fresh_status:      ProductFreshness.find(rand(1..6)).status,
-    deliver_person:    DeliverFee.find(1).fee,
+    deliver_person:    DeliverFee.find(rand(1..2)).fee,
     deliver_way:       DeliverWay.find(rand(1..9)).way,
     deliver_leadtime:  DeliverDay.find(rand(1..3)).days,
     from_area:         Prefecture.find(rand(1..47)).name,
