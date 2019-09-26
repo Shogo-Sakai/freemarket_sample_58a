@@ -45,17 +45,17 @@
               = link_to "" do
                 .category
                   %span
-                    = CategoryIndex.find(@product.category_index_id).name
+                    = @category_name
               = link_to "" do
                 .category
                   %i.fas.fa-chevron-right
                     %span
-                      = Bigcategory.find(@product.bigcategory_id).name
+                      = @bigcategory_name
               = link_to "" do
                 .category
                   %i.fas.fa-chevron-right
                     %span
-                      = Smallcategory.find(@product.bigcategory_id).name
+                      = @smallcategory_name
           %tr
             %th
               ブランド
@@ -183,7 +183,7 @@
         .container__other-products__login-user__products
           - current_user.products.where(sell_status: "出品中").each do |product|
             .container__other-products__login-user__products__product
-              = link_to "/products/#{product.id}", class:".container__other-products__login-user__products__product__link" do
+              = link_to "/products/#{product.id}", class:"container__other-products__login-user__products__product__link" do
                 %figure.container__other-products__login-user__products__product__link__image
                   = image_tag product.product_images.find_by(product_id: product.id).image_url, size:"220x220"
                 .container__other-products__login-user__products__product__link__body
