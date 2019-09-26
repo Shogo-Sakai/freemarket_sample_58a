@@ -1,4 +1,5 @@
 $(document).on("turbolinks:load", function(){
+    // 入力欄のHTMLを作成
     var bigCategoryboxHtml = `
       <div class="select-wrap big_category_wrapper">
         <select class="default-select sell-select-box sell_bigcategory_box" name="product[bigcategory_id]" id="bigcategory_id">
@@ -22,16 +23,18 @@ $(document).on("turbolinks:load", function(){
         <span class="signup-form-container__span span-need">必須</span>
       </p>
         <div class="select-wrap size_wrapper">
-        <select class="default-select sell-select-box size_box " name="product[size_id]" id="size_id">
-          <option value="">---</option>
-        <i class="select-arrow fas fa-chevron-down"></i>
+          <select class="default-select sell-select-box size_box " name="product[size_id]" id="size_id">
+            <option value="">---</option>
+          <i class="select-arrow fas fa-chevron-down"></i>
         </div>
     </div>
     `
-
+  // 挿入する選択肢のHTMLを作成
   function buildcategoryOptions(category){
     var optionHtml =`
-    <option value="${category.id}">${category.name}</option>
+    <option value="${category.id}">
+      ${category.name}
+    </option>
   `
   return optionHtml;
   };
@@ -42,6 +45,7 @@ $(document).on("turbolinks:load", function(){
     var category_index_id = $('#product_category_index_id').val();
     $('.small_category_wrapper').remove();
     $('.size_wrapper').remove();
+
     // bigcategoryの箱を追加
     if(!($('.big_category_wrapper').length)){
       var bigBoxHtml = bigCategoryboxHtml;
@@ -51,12 +55,12 @@ $(document).on("turbolinks:load", function(){
       $('.big_category_wrapper').remove();
     };
     $.ajax({
-      url:       'products/bigcategory',
+      url:       "products/bigcategory",
       type:      "GET",
       dataTytpe: "json",
       data:      {category_id: category_index_id}
     })
-    // bigcategoryの追加
+    // bigcategoryの選択肢を追加
     .done(function(bigcategory_options){
       var insertHtml = "";
       $('#bigcategory_id').children('option').remove();
@@ -87,14 +91,14 @@ $(document).on("turbolinks:load", function(){
           dataType: 'json',
           data:     {bigcategory_id: bigCategoryId}
         })
-        // smallcategoryの追加
+        // smallcategoryの選択肢を追加
         .done(function(smallcategory_options){
           var insertSmallCategoryHtml = "";
           $('#smallcategory_id').children('option').remove();
           $('#smallcategory_id').append(defaultOption);
           $.each(smallcategory_options, function(i, smallcategory_option){
             insertSmallCategoryHtml = buildcategoryOptions(smallcategory_option);
-            smallOptionHtml = insertSmallCategoryHtml;
+            smallOptionHtml         = insertSmallCategoryHtml;
             $('#smallcategory_id').append(smallOptionHtml);
           });
 
@@ -108,14 +112,13 @@ $(document).on("turbolinks:load", function(){
             if (smallCategoryId == ''){
               $('.size_wrapper').remove();
             };
-            console.log(smallCategoryId)
             $.ajax({
               url:      'products/size',
               type:     'GET',
               dataType: 'json',
               data:     {smallcategory_id: smallCategoryId}
             })
-            // sizeの追加
+            // sizeの選択肢を追加
             .done(function(size_options){
               var insertSizeHtml = "";
               $('#size_id').children('option').remove();
@@ -127,14 +130,14 @@ $(document).on("turbolinks:load", function(){
               });
               if($('#size_id').children('option').length == 1) {
                 $('.size_wrapper').remove();
-              }
+              };
             });
           });
 
         });
-
       });
+
     });
   });
 
-})
+});
