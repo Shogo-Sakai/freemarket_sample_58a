@@ -53,5 +53,4 @@ $(document).on('turbolinks:load', function(){
       async: false
     })
   })
-  
 });
