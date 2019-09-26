@@ -308,8 +308,12 @@
 }
 .product-image{
   width: 20%;
+  background-color: $normal-white;
   &__option{
     display: flex;
+    color: $link-text-blue;
+    justify-content: space-between;
+    padding: 10px 15px;
   }
   & img{
     width: 123.59px;

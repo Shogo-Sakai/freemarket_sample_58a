@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :redirect_to_login_form_unless_signed_in, except: :show
   def new
     @product = Product.new
   end
@@ -7,13 +8,22 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
-    if @product.save
+
+    if @product.category_index_id != nil && params[:product_image].present? && params[:product_image][:image].length <= 10 && @product.save
       params[:product_image][:image].each do |image|
         @product.product_images.create(image: image, product_id: @product.id)
       end
       redirect_to root_path
+      return false
     else
-      render "products/new"
+      @product.valid?
+      if params[:product_image].present? == false
+        @product.errors.messages[:image] = ["image is blank"]
+      elsif params[:product_image][:image].length > 10
+        @product.errors.messages[:image] = ["image is too many"]
+      end 
+      @product.errors.messages[:category_index_id] = ["is reserved"] if @product.category_index_id == nil
+      render json: {errors: @product.errors.messages},status: 422
     end
   end
 
@@ -21,8 +31,33 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def purchase_confirmation
-    render layout: 'form_layout'
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to root_path
+  end
+
+  def bigcategory
+    # debugger
+    respond_to do |format|
+      format.json{@bigcategory_options = Bigcategory.where(category_index: params[:category_id])}
+    end
+  end
+
+  def smallcategory
+    respond_to do |format|
+      format.json{@smallcategory_options = Smallcategory.where(bigcategory: params[:bigcategory_id])}
+      # debugger
+    end
+  end
+
+  def size
+    # debugger
+    respond_to do |format|
+      # debugger
+      format.json{@size_options = Smallcategory.find_by(id: params[:smallcategory_id]).smallcategories_has_sizes}
+      # debugger
+    end
   end
 
   def edit
@@ -45,7 +80,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, :deliver_day)
+    params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, :deliver_day,:bigcategory_id, :smallcategory_id, :size_id)
   end
 
   def image_params
