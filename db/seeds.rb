@@ -110,7 +110,7 @@ testimage        = ProductImage.create(
   image:File.open("./app/assets/images/aquos.jpeg"),
   product_id: 1
 )
-20.times{
+40.times{
   category_index = rand(1..13)
   bigcategory    = Bigcategory.where(category_index_id: category_index).sample
   smallcategory  = Smallcategory.where(bigcategory_id: bigcategory).sample
@@ -142,7 +142,7 @@ testimage        = ProductImage.create(
   )
 }
 
-50.times{
+40.times{
   testimage      = ProductImage.create(
     image:File.open("./app/assets/images/aquos.jpeg"),
     product_id: rand(1..Product.count))
