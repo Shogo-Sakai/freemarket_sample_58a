@@ -227,10 +227,9 @@
         }
       }
   
-  
       /*選択されているタブのコンテンツのみを表示*/
       #trading:checked ~ #trading_content,
-      #traded:checked ~ #traded_content {
+      #traded:checked  ~ #traded_content {
         display: block;
       }
   
