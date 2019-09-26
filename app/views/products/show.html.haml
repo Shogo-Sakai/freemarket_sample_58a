@@ -43,16 +43,19 @@
               カテゴリー
             %td.category
               = link_to "" do
-                %div.category
-                  = CategoryIndex.find(@product.category_index_id).name
+                .category
+                  %span
+                    = CategoryIndex.find(@product.category_index_id).name
               = link_to "" do
-                %div.category
+                .category
                   %i.fas.fa-chevron-right
-                  カテゴリー
+                    %span
+                      = Bigcategory.find(@product.bigcategory_id).name
               = link_to "" do
-                %div.category
+                .category
                   %i.fas.fa-chevron-right
-                  カテゴリー 
+                    %span
+                      = Smallcategory.find(@product.bigcategory_id).name
           %tr
             %th
               ブランド
@@ -199,66 +202,18 @@
       %h2.container__other-products__same-category__title
         = link_to "カテゴリ その他の出品", ""
       .container__other-products__same-category__products
-        .container__other-products__same-category__products__product
-          = link_to "", class:".container__other-products__same-category__products__product__link" do
-            %figure.container__other-products__same-category__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__same-category__products__product__link__body
-              %h3.container__other-products__same-category__products__product__link__body__name
-                商品名
-              .container__other-products__same-category__products__product__link__body__num
-                .container__other-products__same-category__products__product__link__body__num__price
-                  ¥1,000
-        .container__other-products__same-category__products__product
-          = link_to "", class:".container__other-products__same-category__products__product__link" do
-            %figure.container__other-products__same-category__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__same-category__products__product__link__body
-              %h3.container__other-products__same-category__products__product__link__body__name
-                商品名
-              .container__other-products__same-category__products__product__link__body__num
-                .container__other-products__same-category__products__product__link__body__num__price
-                  ¥1,000
-        .container__other-products__same-category__products__product
-          = link_to "", class:".container__other-products__same-category__products__product__link" do
-            %figure.container__other-products__same-category__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__same-category__products__product__link__body
-              %h3.container__other-products__same-category__products__product__link__body__name
-                商品名
-              .container__other-products__same-category__products__product__link__body__num
-                .container__other-products__same-category__products__product__link__body__num__price
-                  ¥1,000
-        .container__other-products__same-category__products__product
-          = link_to "", class:".container__other-products__same-category__products__product__link" do
-            %figure.container__other-products__same-category__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__same-category__products__product__link__body
-              %h3.container__other-products__same-category__products__product__link__body__name
-                商品名
-              .container__other-products__same-category__products__product__link__body__num
-                .container__other-products__same-category__products__product__link__body__num__price
-                  ¥1,000
-        .container__other-products__same-category__products__product
-          = link_to "", class:".container__other-products__same-category__products__product__link" do
-            %figure.container__other-products__same-category__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__same-category__products__product__link__body
-              %h3.container__other-products__same-category__products__product__link__body__name
-                商品名
-              .container__other-products__same-category__products__product__link__body__num
-                .container__other-products__same-category__products__product__link__body__num__price
-                  ¥1,000
-        .container__other-products__same-category__products__product
-          = link_to "", class:".container__other-products__same-category__products__product__link" do
-            %figure.container__other-products__same-category__products__product__link__image
-              = image_tag src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVsWF8d98YVYq21f9bRkgwCUrw7nlKXmXVriBWyLZDL3OEXtzE5A", size: "220x220"
-            .container__other-products__same-category__products__product__link__body
-              %h3.container__other-products__same-category__products__product__link__body__name
-                商品名
-              .container__other-products__same-category__products__product__link__body__num
-                .container__other-products__same-category__products__product__link__body__num__price
-                  ¥1,000
+        - @products.each do |product|
+          .container__other-products__same-category__products__product
+            = link_to product_path(product.id), class:".container__other-products__same-category__products__product__link" do
+              %figure.container__other-products__same-category__products__product__link__image
+                = image_tag src= product.product_images.first.image_url, size: "220x220"
+              .container__other-products__same-category__products__product__link__body
+                %h3.container__other-products__same-category__products__product__link__body__name
+                  = product.title
+                .container__other-products__same-category__products__product__link__body__num
+                  .container__other-products__same-category__products__product__link__body__num__price
+                    ¥
+                    = product.price
 
   %navi.container__bread-crumbs
     %ul.container__bread-crumbs__list

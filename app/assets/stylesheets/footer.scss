@@ -151,9 +151,12 @@
       position: absolute;
       left: 0;
       text-align: left;
+      a{
+        opacity: 1;
+      }
       img{
         width: 124px;
-        height: 33px;;
+        height: 33px;
       }
     }
     &__copyright{

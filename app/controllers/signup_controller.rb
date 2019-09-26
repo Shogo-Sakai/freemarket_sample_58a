@@ -4,11 +4,11 @@ class SignupController < ApplicationController
   Payjp.api_key = Rails.application.secrets.PAYJP_PRYVATE_KEY
   
   #不正アクセス対策
-  before_action :redirect_to_index_from_sms,only: :sms_authentication
-  before_action :redirect_to_index_from_credit,only: :creditcard
-  before_action :redirect_to_index_from_sms_confirmation,only: :sms_confirmation
-  before_action :redirect_to_index_from_address, only: :address
-  before_action :redirect_to_root_user_signed_in
+  # before_action :redirect_to_index_from_sms,only: :sms_authentication
+  # before_action :redirect_to_index_from_credit,only: :creditcard
+  # before_action :redirect_to_index_from_sms_confirmation,only: :sms_confirmation
+  # before_action :redirect_to_index_from_address, only: :address
+  # before_action :redirect_to_root_user_signed_in
 
   def index
   end
@@ -114,11 +114,11 @@ class SignupController < ApplicationController
   end
 
   def done
-    unless session[:id]
-      redirect_to signup_index_path 
-      return false
-    end
-    sign_in User.find(session[:id])
+    # unless session[:id]
+    #   redirect_to signup_index_path 
+    #   return false
+    # end
+    # sign_in User.find(session[:id])
   end
   
   #3→4ページ目のバリデーション判定

@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @products = Product.all.limit(6)
   end
 
   def destroy
