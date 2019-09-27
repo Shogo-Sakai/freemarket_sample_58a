@@ -140,14 +140,68 @@ $(document).on("turbolinks:load", function(){
   });
 
 
-  // TOP PAGEカテゴリリストの表示機能（マウスが乗ったら発火）
+  // TOP PAGEカテゴリリスト表示
+  // カテゴリリスト表示機能（マウスが乗ったら発火）
   $('.box__lower__left__category').hover(function(){
-    categoryHtml = categoryListHtml
-    // $(this).append(categoryHtml)
-
-  // カテゴリリストの削除（マウスが外れたら発火）
+    $('.box__lower__left__category__wrapper').show();
+    $('.category_index_box').show();
+    $('.category_index_box').children().show();
+    // マウスが外れたら発火
   }, function(){
-    // $(this).children("div").remove()
-  })
+    $(this).children("div").hide();
+    $('.bigcategory_box').hide();
+    $('.smallcategory_box').hide();
+  });
+
+  // bigcategoryの表示
+  $('.category_index_box').children('li').hover(function(){
+    $('.category_index_box').children().removeClass('hover_red');
+    $('.smallcategory_box').hide();
+    $(this).addClass('hover_red');
+    var categoryArray  = $(this).attr('class');
+    var categoryClass  = categoryArray.split(' ');
+    var categoryId     = categoryClass[0]
+    $('.bigcategory_box').children().hide();
+    $('.bigcategory_box').show();
+    // 該当のbigcategory表示
+    $('.bigcategory_box').children('.'+categoryId).show();
+    // マウスが外れたら発火
+  }, function(){
+    $(this).removeClass('hover_red');
+  });
+
+  // smallcategoryの表示
+  $('.bigcategory_box').children('li').hover(function(){
+    $('.bigcategory_box').children().removeClass('hover_gray');
+    $(this).addClass('hover_gray');
+    var bigCategoryArray = $(this).attr('class');
+    var bigCategoryClass = bigCategoryArray.split(" ");
+    var categoryId       = bigCategoryClass[0];
+    var bigCategoryId    = bigCategoryClass[1];
+    $('.smallcategory_box').children().hide();
+    $('.smallcategory_box').show();
+    // 選んでいるCategory_indexを赤色にする
+    $('.category_box').children('.'+categoryId+'_red').addClass('hover_red');
+    // 該当のsmallcategoryの表示
+    $('.smallcategory_box').children('.'+bigCategoryId).show();
+    // マウスが外れたら発火
+  }, function(){
+    $(this).removeClass('hover_gray');
+    $('.category_box').children('.'+categoryId+'_red').removeClass('hover_red');
+  });
+
+  // smallcategoryホバー時
+  $('.smallcategory_box').children('li').hover(function(){
+    $(this).addClass('hover_gray');
+    var smallCategoryArray  = $(this).attr('class');
+    var smallCategoryClass  = smallCategoryArray.split(" ");
+    var bigCategoryId       = smallCategoryClass[0];
+    // 選んでいるbigCategoryを灰色にする
+    $('.bigcategory_box').children('.'+bigCategoryId+'_gray').addClass('hover_gray');
+    // マウスが外れたら発火
+  }, function(){
+    $(this).removeClass('hover_gray');
+    $('.bigcategory_box').children('.'+bigCategoryId+'_gray').removeClass('hover_gray');
+  });
 
 });

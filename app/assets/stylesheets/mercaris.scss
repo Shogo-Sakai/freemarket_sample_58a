@@ -110,22 +110,26 @@ header{
                 overflow: hidden;
                 padding: 0 16px;
                 display: none;
-                &:hover{
-                  background-color: $normal-red;
-                  color: $normal-white;
-                }
               }
             }
+            .bigcategory_box{
+              width:224px;
+              height: 606.5px;
+              background-color: $normal-white;
+            }
+            .smallcategory_box{
+              width:224px;
+              height: 606.5px;
+              background-color: $normal-white;
+            }
             .bigcategory_box,.smallcategory_box{
-              display: none;
+              width: 224px;
+              height: 606.5px;
+              background-color: $normal-white;
               li{
                 line-height: 15px;
                 padding: 8px 16px;
                 display: none;
-                &:hover{
-                  background-color: $normal-gray;
-                  color:black;
-                }
               }
             }
             .smallcategory_box{
@@ -371,4 +375,15 @@ header{
       }
     }
   }
+}
+
+// ホバー時の色付け
+.hover_red{
+  background-color: $normal-red;
+  color: $normal-white;
+}
+
+.hover_gray{
+  background-color: $normal-gray;
+  color:black;
 }
