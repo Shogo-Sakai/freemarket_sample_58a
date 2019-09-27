@@ -18,12 +18,12 @@
             .user-mypage-wrapper__main__profile__container__status__content__name
               評価
             .user-mypage-wrapper__main__profile__container__status__content__number.bold
-              100
+              = rand(100)
           .user-mypage-wrapper__main__profile__container__status__content
             .user-mypage-wrapper__main__profile__container__status__content__name__products
               出品数
             .user-mypage-wrapper__main__profile__container__status__content__number.bold
-              100
+              = @user.products.count
       .user-mypage-wrapper__main__profile__contents.tabs
         .tabs
           %input#notice.user-mypage-wrapper__main__profile__contents__notice{checked: "checked", name: "tab_item", type: "radio"}/

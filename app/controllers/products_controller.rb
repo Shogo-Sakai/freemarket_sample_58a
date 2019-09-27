@@ -30,6 +30,10 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @products = Product.all.limit(6)
+    @category_name = CategoryIndex.find(@product.category_index_id).name
+    @bigcategory_name = Bigcategory.find(@product.bigcategory_id).name
+    @smallcategory_name= Smallcategory.find(@product.smallcategory_id).name
   end
 
   def destroy
