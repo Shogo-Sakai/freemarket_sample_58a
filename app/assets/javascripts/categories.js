@@ -1,5 +1,6 @@
 $(document).on("turbolinks:load", function(){
-    // 入力欄のHTMLを作成
+  // 商品出品時のカテゴリ登録
+  // 入力欄のHTMLを作成
     var bigCategoryboxHtml = `
       <div class="select-wrap big_category_wrapper">
         <select class="default-select sell-select-box sell_bigcategory_box" name="product[bigcategory_id]" id="bigcategory_id">
@@ -133,11 +134,20 @@ $(document).on("turbolinks:load", function(){
               };
             });
           });
-
         });
       });
-
     });
   });
+
+
+  // TOP PAGEカテゴリリストの表示機能（マウスが乗ったら発火）
+  $('.box__lower__left__category').hover(function(){
+    categoryHtml = categoryListHtml
+    // $(this).append(categoryHtml)
+
+  // カテゴリリストの削除（マウスが外れたら発火）
+  }, function(){
+    // $(this).children("div").remove()
+  })
 
 });
