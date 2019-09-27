@@ -6,4 +6,7 @@
 -#    per_page:      number of items to fetch per page
 -#    remote:        data-remote
 %span.next
-  = link_to_unless current_page.last?, t('views.pagination.next').html_safe, url, rel: 'next', remote: remote
+  - unless current_page.last?
+    = link_to url, rel: 'next', remote: remote do
+      %i.fas.fa-chevron-right.pagenate-icon
+

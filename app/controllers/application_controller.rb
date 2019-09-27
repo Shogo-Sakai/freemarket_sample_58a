@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   protect_from_forgery with: :exception
+  before_action :set_form
   
   private
+
+  def set_form
+    @form = SearchForm.new
+  end
 
   def production?
     Rails.env.production?
