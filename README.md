@@ -1,22 +1,76 @@
-# freemarket_sample_58a
+# TECH::EXPERT福岡校58期短期集中就職コース最終課題
 
-## フリマアプリのクローンサイト
+フリマアプリのクローンサイトを3人で作成しました。
 
-### サーバー ID
-http://52.69.194.87/
+ユーザーの新規登録から商品の出品及び購入ができます。
 
-### ベーシック認証、テストユーザー
-最終課題説明文の資料を参考ください。
+We made web application site of freemarket App by 3 members.
 
+You can make or signin with your account.
 
+Sell something you want, buy something you need.
 
+## 説明:Description
 
-## Database design
+・ユーザー登録機能としてSNS及びSMS認証等を行い、クレジットカードを登録できます。
+
+・商品出品機能として画像や商品カテゴリを含めた複数項目の情報をDBへ登録することができます。
+
+・商品購入機能としてユーザーが所持するクレジットカードを用いて商品の購入ができます。
+
+・You can make an acount by using SNS, SMS authentication system and you can register a credit card.
+
+・You can sell an item with images, item categories, and other column informations.
+
+・You can buy an item you want by using your credit card you registered.
+
+## 競合作品との比較:VS.
+
+他スクール生の作品と比較しショートメールによる認証機能の実装や、ナビゲーションバーのパンくず機能再現など、細かい見た目の再現度が高いです。
+
+Our website can use short mail authentication system, and other detail's are looks just like "REAL APP" than other TECH::EXPERT school students.
+
+## 開発環境:Development environment
+
+<dl>
+
+<dt>Server ID</dt>
+
+<dd> http://52.69.194.87/ </dd>
+
+<dt>Basic Authentification and test users</dt>
+
+<dd>最終課題説明文の資料を参考ください。</dd>
+
+<dd>Please refer to our description document.</dd>
+
+<dt>Development environment</dt>
+
+<dd>Ruby 2.5.1</dd>
+
+<dd>Ruby on Rails 5.2.3</dd>
+
+<dd>mysql2</dd>
+
+<dd>Haml 5.1.2</dd>
+
+<dd>Ruby Sass 3.7.4</dd>
+
+<dd>jquery-rails 4.3.5</dd>
+
+<dd>AWS EC2</dd>
+
+<dd>S3</dd>
+
+</dl>
+
+## データベース設計:Database design
+
 ---------------
 
-## EntityRelashionshipDiagram
+## ERD図:EntityRelashionshipDiagram
 
-[](https://ucf246fb74d41fa48f8cff7a6461.previews.dropboxusercontent.com/p/thumb/AAnf7u1q90agdrqtSmD-IRAAexR4_wSNjdnFgPJQmbQOfND6ELzGimgH3_yvun-eJNQRGtLzteJ6BE6SmxFvGZkX-yZ4mmuZ-5F5n7-rjbdACEaspCBCgNOzAw_AxQ6Xsu4KkvyYnVB9uZBSanxUjaiHqmFEWZ0jh7tS_CYxOAioEhtH92e2hJDadStvVzInyZzNZq0GN1SHyrXBbrRrP6A5MC_1UM37e4z0P6xahIMuTEIirAYMsy8YGjSHB4lE1HeXXJTkGtVlExJbOZaZLQhaMYfa-2EY3jeNaiIgsn-qdvUm1yc4_VNUdEH2RK8RJ08ExDjB41APSsZdp4iyuNx5qHm1upnJIH_tks8QlWq5mAptZ7R8qj6wgEjwRT1w5BvtrjV3AnCZ_XecH95ZVGSIoN8m7LgBJMwIPyJ6mX3UPA/p.png)
+画像を貼る。
 
 ## Usersテーブル
 
@@ -26,6 +80,7 @@ http://52.69.194.87/
 |email|string|null: false,unique: true|
 |password|string|null: false|
 |encrypted_password|string|null: false|
+
 ### Association
 
 - has_one  :profile,         dependent: :destroy
@@ -33,7 +88,6 @@ http://52.69.194.87/
 - has_many :products,        dependent: :destroy
 - has_many :buyer_trades,    dependent: :destroy, class_name: "Trade",  foreign_key: "buyer_id"
 - has_many :seller_trades,   dependent: :destroy, class_name: "Trade",  foreign_key: "seller_id"
-
 
 ## Profilesテーブル
 
@@ -58,7 +112,6 @@ http://52.69.194.87/
 |post_personal_name|string|null: false|
 |post_family_name_kana|string|null: false|
 |post_personal_name_kana|string|null: false|
-
 
 ### Association
 
@@ -194,4 +247,3 @@ http://52.69.194.87/
 - belongs_to :buyer,  class_name: "User", foreign_key: "buyer_id"
 - belongs_to :seller, class_name: "User", foreign_key: "seller_id"
 - belongs_to :product
-
