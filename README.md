@@ -1,7 +1,22 @@
 # freemarket_sample_58a
 
-Database design
+## フリマアプリのクローンサイト
+
+### サーバー ID
+http://52.69.194.87/
+
+### ベーシック認証、テストユーザー
+最終課題説明文の資料を参考ください。
+
+
+
+
+## Database design
 ---------------
+
+## EntityRelashionshipDiagram
+
+[](https://ucf246fb74d41fa48f8cff7a6461.previews.dropboxusercontent.com/p/thumb/AAnf7u1q90agdrqtSmD-IRAAexR4_wSNjdnFgPJQmbQOfND6ELzGimgH3_yvun-eJNQRGtLzteJ6BE6SmxFvGZkX-yZ4mmuZ-5F5n7-rjbdACEaspCBCgNOzAw_AxQ6Xsu4KkvyYnVB9uZBSanxUjaiHqmFEWZ0jh7tS_CYxOAioEhtH92e2hJDadStvVzInyZzNZq0GN1SHyrXBbrRrP6A5MC_1UM37e4z0P6xahIMuTEIirAYMsy8YGjSHB4lE1HeXXJTkGtVlExJbOZaZLQhaMYfa-2EY3jeNaiIgsn-qdvUm1yc4_VNUdEH2RK8RJ08ExDjB41APSsZdp4iyuNx5qHm1upnJIH_tks8QlWq5mAptZ7R8qj6wgEjwRT1w5BvtrjV3AnCZ_XecH95ZVGSIoN8m7LgBJMwIPyJ6mX3UPA/p.png)
 
 ## Usersテーブル
 
