@@ -13,6 +13,7 @@
     box-sizing: border-box;
     width: 1020px;
     height: 573px;
+
     &__header{
       box-sizing: border-box;
       width: 100%;
@@ -61,6 +62,10 @@
         height: 252px;
         box-shadow: 1px 3px 3px rgba(0,0,0,0.2);
         border: 1px solid transparent;
+        & a{
+          text-decoration: none;
+          color: $default-font-black;
+        }
         &:hover{
           box-sizing: border-box;
           border: 1px solid #b3d4fc;
@@ -314,6 +319,9 @@
     color: $link-text-blue;
     justify-content: space-between;
     padding: 10px 15px;
+  }
+  &__delete,&__edit{
+    cursor: pointer;
   }
   & img{
     width: 123.59px;
