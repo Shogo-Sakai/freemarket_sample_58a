@@ -70,7 +70,8 @@ Our website can use short mail authentication system, and other detail's are loo
 
 ## ERD図:EntityRelashionshipDiagram
 
-画像を貼る。
+![](https://github.com/Shogo-Sakai/freemarket_sample_58a/blob/image_garage_of_README/erd190928.jpg?raw=true
+)
 
 ## Usersテーブル
 
