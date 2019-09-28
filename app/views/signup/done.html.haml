@@ -8,7 +8,8 @@
         ありがとうございます。
       %p.signup-form-container__agreement-text
         会員登録が完了しました。
-    %input.submit-btn.submit-btn-red{type: 'submit',value: 'メルカリをはじめる'} 
+    = link_to root_path do
+      %input.submit-btn.submit-btn-red{type: 'submit',value: 'メルカリをはじめる'} 
 .signup-last-advertisement
   .signup-last-advertisement__box
     .signup-last-advertisement__box__left

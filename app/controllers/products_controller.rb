@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :redirect_to_login_form_unless_signed_in, except: :show
+  before_action :get_product, only: [:show, :destroy, :destroy, :edit, :update]
+  
   def new
     @product = Product.new
   end
@@ -28,17 +30,18 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @products = Product.all.limit(6)
+    @category_name = CategoryIndex.find(@product.category_index_id).name
+    @bigcategory_name = Bigcategory.find(@product.bigcategory_id).name
+    @smallcategory_name= Smallcategory.find(@product.smallcategory_id).name
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
+    @product.destroy
     redirect_to root_path
   end
 
   def bigcategory
-    # debugger
     respond_to do |format|
       format.json{@bigcategory_options = Bigcategory.where(category_index: params[:category_id])}
     end
@@ -47,16 +50,23 @@ class ProductsController < ApplicationController
   def smallcategory
     respond_to do |format|
       format.json{@smallcategory_options = Smallcategory.where(bigcategory: params[:bigcategory_id])}
-      # debugger
     end
   end
 
   def size
-    # debugger
     respond_to do |format|
-      # debugger
       format.json{@size_options = Smallcategory.find_by(id: params[:smallcategory_id]).smallcategories_has_sizes}
-      # debugger
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.user_id == current_user.id && @product.update(product_params)
+      redirect_to root_path
+    else
+      render 'products/edit'
     end
   end
 
@@ -66,7 +76,8 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:title, :text, :category_index_id ,:fresh_status, :deliver_way, :deliver_person, :from_area, :deliver_leadtime, :price, :deliver_day,:bigcategory_id, :smallcategory_id, :size_id)
   end
 
-  def image_params
+  def get_product
+    @product = Product.find(params[:id])
   end
 
 end

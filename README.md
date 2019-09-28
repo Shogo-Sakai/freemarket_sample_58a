@@ -13,16 +13,16 @@ Database design
 
 ### Association
 
-- has_one :profile, dependent: :destroy
-- has_one :creditcard, dependent: :destroy
-- has_many :products, dependent: :destroy
-- has_many :favorites, dependent: :destroy
-- has_many :informations, dependent: :destroy
-- has_many :comments, dependent: :destroy
-- has_many :buyer_trades,class_name: "Trade", foreign_key: "buyer_id", dependent: :destroy
-- has_many :seller_trades,class_name: "Trade", foreign_key: "seller_id", dependent: :destroy
-- has_many :sender_ratings,class_name: "Rating", foreign_key: "sender_id", dependent: :destroy
-- has_many :receiver_ratings,class_name: "Rating", foreign_key: "receiver_id", dependent: :destroy
+- has_one  :profile,         dependent: :destroy
+- has_one  :creditcard,      dependent: :destroy
+- has_many :products,        dependent: :destroy
+- has_many :favorites,       dependent: :destroy
+- has_many :informations,    dependent: :destroy
+- has_many :comments,        dependent: :destroy
+- has_many :buyer_trades,    dependent: :destroy, class_name: "Trade",  foreign_key: "buyer_id"
+- has_many :seller_trades,   dependent: :destroy, class_name: "Trade",  foreign_key: "seller_id"
+- has_many :sender_ratings,  dependent: :destroy, class_name: "Rating", foreign_key: "sender_id"
+- has_many :receiver_ratings,dependent: :destroy, class_name: "Rating", foreign_key: "receiver_id"
 
 
 ## Profilesテーブル
