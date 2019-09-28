@@ -16,6 +16,21 @@
           = link_to class: "" do
             %i.fas.fa-list-ul
             カテゴリーから探す
+          .box__lower__left__category__wrapper
+            %ul.category_box.category_index_box
+              - @categories.each do |category|
+                %li{class:"category_#{category.id} category_#{category.id}_red"}
+                  = category.name
+              %li
+                カテゴリ一覧
+            %ul.category_box.bigcategory_box
+              - @bigcategories.each do |bigcategory|
+                %li{class:"category_#{bigcategory.category_index_id} bigcategory_#{bigcategory.id} bigcategory_#{bigcategory.id}_gray"}
+                  = bigcategory.name
+            %ul.category_box.smallcategory_box
+              - @smallcategories.each do |smallcategory|
+                %li{class:"bigcategory_#{smallcategory.bigcategory_id}"}
+                  = smallcategory.name
         .box__lower__left__brand
           = link_to class: "" do
             %i.fas.fa-tag
@@ -42,3 +57,4 @@
             %li.box__lower__right__list__sigin
               = link_to signin_index_path,class: "submit-btn header-registration-btn header-signin-btn" do
                 ログイン
+  

@@ -1,4 +1,5 @@
 @import "users";
+@import "variable";
 
 header{
   height: 100px;
@@ -60,23 +61,22 @@ header{
       }
     }
     &__lower{
-      display: flex;
-      -webkit-box-pack: justify;
-      justify-content: space-between;
       margin-top: 8px;
+      position: relative;
       &__left{
         display: flex;
         margin-left: -3px;
+        float: left;
         &__category{
           height: 44px;
           padding: 0px 10px 0px 0px;
           a{
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 36px;
-            white-space: nowrap;
-            color: black;
+            font-size:       14px;
+            font-weight:     600;
+            line-height:     36px;
+            white-space:     nowrap;
+            color:          black;
             &:hover{
               color: blue;
             }
@@ -84,8 +84,62 @@ header{
               color: rgb(234, 53, 45);
             }
           }
+          &__wrapper{
+            position: relative;
+            z-index:  100;
+            display:  flex;
+            justify-content: flex-start;
+            height:    606.5px;
+            border-right:  3px solid rgba(51, 51, 51, 0.3);
+            border-bottom: 3px solid rgba(51, 51, 51, 0.3);
+            display: none;
+            .category_box{
+              width: 224px;
+              float: left;
+              top:  0;
+              left: 0;
+              background-color: $normal-white;
+              border-left: 2px solid rgba(51, 51, 51, 0.3);
+              display: none;
+              li{
+                display: block;
+                font-size: 14px;
+                line-height: 44px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: 0 16px;
+                display: none;
+              }
+            }
+            .bigcategory_box{
+              width:224px;
+              height: 606.5px;
+              background-color: $normal-white;
+            }
+            .smallcategory_box{
+              width:224px;
+              height: 606.5px;
+              background-color: $normal-white;
+            }
+            .bigcategory_box,.smallcategory_box{
+              width: 224px;
+              height: 606.5px;
+              background-color: $normal-white;
+              li{
+                line-height: 15px;
+                padding: 8px 16px;
+                display: none;
+              }
+            }
+            .smallcategory_box{
+              width: 320px;
+            }
           }
+        }
         &__brand{
+          position: absolute;
+          left: 10rem;
           text-decoration: none;
           padding: 0px 10px;
           a{
@@ -106,6 +160,9 @@ header{
         }
       }
       &__right{
+        position: absolute;
+        float: right;
+        right: 0;
         &__list{
           list-style: none;
           display: flex;
@@ -215,6 +272,7 @@ header{
 }
 
 .main{
+  clear: both;
   background-color: rgb(245, 245, 245);
   &__announcement{
     height: 390px;
@@ -317,4 +375,15 @@ header{
       }
     }
   }
+}
+
+// ホバー時の色付け
+.hover_red{
+  background-color: $normal-red;
+  color: $normal-white;
+}
+
+.hover_gray{
+  background-color: $normal-gray;
+  color:black;
 }
