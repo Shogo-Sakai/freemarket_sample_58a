@@ -111,7 +111,10 @@
                 %p
                 = "#{product.title}"
       = paginate @products
-
+-content_for :current_page do
+  %span.current_page__now
+    = @search_word
+= render "layouts/breadcrumbs"
 %footer
   =render "layouts/footer-advertisement"
   %nav

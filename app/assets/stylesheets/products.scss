@@ -320,6 +320,9 @@
     justify-content: space-between;
     padding: 10px 15px;
   }
+  &__delete,&__edit{
+    cursor: pointer;
+  }
   & img{
     width: 123.59px;
     height: 123.59px;
