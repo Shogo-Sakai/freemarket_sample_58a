@@ -263,12 +263,14 @@
         justify-content: space-between;
         text-decoration: none;
         color: #333;
-        i{
+        &:hover{
+          background-color: $hover-gray;
+        }
+          i{
           color: #ccc;
         }
       }
       &:hover{
-        background-color: $hover-gray;
         .menu-icon{
           // 使用するアニメーションの名前（@keyframesの名前）を指定
           animation-name: moveRight;

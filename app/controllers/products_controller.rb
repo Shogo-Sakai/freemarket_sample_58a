@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :redirect_to_login_form_unless_signed_in, except: :show
   before_action :get_product, only: [:show, :destroy, :destroy, :edit, :update]
-  begore_action :set_categories, only: [:show]
+  before_action :set_categories, only: [:show]
   def new
     @product = Product.new
   end

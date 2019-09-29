@@ -108,6 +108,9 @@ header{
                 overflow: hidden;
                 padding: 0 16px;
                 display: none;
+                &:hover{
+                  cursor: pointer;
+                }
               }
             }
             .bigcategory_box{
