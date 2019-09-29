@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :set_categories
 
   def index
     @form = SearchForm.new(search_params)
@@ -11,8 +12,8 @@ class SearchController < ApplicationController
       @products = Product.where(["title LIKE(?) OR text LIKE(?) OR fresh_status LIKE(?) OR deliver_way LIKE(?) OR from_area LIKE(?)","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%"])
     end
 
-    @products = @products.page(params[:page]).per(28)
-    
+    @products = @products.page(params[:page]).per(28)    
+
   end
 
   private
@@ -20,4 +21,11 @@ class SearchController < ApplicationController
   def search_params
     params.require(:search_form).permit(:keyword)
   end
+
+  def set_categories
+    @categories      = CategoryIndex.all
+    @bigcategories   = Bigcategory.all
+    @smallcategories = Smallcategory.all
+  end
+
 end

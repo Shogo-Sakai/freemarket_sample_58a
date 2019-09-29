@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_to_login_form_unless_signed_in
-
+  before_action :set_categories
   def index
   end
 
@@ -18,6 +18,9 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @categories      = CategoryIndex.all
+    @bigcategories   = Bigcategory.all
+    @smallcategories = Smallcategory.all
   end
 
   def delete
@@ -28,4 +31,13 @@ class UsersController < ApplicationController
 
   def logout
   end
+
+  private
+
+  def set_categories
+    @categories      = CategoryIndex.all
+    @bigcategories   = Bigcategory.all
+    @smallcategories = Smallcategory.all
+  end
+
 end
