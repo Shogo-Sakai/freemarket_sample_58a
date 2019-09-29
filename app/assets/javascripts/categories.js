@@ -187,7 +187,6 @@ $(document).on("turbolinks:load", function(){
     // マウスが外れたら発火
   }, function(){
     $(this).removeClass('hover_gray');
-    $('.category_box').children('.'+categoryId+'_red').removeClass('hover_red');
   });
 
   // smallcategoryホバー時
@@ -201,6 +200,9 @@ $(document).on("turbolinks:load", function(){
     // マウスが外れたら発火
   }, function(){
     $(this).removeClass('hover_gray');
+    var smallCategoryArray  = $(this).attr('class');
+    var smallCategoryClass  = smallCategoryArray.split(" ");
+    var bigCategoryId       = smallCategoryClass[0];
     $('.bigcategory_box').children('.'+bigCategoryId+'_gray').removeClass('hover_gray');
   });
 
