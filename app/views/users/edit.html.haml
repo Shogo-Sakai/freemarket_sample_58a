@@ -23,15 +23,15 @@
         .signup-form-container.registration-form__first-container.mypage-form-container
           .signup-form-container__title
             = label :name, 'お名前', class: 'signup-label'
-          手区 江来酢羽斗
+          = current_user.profile.post_family_name + current_user.profile.post_personal_name
         .signup-form-container.mypage-form-container
           .signup-form-container__title
             = label :name, 'お名前カナ', class: 'signup-label'
-          テックエキスパート
+          = current_user.profile.post_family_name_kana + current_user.profile.post_personal_name_kana
         .signup-form-container.mypage-form-container
           .signup-form-container__title
             = label :name, '生年月日', class: 'signup-label'
-          1098/09/28
+          = current_user.profile.birthyear.to_s + "/" + current_user.profile.birthmonth.to_s + "/" + current_user.profile.birthday.to_s
         .signup-form-container.mypage-form-container
           .signup-form-container__title
             = label :postal_code, '郵便番号', class: 'signup-label'
