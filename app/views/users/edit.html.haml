@@ -42,7 +42,7 @@
             = label :postal_code, '都道府県', class: 'signup-label'
             %span.signup-form-container__span.span-optional 任意
           .select-wrap.select-wrap__full
-            = select :user,:prefecture,['--'],{},{class: 'default-select default-select__full'}
+            = select :user,:prefecture,Prefecture.pluck(:name).unshift('--'),{},{class: 'default-select default-select__full'}
             %i.select-arrow.fas.fa-chevron-down
         .signup-form-container.mypage-form-container
           .signup-form-container__title
