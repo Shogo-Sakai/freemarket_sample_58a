@@ -8,7 +8,7 @@ We made web application site of freemarket App by 3 members.
 
 You can make or signin with your account.
 
-Sell something you want, buy something you need.
+Sell items, Buy items.
 
 ## 説明:Description
 
