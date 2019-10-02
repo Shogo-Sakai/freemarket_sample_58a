@@ -4,11 +4,9 @@
 
 ユーザーの新規登録から商品の出品及び購入ができます。
 
-We made web application site of freemarket App by 3 members.
+This web application that hosts a free-market is developed by three developers.
 
-You can make or signin with your account.
-
-Sell items, Buy items.
+Users can create their free-market accounts with this application, and sell or purchase products.
 
 ## 説明:Description
 
@@ -18,17 +16,17 @@ Sell items, Buy items.
 
 ・商品購入機能としてユーザーが所持するクレジットカードを用いて商品の購入ができます。
 
-・You can make an acount by using SNS, SMS authentication system and you can register a credit card.
+・SNS, SMS authentication is used to create a user account. Also, within a user account, a credit card can be registered.
 
-・You can sell an item with images, item categories, and other column informations.
+・Users can produce their products by uploading a photo or selecting its category, which will be stored in a database.
 
-・You can buy an item you want by using your credit card you registered.
+・When users purchases a product, the credit card that is registered in their account can be used.
 
 ## 競合作品との比較:VS.
 
 他スクール生の作品と比較しショートメールによる認証機能の実装や、ナビゲーションバーのパンくず機能再現など、細かい見た目の再現度が高いです。
 
-Our website can use short mail authentication system, and other detail's are looks just like "REAL APP" than other TECH::EXPERT school students.
+Comparing with other students' software, this web application has an authentication flow by an email, and breadcrumb navigation, which make this application closer to production level.
 
 ## 開発環境:Development environment
 
