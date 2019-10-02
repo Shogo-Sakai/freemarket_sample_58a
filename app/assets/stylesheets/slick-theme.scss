@@ -131,6 +131,42 @@ $slick-opacity-not-active: 0.25 !default;
     }
 }
 
+@media screen and (min-width:768px) and (max-width:1067px){
+    .slick-next {
+        right: 70px;
+        top: 135px;
+        
+        [dir="rtl"] & {
+            left: -25px;
+            right: auto;
+        }
+        &:before {
+            content: url("https://web-jp-assets.mercdn.net/_next/static/images/carousel-next-bc3a1438a1435e953bc67d720cd05c61.png");
+            [dir="rtl"] & {
+                content: $slick-prev-character;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:767px){
+    .slick-next {
+        right: 70px;
+        top: 70px;
+        
+        [dir="rtl"] & {
+            left: -25px;
+            right: auto;
+        }
+        &:before {
+            content: url("https://web-jp-assets.mercdn.net/_next/static/images/carousel-next-bc3a1438a1435e953bc67d720cd05c61.png");
+            [dir="rtl"] & {
+                content: $slick-prev-character;
+            }
+        }
+    }
+}
+
 /* Dots */
 
 .slick-dotted.slick-slider {
