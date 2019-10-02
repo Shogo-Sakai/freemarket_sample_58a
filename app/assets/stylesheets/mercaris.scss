@@ -12,7 +12,6 @@ header{
 
     &__top{
       display: flex;
-      -webkit-box-pack: justify;
       justify-content: space-between;
 
       &__title{
@@ -69,7 +68,6 @@ header{
 
     &__lower{
       display: flex;
-      -webkit-box-pack: justify;
       justify-content: space-between;
       margin-top: 8px;
 
@@ -119,7 +117,6 @@ header{
       }
         
       &__right{
-
         &__list{
           list-style: none;
           display: flex;
@@ -244,7 +241,6 @@ header{
   
       &__top{
         display: flex;
-        -webkit-box-pack: justify;
         justify-content: space-between;
   
         &__title{
@@ -301,7 +297,6 @@ header{
   
       &__lower{
         display: flex;
-        -webkit-box-pack: justify;
         justify-content: space-between;
         margin-top: 8px;
   
@@ -351,7 +346,6 @@ header{
         }
           
         &__right{
-  
           &__list{
             list-style: none;
             display: flex;
