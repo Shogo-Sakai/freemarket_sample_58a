@@ -14,9 +14,9 @@ $(document).on('turbolinks:load', function(){
     return html;
   };
   var centerInfoHtml = `<p class='sell-upload-form__image--images-container'>
-                          ドラッグアンドドロップ
+                          ドラッグアンドドロップして
                           <br>
-                          またはクリックしてファイルをアップロード
+                          ファイルをアップロード
                         </p>
 `
   var files_array = [];
