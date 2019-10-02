@@ -7,8 +7,8 @@ FactoryBot.define do
   end
 
   factory :product do
-    title             {"単体テスト"}
-    text              {"test text"}
+    title             {Faker::Superhero.name}
+    text              {Faker::ChuckNorris.fact}
     category_index_id {1}
     fresh_status      {"新品、未使用"}
     deliver_way       {"ゆうパック"}

@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :redirect_to_login_form_unless_signed_in, except: :show
   before_action :get_product, only: [:show, :destroy, :destroy, :edit, :update]
-  
+  before_action :set_categories, only: [:show]
   def new
     @product = Product.new
   end
@@ -30,6 +30,10 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @products = Product.all.limit(6)
+    @category_name = CategoryIndex.find(@product.category_index_id).name
+    @bigcategory_name = Bigcategory.find(@product.bigcategory_id).name
+    @smallcategory_name= Smallcategory.find(@product.smallcategory_id).name
   end
 
   def destroy
@@ -75,5 +79,12 @@ class ProductsController < ApplicationController
   def get_product
     @product = Product.find(params[:id])
   end
+
+  def set_categories
+    @categories      = CategoryIndex.all
+    @bigcategories   = Bigcategory.all
+    @smallcategories = Smallcategory.all
+  end
+
 
 end

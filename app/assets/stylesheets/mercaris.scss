@@ -1,20 +1,18 @@
 @import "users";
+@import "variable";
 
 header{
   height: 100px;
   margin: 0 auto;
-
   .box{
     height: 100px;
     width: 1020px;
     margin: 0 auto;
     padding: 8px 0px 0px;
-
     &__top{
       display: flex;
       -webkit-box-pack: justify;
       justify-content: space-between;
-
       &__title{
         -webkit-box-align: center;
         align-items: center;
@@ -22,13 +20,10 @@ header{
         height: 40px;
         margin-right: 45px;
       }
-
       &__search{
         width: 100%;
-
         &__form{
           position: relative;
-          
           &__input{
             background-color: rgb(245, 245, 245);
             font-size: 16px;
@@ -46,7 +41,6 @@ header{
             padding: 0px 50px 0px 10px;
             transition: all 0.3s ease-out 0s;
           }
-
           button{
             background-color: transparent;
             cursor: pointer;
@@ -56,53 +50,99 @@ header{
             top: 0px;
             width: 40px;
             -webkit-appearance: none;
-            border-width: initial;
             border-style: none;
-            border-color: initial;
-            border-image: initial;
             border-radius: 0px 4px 4px 0px;
             padding: 0px;
           }
         }
       }
     }
-
     &__lower{
-      display: flex;
-      -webkit-box-pack: justify;
-      justify-content: space-between;
       margin-top: 8px;
-
+      position: relative;
       &__left{
         display: flex;
         margin-left: -3px;
-        
+        float: left;
         &__category{
           height: 44px;
           padding: 0px 10px 0px 0px;
-
           a{
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 36px;
-            white-space: nowrap;
-            color: black;
-
+            font-size:       14px;
+            font-weight:     600;
+            line-height:     36px;
+            white-space:     nowrap;
+            color:          black;
+            &:hover{
+              color: blue;
+            }
             i{
               color: rgb(234, 53, 45);
             }
           }
-
-          a:hover{
-            color: blue;
+          &__wrapper{
+            position: relative;
+            z-index:  100;
+            display:  flex;
+            justify-content: flex-start;
+            height:    606.5px;
+            border-right:  3px solid rgba(51, 51, 51, 0.3);
+            border-bottom: 3px solid rgba(51, 51, 51, 0.3);
+            display: none;
+            .category_box{
+              width: 224px;
+              float: left;
+              top:  0;
+              left: 0;
+              background-color: $normal-white;
+              border-left: 2px solid rgba(51, 51, 51, 0.3);
+              display: none;
+              overflow: auto;
+              li{
+                display: block;
+                font-size: 14px;
+                line-height: 44px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: 0 16px;
+                display: none;
+                &:hover{
+                  cursor: pointer;
+                }
+              }
+            }
+            .bigcategory_box{
+              width:224px;
+              height: 606.5px;
+              background-color: $normal-white;
+            }
+            .smallcategory_box{
+              width:224px;
+              height: 606.5px;
+              background-color: $normal-white;
+            }
+            .bigcategory_box,.smallcategory_box{
+              width: 224px;
+              height: 606.5px;
+              background-color: $normal-white;
+              li{
+                line-height: 15px;
+                padding: 8px 16px;
+                display: none;
+              }
+            }
+            .smallcategory_box{
+              width: 320px;
+            }
           }
         }
-
         &__brand{
+          position: absolute;
+          left: 10rem;
           text-decoration: none;
           padding: 0px 10px;
-
           a{
             text-decoration: none;
             font-size: 14px;
@@ -110,23 +150,25 @@ header{
             line-height: 36px;
             white-space: nowrap;
             color: black;
-
+            &:hover{
+              color: blue;
+            }
             i{
+              transform: rotate(-45deg);
               color: rgb(234, 53, 45);
             }
           }
         }
       }
-        
       &__right{
-
+        position: absolute;
+        float: right;
+        right: 0;
         &__list{
           list-style: none;
           display: flex;
-
           &__heart{
             padding: 0px 14px 0px 0px;
-            
             a{
               -webkit-box-align: center;
               align-items: center;
@@ -137,7 +179,9 @@ header{
               transition: all 0.3s ease-out 0s;
               text-decoration: none;
               color: #333;
-              
+              &:hover{
+                color: blue;
+              }
               i{
                 max-width: 100%;
                 height: auto;
@@ -147,10 +191,8 @@ header{
               }
             }
           }
-
           &__notice{
             padding: 0px 14px 0px 0px;
-            
             a{
               -webkit-box-align: center;
               align-items: center;
@@ -161,7 +203,9 @@ header{
               transition: all 0.3s ease-out 0s;
               text-decoration: none;
               color: #333;
-              
+              &:hover{
+                color: blue;
+              }
               i{
                 max-width: 100%;
                 height: auto;
@@ -171,10 +215,8 @@ header{
               }
             }
           }
-
           &__todo{
             padding: 0px 14px;
-
             a{
               text-decoration: none;
               -webkit-box-align: center;
@@ -185,7 +227,9 @@ header{
               transform: scale(1);
               transition: all 0.3s ease-out 0s;
               color: #333;
-
+              &:hover{
+                color: blue;
+              }
               i{
                 max-width: 100%;
                 height: auto;
@@ -195,11 +239,9 @@ header{
               }
             }
           }
-
           &__mypage{
             padding: 0px 0px 0px 14px;
             height: 44px;
-
             a{
               -webkit-box-align: center;
               align-items: center;
@@ -210,8 +252,10 @@ header{
               transition: all 0.3s ease-out 0s;
               text-decoration: none;
               color: #333;
-
-              img{
+              &:hover{
+                color: blue;
+              }
+                img{
                 margin-right: 10px;
                 width: 32px;
                 border-radius: 50%;
@@ -460,14 +504,14 @@ header{
     }
   }
 }
-.main{
-  background-color: rgb(245, 245, 245);
 
+.main{
+  clear: both;
+  background-color: rgb(245, 245, 245);
   &__announcement{
     height: 390px;
     width: 100vw;
     background-color: black;
-
     &__pictures{
       width: 100%;
       height: 390px;
@@ -479,53 +523,44 @@ header{
           height: 390px;
         }
       }
-
       &__picture3{
         &__content{
           background-image: url("https://web-jp-assets.mercdn.net/_next/static/images/top-banner-main-892151cc75b1f6a1285bf7943c9b933c.jpg");
           background-position: center;
           height: 390px;
-          
           &__description{
             -webkit-box-align: center;
             align-items: center;
             max-width: 860px;
             margin: 0 auto;
             position: relative;
-
             & > img{
               position: absolute;
               top: 0px;
               right: 0px;
             }
-
             &__about{
               width: 100%;
               padding: 20px 40px;
-
               &__text1{
                 font-size: 60px;
                 font-weight: 600;
                 margin-bottom: 16px;
               }
-
               &__text2{
                 font-size: 18px;
                 margin-bottom: 24px;
                 line-height: 1.77777;
               }
-
               &__install{
                 text-align: left;
                 width: 100%;
                 height: 50px;
                 display: flex;
-
                 & img{
                   height: 50px;
                   width: 170px;
                 }
-
                 & a:last-child{
                   margin-left: 8px;
                 }
@@ -536,7 +571,6 @@ header{
       }
     }
   }
-
   &__categories{
     @extend %global-font;
     box-sizing: border-box;
@@ -546,16 +580,13 @@ header{
     padding: 56px 0px 30px;
     @extend %centering;
     flex-direction: column;
-
     &__title{
       margin-bottom: 16px;
       font-size: 28px;
       font-weight: bold;
     }
-
     &__tags{
       display: flex;
-      
       a{
         display: block;
         box-sizing: border-box;
@@ -696,4 +727,15 @@ header{
       }
     }
   }
+}
+
+// ホバー時の色付け
+.hover_red{
+  background-color: $normal-red;
+  color: $normal-white;
+}
+
+.hover_gray{
+  background-color: $normal-gray;
+  color:black;
 }
