@@ -176,27 +176,26 @@
           %i.fab.fa-pinterest-square.fa-3x
 
   .container__other-products
-    -if current_user
-      .container__other-products__login-user
-        %h2.container__other-products__login-user__title
-          = link_to "#{current_user.nickname}さんのその他の出品", ""
-        .container__other-products__login-user__products
-          - current_user.products.where(sell_status: "出品中").each do |product|
-            .container__other-products__login-user__products__product
-              = link_to "/products/#{product.id}", class:"container__other-products__login-user__products__product__link" do
-                %figure.container__other-products__login-user__products__product__link__image
-                  = image_tag product.product_images.find_by(product_id: product.id).image_url, size:"220x220"
-                .container__other-products__login-user__products__product__link__body
-                  %h3.container__other-products__login-user__products__product__link__body__name
-                    = product.title
-                  .container__other-products__login-user__products__product__link__body__num
-                    .container__other-products__login-user__products__product__link__body__num__price
-                      ¥
-                      = product.price
-                    .container__other-products__login-user__products__product__link__body__num__heart
-                      %i.far.fa-heart
-                      %span
-                        = rand(1000)
+    .container__other-products__login-user
+      %h2.container__other-products__login-user__title
+        = link_to "#{@product.user.nickname}さんのその他の出品", ""
+      .container__other-products__login-user__products
+        - @product.user.products.where(sell_status: "出品中").each do |product|
+          .container__other-products__login-user__products__product
+            = link_to "/products/#{product.id}", class:"container__other-products__login-user__products__product__link" do
+              %figure.container__other-products__login-user__products__product__link__image
+                = image_tag product.product_images.find_by(product_id: product.id).image_url, size:"220x220"
+              .container__other-products__login-user__products__product__link__body
+                %h3.container__other-products__login-user__products__product__link__body__name
+                  = product.title
+                .container__other-products__login-user__products__product__link__body__num
+                  .container__other-products__login-user__products__product__link__body__num__price
+                    ¥
+                    = product.price
+                  .container__other-products__login-user__products__product__link__body__num__heart
+                    %i.far.fa-heart
+                    %span
+                      = rand(1000)
 
     .container__other-products__same-category
       %h2.container__other-products__same-category__title
@@ -223,7 +222,7 @@
           %i.fas.fa-chevron-right
       %li.container__bread-crumbs__list__current-product
         %span
-          現在の商品名
+          = @product.title
           
 %footer
   =render "layouts/footer-advertisement"

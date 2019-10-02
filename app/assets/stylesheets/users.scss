@@ -263,12 +263,14 @@
         justify-content: space-between;
         text-decoration: none;
         color: #333;
-        i{
+        &:hover{
+          background-color: $hover-gray;
+        }
+          i{
           color: #ccc;
         }
       }
       &:hover{
-        background-color: $hover-gray;
         .menu-icon{
           // 使用するアニメーションの名前（@keyframesの名前）を指定
           animation-name: moveRight;
@@ -501,7 +503,7 @@
   font-size: 14px;
   box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.16);
   position: relative;
-  z-index: 100;
+  z-index: 10;
   &__wrapper{
     width: 1020px;
     &__content{

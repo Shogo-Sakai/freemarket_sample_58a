@@ -34,13 +34,13 @@ CSV.foreach('db/seeds/csv/all_category.csv', encoding: 'Shift_JIS:UTF-8', header
 end
 
 # テストユーザー
-testuser = User.create(
+testuser      = User.create(
   email:                 "techexpert@techmaster.com",
   nickname:              "tech-expert-58",
   password:              "techexpert58",
   password_confirmation: "techexpert58"
 )
-testprofile = Profile.create(
+testprofile   = Profile.create(
   user_id:                 1,
   birthyear:               2019,
   birthmonth:              7,
@@ -60,14 +60,14 @@ testprofile = Profile.create(
   post_personal_name_kana: "スパオ"
 )
 10.times{
-  user   = User.create(
+  user        = User.create(
     email:                 Faker::Internet.email,
     nickname:              Faker::JapaneseMedia::DragonBall.unique.character,
     password:              "password58",
     password_confirmation: "password58"
   )
-  first_name = Faker::Name.unique.first_name
-  last_name = Faker::Name.unique.last_name
+  first_name  = Faker::Name.unique.first_name
+  last_name   = Faker::Name.unique.last_name
   testprofile = Profile.create(
     user_id:                 user.id,
     birthyear:               rand(1900..2019),
@@ -91,7 +91,7 @@ testprofile = Profile.create(
 
 
 # テスト商品
-testproduct      = Product.create(
+testproduct   = Product.create(
   title:             "test product",
   text:              "test text",
   category_index_id: 1,
@@ -106,10 +106,78 @@ testproduct      = Product.create(
   price:             "3000",
   user_id:           1
 )
-testimage        = ProductImage.create(
+testimage     = ProductImage.create(
   image:File.open("./app/assets/images/aquos.jpeg"),
   product_id: 1
 )
+
+# 交渉中商品
+testproduct2  = Product.create(
+  title:             "TRADING product",
+  text:              "TRADING text",
+  category_index_id: 2,
+  bigcategory_id:    2,
+  smallcategory_id:  2,
+  size_id:           2,
+  fresh_status:      "新品、未使用",
+  deliver_person:    "送料込み(出品者負担)",
+  deliver_way:       "ゆうパック",
+  deliver_leadtime:  "3-4日で発送",
+  from_area:         "福岡県",
+  price:             "3000",
+  user_id:           1,
+  sell_status:       SellStatus.find(2).status
+)
+testimage2    = ProductImage.create(
+  image:File.open("./app/assets/images/aquos.jpeg"),
+  product_id: 2
+)
+
+# 公開停止中タグの商品
+testproduct3  = Product.create(
+  title:             "STOP SELLING product",
+  text:              "STOP SELLING text",
+  category_index_id: 3,
+  bigcategory_id:    3,
+  smallcategory_id:  3,
+  size_id:           3,
+  fresh_status:      "新品、未使用",
+  deliver_person:    "送料込み(出品者負担)",
+  deliver_way:       "ゆうパック",
+  deliver_leadtime:  "3-4日で発送",
+  from_area:         "福岡県",
+  price:             "3000",
+  user_id:           1,
+  sell_status:       SellStatus.find(3).status
+)
+testimage3    = ProductImage.create(
+  image:File.open("./app/assets/images/aquos.jpeg"),
+  product_id: 3
+)
+
+# SOLD OUTタグの商品
+testproduct4  = Product.create(
+  title:             "SOLD OUT product",
+  text:              "SOLD OUT text",
+  category_index_id: 4,
+  bigcategory_id:    4,
+  smallcategory_id:  4,
+  size_id:           4,
+  fresh_status:      "新品、未使用",
+  deliver_person:    "送料込み(出品者負担)",
+  deliver_way:       "ゆうパック",
+  deliver_leadtime:  "3-4日で発送",
+  from_area:         "佐賀県",
+  price:             "3000",
+  user_id:           1,
+  sell_status:       SellStatus.find(4).status
+)
+testimage3        = ProductImage.create(
+  image:File.open("./app/assets/images/aquos.jpeg"),
+  product_id: 4
+)
+
+# ダミー商品
 40.times{
   category_index = rand(1..13)
   bigcategory    = Bigcategory.where(category_index_id: category_index).sample
@@ -134,7 +202,6 @@ testimage        = ProductImage.create(
     from_area:         Prefecture.find(rand(1..47)).name,
     price:             rand(100000),
     user_id:           rand(1..User.count),
-    sell_status:       SellStatus.find(rand(1..4)).status
   )
   testimage      = ProductImage.create(
     image:File.open("./app/assets/images/aquos.jpeg"),

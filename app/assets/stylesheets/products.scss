@@ -13,6 +13,7 @@
     box-sizing: border-box;
     width: 1020px;
     height: 573px;
+
     &__header{
       box-sizing: border-box;
       width: 100%;
@@ -61,6 +62,10 @@
         height: 252px;
         box-shadow: 1px 3px 3px rgba(0,0,0,0.2);
         border: 1px solid transparent;
+        & a{
+          text-decoration: none;
+          color: $default-font-black;
+        }
         &:hover{
           box-sizing: border-box;
           border: 1px solid #b3d4fc;
@@ -163,6 +168,11 @@
           border: 1px dashed #ccc;
           font-size: 14px;
           font-family: monospace;
+        }
+        &--images-container{
+          margin-top: 60px;
+          text-align: center;
+          width: 100%;
         }
       }
       .sell-upload-label{
@@ -315,6 +325,9 @@
     justify-content: space-between;
     padding: 10px 15px;
   }
+  &__delete,&__edit{
+    cursor: pointer;
+  }
   & img{
     width: 123.59px;
     height: 123.59px;
@@ -331,7 +344,7 @@
   width: 100%;
   background-color: $normal-red;
   transform:rotate(-45deg);
-  z-index: 100;
+  z-index: 50;
   font-size: 24px;
   font-family: sans-serif;
   padding-bottom: 1rem;

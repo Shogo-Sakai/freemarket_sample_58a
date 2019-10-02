@@ -15,8 +15,8 @@
         プロフィール
       %form.user-mypage-wrapper__main__profile-edit__content
         .user-mypage-wrapper__main__profile-edit__content__icon
-          = image_tag src="https://static.mercdn.net/thumb/members/217956187.jpg?1521954365", size: "60x60", class: "user-mypage-wrapper__main__profile-edit__content__icon__img"
-          %input.user-mypage-wrapper__main__profile-edit__content__icon__input-default{placeholder: "例)AYA☆セール中", type: "text", value: "おとうふ", name: "nickname"}
+          = image_tag src="https://static.mercdn.net/images/member_photo_noimage_thumb.png", size: "60x60", class: "user-mypage-wrapper__main__profile-edit__content__icon__img"
+          %input.user-mypage-wrapper__main__profile-edit__content__icon__input-default{placeholder: "例)AYA☆セール中", type: "text", value: current_user.nickname, name: "nickname"}
 
         .user-mypage-wrapper__main__profile-edit__content__index
           %textarea.user-mypage-wrapper__main__profile-edit__content__index__text{placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪", value: "", name: "introduction"}
