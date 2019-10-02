@@ -171,6 +171,7 @@ class SignupController < ApplicationController
     unless @user.save
       reset_session
       redirect_to signup_index_path
+      return
     end
     @profile = Profile.create(
       user: @user,
@@ -198,6 +199,7 @@ class SignupController < ApplicationController
       reset_session
       session[:id] = @user.id
       redirect_to done_signup_index_path
+      return 
     else
       reset_session
       redirect_to signup_index_path

@@ -130,3 +130,6 @@ gem "dropzonejs-rails"
 
 # seed data作成
 gem 'faker'
+
+# ページネーション
+gem 'kaminari'
