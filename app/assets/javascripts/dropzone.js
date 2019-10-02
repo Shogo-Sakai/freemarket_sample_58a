@@ -13,12 +13,21 @@ $(document).on('turbolinks:load', function(){
                 </li>`
     return html;
   };
+  var centerInfoHtml = `<p class='sell-upload-form__image--images-container'>
+                          ドラッグアンドドロップ
+                          <br>
+                          またはクリックしてファイルをアップロード
+                        </p>
+`
   var files_array = [];
   $('#preview').on('dragover',function(e){
     e.preventDefault();
   });
   $('#preview').on('drop',function(event){
     event.preventDefault();
+    if($(".sell-upload-form__image--images-container").length){
+      $(".sell-upload-form__image--images-container").remove();
+    };
     files = event.originalEvent.dataTransfer.files;
     for (var i=0; i<files.length; i++) {
       files_array.push(files[i]);
@@ -34,6 +43,9 @@ $(document).on('turbolinks:load', function(){
     var index = $(".product-image__delete").index(this);
     files_array.splice(index - 1, 1);
     $(this).parent().parent().parent().remove();
+    if(files_array.length === 0){
+      $("#preview").append(centerInfoHtml);
+    }
   });
   $(".sell-form").on('submit',function(e){
     e.preventDefault();
