@@ -133,3 +133,4 @@ gem 'faker'
 
 # ページネーション
 gem 'kaminari'
+gem 'will_paginate'
