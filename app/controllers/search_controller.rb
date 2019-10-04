@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   before_action :set_categories
-  require "kaminari"
 
   def index
     @form = SearchForm.new(search_params)
