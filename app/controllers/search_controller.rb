@@ -12,7 +12,7 @@ class SearchController < ApplicationController
       @products = Product.where(["title LIKE(?) OR text LIKE(?) OR fresh_status LIKE(?) OR deliver_way LIKE(?) OR from_area LIKE(?)","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%","%#{search_params[:keyword]}%"])
     end
 
-    @products = @products.page(params[:page]).per(28)    
+    @products = Kaminari.paginate_array(@products).page(params[:page]).per(28)    
 
   end
 
