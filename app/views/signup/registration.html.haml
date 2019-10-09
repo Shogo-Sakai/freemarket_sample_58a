@@ -90,8 +90,7 @@
               %i.select-arrow.fas.fa-chevron-down
             %span.signup-form-container__birthday--span 月
             .select-wrap
-              = o.select :birthday,{},{},class: 'default-select select-day' do
-                %option{value: ""} --
+              = o.select :birthday,(1..31).to_a,{include_blank: '--'},class: 'default-select select-day'
               %i.select-arrow.fas.fa-chevron-down
             %span.signup-form-container__birthday--span 日
           - if judge_date_present(@profile,:birthyear,:birthmonth,:birthday)
