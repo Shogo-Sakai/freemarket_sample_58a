@@ -88,7 +88,6 @@ header{
             display:  flex;
             justify-content: flex-start;
             height:    606.5px;
-            border-right:  3px solid rgba(51, 51, 51, 0.3);
             border-bottom: 3px solid rgba(51, 51, 51, 0.3);
             display: none;
             .category_box{
@@ -97,6 +96,7 @@ header{
               top:  0;
               left: 0;
               background-color: $normal-white;
+              border-right:  3px solid rgba(51, 51, 51, 0.3);
               border-left: 2px solid rgba(51, 51, 51, 0.3);
               display: none;
               overflow: auto;
@@ -355,7 +355,6 @@ header{
           &__category{
             height: 44px;
             padding: 0px 10px 0px 0px;
-  
             a{
               text-decoration: none;
               font-size: 14px;
@@ -371,6 +370,10 @@ header{
   
             a:hover{
               color: blue;
+            }
+            &__wrapper{
+              display: flex;
+              left: -30px;
             }
           }
   
